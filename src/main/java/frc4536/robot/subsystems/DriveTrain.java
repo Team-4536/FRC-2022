@@ -1,5 +1,7 @@
 package frc4536.robot.subsystems;
 
+import java.security.PublicKey;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -24,7 +26,20 @@ public class DriveTrain extends SubsystemBase{
         MotorControllerGroup rightMotorControllerGroup = new MotorControllerGroup(frontRightDriveMotor, backRightDriveMotor);
         m_differentialDrive = new DifferentialDrive(leftMotorControllerGroup, rightMotorControllerGroup);
     } 
+    public void arcadeDrive(double speed, double driveTrainRotation){
+        m_differentialDrive.arcadeDrive(speed, driveTrainRotation);
+        
+    }
+        public void rotateRobot(double rotationPower){
+            m_differentialDrive.tankDrive(-rotationPower, rotationPower);
 
+
+        }
+
+     public void driveStraight(double speed){
+        m_differentialDrive.arcadeDrive(speed, 0);
+
+    }
    
    
 
