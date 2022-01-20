@@ -4,6 +4,8 @@
 
 package frc4536.robot;
 
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -19,6 +21,8 @@ public final class Constants {
     public static final int BACK_LEFT_DRIVE_MOTOR_ID = 1;
     public static final int FRONT_RIGHT_DRIVE_MOTOR_ID = 1;
     public static final int BACK_RIGHT_DRIVE_MOTOR_ID = 1;
+
+    public static final MotorType TYPE_BRUSH_MOTOR = MotorType.kBrushed ;
 
    }
    

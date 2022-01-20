@@ -15,10 +15,10 @@ public class DriveTrain extends SubsystemBase{
     private Encoder m_rightDrivEncoder;
 
     public DriveTrain(){
-        CANSparkMax frontLeftDriveMotor = new CANSparkMax(Constants.DriveInfo.FRONT_LEFT_DRIVE_MOTOR_ID, MotorType.kBrushed);
-        CANSparkMax frontRightDriveMotor = new CANSparkMax(Constants.DriveInfo.FRONT_RIGHT_DRIVE_MOTOR_ID,MotorType.kBrushed);
-        CANSparkMax backLeftDriveMotor = new CANSparkMax(Constants.DriveInfo.BACK_LEFT_DRIVE_MOTOR_ID,MotorType.kBrushed);
-        CANSparkMax backRightDriveMotor = new CANSparkMax(Constants.DriveInfo.BACK_RIGHT_DRIVE_MOTOR_ID,MotorType.kBrushed);
+        CANSparkMax frontLeftDriveMotor = new CANSparkMax(Constants.DriveInfo.FRONT_LEFT_DRIVE_MOTOR_ID, Constants.DriveInfo.TYPE_BRUSH_MOTOR);
+        CANSparkMax frontRightDriveMotor = new CANSparkMax(Constants.DriveInfo.FRONT_RIGHT_DRIVE_MOTOR_ID, Constants.DriveInfo.TYPE_BRUSH_MOTOR);
+        CANSparkMax backLeftDriveMotor = new CANSparkMax(Constants.DriveInfo.BACK_LEFT_DRIVE_MOTOR_ID, Constants.DriveInfo.TYPE_BRUSH_MOTOR);
+        CANSparkMax backRightDriveMotor = new CANSparkMax(Constants.DriveInfo.BACK_RIGHT_DRIVE_MOTOR_ID, Constants.DriveInfo.TYPE_BRUSH_MOTOR);
 
         MotorControllerGroup leftMotorControllerGroup = new MotorControllerGroup(frontLeftDriveMotor, backLeftDriveMotor);
         MotorControllerGroup rightMotorControllerGroup = new MotorControllerGroup(frontRightDriveMotor, backRightDriveMotor);
