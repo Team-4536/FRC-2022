@@ -9,6 +9,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 
 public final class Constants {
+<<<<<<< HEAD
 
    public static final class DriveInfo {
       public static final int LEFT_FRONT_DRIVE_MOTOR_ID = 1;
@@ -35,4 +36,12 @@ public final class Constants {
       public static final int CARGO_HANDLER_MOTOR_ID = 2;
    }
 
+=======
+    public static final class CargoHandlerInfo {
+    public static final int CARGO_HANDLER_MOTOR_ID = 2;
+    public static final double INTAKE_CARGO_SPEED = 1.8;
+    public static final double OUTPUT_CARGO_SPEED = 1.9;
+    public static final boolean MOTOR_IS_GOING_IN_OTHER_DIRECTION = true;
+>>>>>>> a3bbd3f (this will commence intake and output)
+}
 }
