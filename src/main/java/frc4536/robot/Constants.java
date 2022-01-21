@@ -30,4 +30,9 @@ public final class Constants {
 
       public static final EncodingType DRIVE_MOTOR_ENCODER_ENCODINGTYPE = EncodingType.k2X;
    }
+
+   public static final class CargoHandlerInfo {
+      public static final int CARGO_HANDLER_MOTOR_ID = 2;
+   }
+
 }
