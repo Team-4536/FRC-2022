@@ -13,8 +13,8 @@ import frc4536.robot.Constants;
 
 public class DriveTrain extends SubsystemBase{
     private DifferentialDrive m_differentialDrive;
-    private Encoder m_leftDrivEncoder;
-    private Encoder m_rightDrivEncoder;
+    private Encoder m_leftDriveEncoder;
+    private Encoder m_rightDriveEncoder;
 
     public DriveTrain(){
         CANSparkMax frontLeftDriveMotor = new CANSparkMax(Constants.DriveInfo.FRONT_LEFT_DRIVE_MOTOR_ID, Constants.DriveInfo.TYPE_BRUSH_MOTOR);
@@ -40,7 +40,13 @@ public class DriveTrain extends SubsystemBase{
         m_differentialDrive.arcadeDrive(speed, 0);
 
     }
-   
+     public void resetEncoders(){
+
+        m_leftDriveEncoder.reset();
+        m_rightDriveEncoder.reset();
+    }
+    
+        
    
 
 
