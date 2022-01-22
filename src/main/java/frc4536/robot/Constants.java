@@ -16,6 +16,14 @@ public final class Constants {
     public final static class CargoMoverInfo{
         public final static int CARGO_MOVER_ELBOW_ID = 1;
         public final static int CARGO_MOVER_SHOULDER_ID = 2;
+        public final static int CHANNEL_A_CARGO_MOVER_SHOULDER_ENCODER = 4;
+        public final static int CHANNEL_B_CARGO_MOVER_SHOULDER_ENCODER = 5;
+        public final static boolean CARGO_MOVER_SHOULDER_ENCODER_INVERT = true ;
+        public final static int CHANNEL_A_CARGO_MOVER_ELBOW_ENCODER = 9;
+        public final static int CHANNEL_B_CARGO_MOVER_ELBOW_ENCODER = 10;
+        public final static boolean CARGO_MOVER_ELBOW_ENCODER_INVERT = true; 
+
+
     }
  
 }
