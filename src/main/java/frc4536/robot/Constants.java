@@ -24,6 +24,12 @@ public final class Constants {
 
     public static final MotorType TYPE_BRUSH_MOTOR = MotorType.kBrushed ;
 
+    public static final boolean LEFT_DRIVE_MOTOR_INVERT = false;
+    public static final boolean RIGHT_DRIVE_MOTOR_INVERT = true;
+
+    public static final int NUM_1_DRIVE_MOTOR_ENCODER = 1;
+    public static final int NUM_2_DRIVE_MOTOR_ENCODER = 2;
+
    }
    
 }

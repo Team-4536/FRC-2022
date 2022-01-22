@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import frc4536.robot.Constants;
 
 public class DriveTrain extends SubsystemBase{
@@ -24,7 +25,14 @@ public class DriveTrain extends SubsystemBase{
 
         MotorControllerGroup leftMotorControllerGroup = new MotorControllerGroup(frontLeftDriveMotor, backLeftDriveMotor);
         MotorControllerGroup rightMotorControllerGroup = new MotorControllerGroup(frontRightDriveMotor, backRightDriveMotor);
+
+        leftMotorControllerGroup.setInverted(Constants.DriveInfo.LEFT_DRIVE_MOTOR_INVERT);
+        rightMotorControllerGroup.setInverted(Constants.DriveInfo.RIGHT_DRIVE_MOTOR_INVERT);
+
         m_differentialDrive = new DifferentialDrive(leftMotorControllerGroup, rightMotorControllerGroup);
+
+        m_leftDriveEncoder = new Encoder( Constants.DriveInfo.NUM_1_DRIVE_MOTOR_ENCODER,  Constants.DriveInfo.NUM_2_DRIVE_MOTOR_ENCODER, Constants.DriveInfo.LEFT_DRIVE_MOTOR_INVERT, EncodingType.k2X); 
+        m_rightDriveEncoder = new Encoder( Constants.DriveInfo.NUM_1_DRIVE_MOTOR_ENCODER,  Constants.DriveInfo.NUM_2_DRIVE_MOTOR_ENCODER, Constants.DriveInfo.RIGHT_DRIVE_MOTOR_INVERT, EncodingType.k2X);  
     } 
     public void arcadeDrive(double speed, double driveTrainRotation){
         m_differentialDrive.arcadeDrive(speed, driveTrainRotation);
