@@ -1,4 +1,4 @@
-package frc4536;
+package frc4536.robot;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -29,3 +29,4 @@ public class Poses {
     SCORE_FOUR = new Pose2d(Units.inchesToMeters(36.47), Units.inchesToMeters(-37.9), Rotation2d.fromDegrees(0))
     ;
 }
+
