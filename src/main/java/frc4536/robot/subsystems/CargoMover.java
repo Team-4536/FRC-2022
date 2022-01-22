@@ -26,6 +26,11 @@ public class CargoMover extends SubsystemBase {
 
     }
 
+    public void moveElbow(double power) {
+        m_cargoMoverElbow.set(power);
+    }
 
-    
+    public void moveShoulder(double power) {
+        m_cargoMoverShoulder.set(power);
+    }
 }
