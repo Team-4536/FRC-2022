@@ -12,4 +12,10 @@ package frc4536.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants {}
+public final class Constants {
+    public final static class CargoMoverInfo{
+        public final static int CARGO_MOVER_ELBOW_ID = 1;
+        public final static int CARGO_MOVER_SHOULDER_ID = 2;
+    }
+ 
+}
