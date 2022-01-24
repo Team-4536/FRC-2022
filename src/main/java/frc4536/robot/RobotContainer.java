@@ -4,6 +4,10 @@
 
 package frc4536.robot;
 
+import java.util.ArrayList;
+
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,8 +28,32 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+
+
     // Configure the button bindings
     configureButtonBindings();
+  }
+  
+  private void generatePoseCheckTrajectory(){
+    var poseCheckWaypoints = new ArrayList<Pose2d>();
+    poseCheckWaypoints.add(Poses.SCORE_ONE);
+    poseCheckWaypoints.add(Poses.BALL_ONE);
+    poseCheckWaypoints.add(Poses.BALL_TWO);
+    poseCheckWaypoints.add(Poses.BALL_THREE);
+    poseCheckWaypoints.add(Poses.BALL_FOUR);
+    poseCheckWaypoints.add(Poses.SCORE_TWO);
+    poseCheckWaypoints.add(Poses.BALL_FIVE);
+    poseCheckWaypoints.add(Poses.BALL_SIX);
+    poseCheckWaypoints.add(Poses.BALL_SEVEN);
+    poseCheckWaypoints.add(Poses.BALL_EIGHT);
+    poseCheckWaypoints.add(Poses.SCORE_THREE);
+    poseCheckWaypoints.add(Poses.BALL_NINE);
+    poseCheckWaypoints.add(Poses.BALL_TEN);
+    poseCheckWaypoints.add(Poses.SCORE_FOUR);
+    poseCheckWaypoints.add(Poses.BALL_ELEVEN);
+    poseCheckWaypoints.add(Poses.BALL_TWELVE);
+    //TODO: add drive train to robot containor to finish generating trajectory 
+    //t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain)
   }
 
   /**
