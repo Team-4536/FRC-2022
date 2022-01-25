@@ -24,6 +24,9 @@ public class CargoHandler extends SubsystemBase {
      return m_cargoHandlerMotor.get();
  }
 
+ public void stopRotating(){
+     m_cargoHandlerMotor.set(0.0);
+ }
  
 
 
