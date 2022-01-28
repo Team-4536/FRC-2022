@@ -45,14 +45,6 @@ public class DriveTrain extends SubsystemBase{
         m_differentialDrive.arcadeDrive(speed, driveTrainRotation);
         
     }
-    public void rotateRobot(double rotationPower) {
-        m_differentialDrive.tankDrive(-rotationPower, rotationPower);
-
-    }
-    public void driveStraight(double speed) {
-        m_differentialDrive.arcadeDrive(speed, 0);
-
-    }
 
     public void resetEncoders() {
         m_leftDriveEncoder.reset();
@@ -81,11 +73,10 @@ public class DriveTrain extends SubsystemBase{
     }
    
 
-    public double frontLeftDriveMotorSpeed(){
+    public double leftDriveMotorSpeed(){
         return m_leftMotorControllerGroup.get();
     }
-    public double frontRightDriveMotorSpeed(){
+    public double rightDriveMotorSpeed(){
         return m_rightMotorControllerGroup.get();
     }
-
 }
