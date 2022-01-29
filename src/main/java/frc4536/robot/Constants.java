@@ -4,6 +4,10 @@
 
 package frc4536.robot;
 
+import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -13,15 +17,17 @@ package frc4536.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public final static class CargoMoverInfo{
-        public final static int CARGO_MOVER_ELBOW_ID = 1;
-        public final static int CARGO_MOVER_SHOULDER_ID = 2;
-        public final static int CHANNEL_A_CARGO_MOVER_SHOULDER_ENCODER = 4;
-        public final static int CHANNEL_B_CARGO_MOVER_SHOULDER_ENCODER = 5;
-        public final static boolean CARGO_MOVER_SHOULDER_ENCODER_INVERT = true ;
-        public final static int CHANNEL_A_CARGO_MOVER_ELBOW_ENCODER = 9;
-        public final static int CHANNEL_B_CARGO_MOVER_ELBOW_ENCODER = 10;
-        public final static boolean CARGO_MOVER_ELBOW_ENCODER_INVERT = true; 
+    public final static class CargoArmInfo{
+        public final static int CARGO_ARM_ELBOW_ID = 1;
+        public final static int CARGO_ARM_SHOULDER_ID = 2;
+        public final static int CHANNEL_A_CARGO_ARM_SHOULDER_ENCODER = 4;
+        public final static int CHANNEL_B_CARGO_ARM_SHOULDER_ENCODER = 5;
+        public final static boolean CARGO_ARM_SHOULDER_ENCODER_IS_INVERTED = true ;
+        public final static int CHANNEL_A_CARGO_ARM_ELBOW_ENCODER = 9;
+        public final static int CHANNEL_B_CARGO_ARM_ELBOW_ENCODER = 10;
+        public final static boolean CARGO_ARM_ELBOW_ENCODER_IS_INVERTED = true; 
+        public final static CounterBase.EncodingType CARGO_ARM_SHOULDER_ENCODER_TYPE = EncodingType.k2X;
+        public final static CounterBase.EncodingType CARGO_ARM_ELBOW_ENCODER_TYPE = EncodingType.k2X;
 
 
     }
