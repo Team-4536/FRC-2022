@@ -26,10 +26,10 @@ public final class Constants {
         public final static int CHANNEL_A_CARGO_ARM_ELBOW_ENCODER = 9;
         public final static int CHANNEL_B_CARGO_ARM_ELBOW_ENCODER = 10;
         public final static boolean CARGO_ARM_ELBOW_ENCODER_IS_INVERTED = true; 
-        public final static CounterBase.EncodingType CARGO_ARM_SHOULDER_ENCODER_TYPE = EncodingType.k2X;
-        public final static CounterBase.EncodingType CARGO_ARM_ELBOW_ENCODER_TYPE = EncodingType.k2X;
-
-
+        public final static CounterBase.EncodingType CARGO_ARM_SHOULDER_ENCODER_TYPE = 
+        EncodingType.k2X;
+        public final static CounterBase.EncodingType CARGO_ARM_ELBOW_ENCODER_TYPE = 
+        EncodingType.k2X;
+        public final static double CARGO_ARM_ELBOW_DEFAULT_POWER = 0.5;
     }
- 
 }
