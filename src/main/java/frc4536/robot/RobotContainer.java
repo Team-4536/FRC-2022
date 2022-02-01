@@ -10,6 +10,8 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.Command;
 
 import frc4536.robot.subsystems.DriveTrain;
@@ -32,8 +34,12 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
-  }
+    generatePoseCheckTrajectory();
+
+    ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
+
   
+  }
   private void generatePoseCheckTrajectory(){
     var poseCheckWaypoints = new ArrayList<Pose2d>();
     poseCheckWaypoints.add(Poses.SCORE_ONE);
@@ -53,8 +59,17 @@ public class RobotContainer {
     poseCheckWaypoints.add(Poses.BALL_ELEVEN);
     poseCheckWaypoints.add(Poses.BALL_TWELVE);
     //TODO: add drive train to robot containor to finish generating trajectory 
-    //t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain)
+    //t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain);
   }
+
+  private void generateBlueAuto1Trajectory1(){
+    var blueOneOneWaypoints = new ArrayList<Pose2d>();
+    blueOneOneWaypoints.add(Poses.BALL_TWO);
+    blueOneOneWaypoints.add(Poses.BALL_THREE);
+    blueOneOneWaypoints.add(Poses.SCORE_ONE);
+    //t_blueAutoOneOne = Trajectorygenerator.generateTrajectory(blueOneOneWaypoints, m_driveTrain);
+  }
+
 
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
