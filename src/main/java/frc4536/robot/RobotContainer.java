@@ -70,7 +70,7 @@ public class RobotContainer {
     poseCheckWaypoints.add(Poses.BALL_ELEVEN);
     poseCheckWaypoints.add(Poses.BALL_TWELVE);
     //TODO: add drive train to robot containor to finish generating trajectory 
-    //Trajectory t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain.getConfig());
+    // t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain.);
   }
 
   private void generateBlueAuto1Trajectory1(){

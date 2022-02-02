@@ -2,6 +2,7 @@ package frc4536.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -16,6 +17,7 @@ public class DriveTrain extends SubsystemBase{
     private final Encoder m_rightDriveEncoder;
     private final MotorControllerGroup m_leftMotorControllerGroup;
     private final MotorControllerGroup m_rightMotorControllerGroup;
+    private TrajectoryConfig m_config;
 
     public DriveTrain(){
         CANSparkMax frontLeftDriveMotor = new CANSparkMax(DriveInfo.LEFT_FRONT_DRIVE_MOTOR_ID, DriveInfo.DRIVE_MOTOR_BRUSHED_TYPE);
@@ -40,6 +42,9 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_B, 
                                           DriveInfo.RIGHT_DRIVE_MOTORS_ARE_INVERTED, 
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);  
+                                          
+        m_config = new TrajectoryConfig(0.5,05);
+        //TODO: put in robot constants for max cceleration and max velocity instead of the 0.5s
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
@@ -80,6 +85,9 @@ public class DriveTrain extends SubsystemBase{
     }
     public boolean isLeftDriveEncoderStopped(){
         return m_leftDriveEncoder.getStopped();
+    }
+    public TrajectoryConfig getConfig(){
+        return m_config;
     }
 
     @Override
