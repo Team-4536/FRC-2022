@@ -37,6 +37,7 @@ public class RobotContainer {
     generatePoseCheckTrajectory();
     generateBlueAuto1Trajectory1();
     generateBlueAuto2Trajectory1();
+    generateBlueAuto3Trajectory1();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
 
@@ -76,6 +77,12 @@ public class RobotContainer {
     var blueTwoOneWaypoints = new ArrayList<Pose2d>();
     blueTwoOneWaypoints.add(Poses.BALL_FIVE);
     blueTwoOneWaypoints.add(Poses.SCORE_TWO);
+  }
+
+  private void generateBlueAuto3Trajectory1(){
+    var blueThreeOneWaypoints = new ArrayList<Pose2d>();
+    blueThreeOneWaypoints.add(Poses.BALL_FIVE);
+    blueThreeOneWaypoints.add(Poses.SCORE_TWO);
   }
 
   /**
