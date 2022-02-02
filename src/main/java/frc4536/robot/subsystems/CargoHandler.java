@@ -8,7 +8,7 @@ public class CargoHandler extends SubsystemBase {
  private Spark m_cargoHandlerMotor;
  public CargoHandler(){
      m_cargoHandlerMotor = new Spark(CargoHandlerInfo.CARGO_HANDLER_MOTOR_ID);
-    m_cargoHandlerMotor.setInverted(CargoHandlerInfo.CARGO_HANDLER_MOTOR_IS_INVERTED);
+     m_cargoHandlerMotor.setInverted(CargoHandlerInfo.CARGO_HANDLER_MOTOR_IS_INVERTED);
  }
 
 
