@@ -7,6 +7,7 @@ package frc4536.robot;
 import java.util.ArrayList;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -28,6 +29,12 @@ public class RobotContainer {
   private final DriveTrain m_driveTrain;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  Trajectory t_poseCheck;
+  Trajectory t_blueAutoOneOne;
+  Trajectory t_blueAutoTwoOne;
+  Trajectory t_blueAutoThreeOne;
+  Trajectory t_blueAutoThreeTwo;
+
   public RobotContainer() {
 
     m_driveTrain = new DriveTrain();
