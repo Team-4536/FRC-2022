@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 public final class Constants {
 
    public static final class DriveInfo {
+      //TODO: add max acceleration and max velocity
       public static final int LEFT_FRONT_DRIVE_MOTOR_ID = 1;
       public static final int LEFT_REAR_DRIVE_MOTOR_ID = 2;
       public static final int RIGHT_FRONT_DRIVE_MOTOR_ID = 4;
