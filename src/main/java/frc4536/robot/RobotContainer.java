@@ -38,6 +38,7 @@ public class RobotContainer {
     generateBlueAuto1Trajectory1();
     generateBlueAuto2Trajectory1();
     generateBlueAuto3Trajectory1();
+    generateBlueAuto3Trajectory2();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
 
@@ -83,6 +84,13 @@ public class RobotContainer {
     var blueThreeOneWaypoints = new ArrayList<Pose2d>();
     blueThreeOneWaypoints.add(Poses.BALL_FIVE);
     blueThreeOneWaypoints.add(Poses.SCORE_TWO);
+  }
+
+  private void generateBlueAuto3Trajectory2(){
+    var blueThreeTwoWaypoints = new ArrayList<Pose2d>();
+    blueThreeTwoWaypoints.add(Poses.BALL_THREE);
+    blueThreeTwoWaypoints.add(Poses.BALL_TWO);
+    blueThreeTwoWaypoints.add(Poses.SCORE_TWO);
   }
 
   /**
