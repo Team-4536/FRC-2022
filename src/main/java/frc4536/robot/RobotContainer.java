@@ -35,6 +35,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     generatePoseCheckTrajectory();
+    generateBlueAuto1Trajectory1();
+    generateBlueAuto2Trajectory1();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
 
@@ -59,7 +61,7 @@ public class RobotContainer {
     poseCheckWaypoints.add(Poses.BALL_ELEVEN);
     poseCheckWaypoints.add(Poses.BALL_TWELVE);
     //TODO: add drive train to robot containor to finish generating trajectory 
-    //t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain);
+    //Trajectory t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain.getConfig());
   }
 
   private void generateBlueAuto1Trajectory1(){
@@ -68,6 +70,12 @@ public class RobotContainer {
     blueOneOneWaypoints.add(Poses.BALL_THREE);
     blueOneOneWaypoints.add(Poses.SCORE_ONE);
     //t_blueAutoOneOne = Trajectorygenerator.generateTrajectory(blueOneOneWaypoints, m_driveTrain);
+  }
+
+  private void generateBlueAuto2Trajectory1(){
+    var blueTwoOneWaypoints = new ArrayList<Pose2d>();
+    blueTwoOneWaypoints.add(Poses.BALL_FIVE);
+    blueTwoOneWaypoints.add(Poses.SCORE_TWO);
   }
 
   /**
