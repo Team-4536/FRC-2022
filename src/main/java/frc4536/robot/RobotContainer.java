@@ -7,7 +7,9 @@ package frc4536.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.subsystems.DriveTrain;
 
 
@@ -20,6 +22,10 @@ import frc4536.robot.subsystems.DriveTrain;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain;
+  private final XboxController m_mechanismController;
+  private final XboxController m_drivController;
+  private final JoystickButton m_intakeCargoButton;
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -27,6 +33,15 @@ public class RobotContainer {
     m_driveTrain = new DriveTrain();
     // Configure the button bindings
     configureButtonBindings();
+
+    m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
+    m_drivController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
+
+    m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+    m_intakeCargoButton.whenHeld(new IntakeCargo());
+
+    m_driveTrain.setDefaultCommand
+        (new RunCommand(()-> m_driveTrain.arcadeDrive(-m_drivController.getRightY(), m_drivController.getLeftX()), m_driveTrain));
   }
 
   /**
@@ -35,7 +50,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+
+    
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
