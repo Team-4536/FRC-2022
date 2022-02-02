@@ -36,6 +36,7 @@ public class RobotContainer {
   Trajectory t_blueAutoThreeTwo;
   Trajectory t_redAutoOneOne;
   Trajectory t_redAutoTwoOne;
+  Trajectory t_redAutoThreeOne;
 
   public RobotContainer() {
 
@@ -50,6 +51,7 @@ public class RobotContainer {
     generateBlueAuto3Trajectory2();
     generateRedAuto1Trajectory1();
     generateRedAuto2Trajectory1();
+    generateRedAuto3Trajectory1();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
 
@@ -120,6 +122,15 @@ public class RobotContainer {
     redTwoOneWaypoints.add(Poses.SCORE_FOUR);
     t_redAutoTwoOne = TrajectoryGenerator.generateTrajectory(redTwoOneWaypoints, m_driveTrain.getConfig());
   }
+
+  private void generateRedAuto3Trajectory1(){
+    var redThreeOneWaypoints = new ArrayList<Pose2d>();
+    redThreeOneWaypoints.add(Poses.BALL_ELEVEN);
+    redThreeOneWaypoints.add(Poses.SCORE_FOUR);
+    t_redAutoThreeOne = TrajectoryGenerator.generateTrajectory(redThreeOneWaypoints, m_driveTrain.getConfig());
+  }
+
+  
 
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
