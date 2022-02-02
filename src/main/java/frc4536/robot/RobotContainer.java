@@ -34,6 +34,7 @@ public class RobotContainer {
   Trajectory t_blueAutoTwoOne;
   Trajectory t_blueAutoThreeOne;
   Trajectory t_blueAutoThreeTwo;
+  Trajectory t_redAutoOneOne;
 
   public RobotContainer() {
 
@@ -46,6 +47,7 @@ public class RobotContainer {
     generateBlueAuto2Trajectory1();
     generateBlueAuto3Trajectory1();
     generateBlueAuto3Trajectory2();
+    generateRedAuto1Trajectory1();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
 
@@ -100,6 +102,14 @@ public class RobotContainer {
     blueThreeTwoWaypoints.add(Poses.BALL_TWO);
     blueThreeTwoWaypoints.add(Poses.SCORE_TWO);
     t_blueAutoThreeTwo = TrajectoryGenerator.generateTrajectory(blueThreeTwoWaypoints, m_driveTrain.getConfig());
+  }
+
+  private void generateRedAuto1Trajectory1(){
+    var redOneOneWaypoints = new ArrayList<Pose2d>();
+    redOneOneWaypoints.add(Poses.BALL_EIGHT);
+    redOneOneWaypoints.add(Poses.BALL_NINE);
+    redOneOneWaypoints.add(Poses.SCORE_THREE);
+    t_redAutoOneOne = TrajectoryGenerator.generateTrajectory(redOneOneWaypoints, m_driveTrain.getConfig());
   }
 
   /**
