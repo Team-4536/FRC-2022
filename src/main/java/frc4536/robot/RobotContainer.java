@@ -69,8 +69,7 @@ public class RobotContainer {
     poseCheckWaypoints.add(Poses.SCORE_FOUR);
     poseCheckWaypoints.add(Poses.BALL_ELEVEN);
     poseCheckWaypoints.add(Poses.BALL_TWELVE);
-    //TODO: add drive train to robot containor to finish generating trajectory 
-    // t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain.);
+    t_poseCheck = TrajectoryGenerator.generateTrajectory(poseCheckWaypoints, m_driveTrain.getConfig());
   }
 
   private void generateBlueAuto1Trajectory1(){
@@ -78,19 +77,21 @@ public class RobotContainer {
     blueOneOneWaypoints.add(Poses.BALL_TWO);
     blueOneOneWaypoints.add(Poses.BALL_THREE);
     blueOneOneWaypoints.add(Poses.SCORE_ONE);
-    //t_blueAutoOneOne = Trajectorygenerator.generateTrajectory(blueOneOneWaypoints, m_driveTrain);
+    t_blueAutoOneOne = TrajectoryGenerator.generateTrajectory(blueOneOneWaypoints, m_driveTrain.getConfig());
   }
 
   private void generateBlueAuto2Trajectory1(){
     var blueTwoOneWaypoints = new ArrayList<Pose2d>();
     blueTwoOneWaypoints.add(Poses.BALL_FIVE);
     blueTwoOneWaypoints.add(Poses.SCORE_TWO);
+    t_blueAutoTwoOne = TrajectoryGenerator.generateTrajectory(blueTwoOneWaypoints, m_driveTrain.getConfig());
   }
 
   private void generateBlueAuto3Trajectory1(){
     var blueThreeOneWaypoints = new ArrayList<Pose2d>();
     blueThreeOneWaypoints.add(Poses.BALL_FIVE);
     blueThreeOneWaypoints.add(Poses.SCORE_TWO);
+    t_blueAutoThreeOne = TrajectoryGenerator.generateTrajectory(blueThreeOneWaypoints, m_driveTrain.getConfig());
   }
 
   private void generateBlueAuto3Trajectory2(){
@@ -98,6 +99,7 @@ public class RobotContainer {
     blueThreeTwoWaypoints.add(Poses.BALL_THREE);
     blueThreeTwoWaypoints.add(Poses.BALL_TWO);
     blueThreeTwoWaypoints.add(Poses.SCORE_TWO);
+    t_blueAutoThreeTwo = TrajectoryGenerator.generateTrajectory(blueThreeTwoWaypoints, m_driveTrain.getConfig());
   }
 
   /**
