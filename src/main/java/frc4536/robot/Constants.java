@@ -30,4 +30,11 @@ public final class Constants {
 
       public static final EncodingType DRIVE_MOTOR_ENCODER_ENCODINGTYPE = EncodingType.k2X;
    }
+
+   public static final class RobotInfo{
+      public static int MECHANISM_CONTROLLER_ID = 0;
+      public static int DRIVE_CONTROLLER_ID = 1;
+
+
+   }
 }
