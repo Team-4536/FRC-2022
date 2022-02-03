@@ -21,6 +21,12 @@ public class Gyroscope extends SubsystemBase{
         return m_gyroscope.getRoll();
     }
 
+    @Override
+    public void periodic(){
+        SmartDashboard.putNumber("Pitch", getPitch());
+        SmartDashboard.putNumber("Roll", getRoll());
+        SmartDashboard.putNumber("Yaw", getYaw());
+    }
 
     public void resetGyroscope(){
         m_gyroscope.reset();
