@@ -29,7 +29,16 @@ public class MoveCargoElbow extends CommandBase  {
       else {m_cargoArmSubsystem.moveElbow(0);
      }
     }
-    }
+    @Override
+  public void end(boolean interrupted) {}
+
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
+    return false;
+  }
+  
+}
 
 
 
