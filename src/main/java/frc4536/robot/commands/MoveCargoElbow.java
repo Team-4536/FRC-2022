@@ -3,7 +3,6 @@ package frc4536.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc4536.robot.Constants;
 import frc4536.robot.subsystems.CargoArm;
-import frc4536.robot.subsystems.ExampleSubsystem;
 
 public class MoveCargoElbow extends CommandBase  {
     private final int m_elbowSetPoint;
@@ -28,6 +27,9 @@ public class MoveCargoElbow extends CommandBase  {
     moves between setpoints, the angle of the cargo handler must be perpendicular to the ground.
     Total extension of cargo handler must not exceed 16 inches beyond the inside of the robot's
      bumper at *any* time.
+      consider completely rewriting the execute object below. two setpoints must be used,
+      (lower, upper)? methods should be defined to fluidly move between the upper and lower
+      setpoints; one should be included to move in and out of the resting position as well.
     */
     public void execute() {
       if (m_cargoArmSubsystem.getElbowPosition() < m_elbowSetPoint) {
