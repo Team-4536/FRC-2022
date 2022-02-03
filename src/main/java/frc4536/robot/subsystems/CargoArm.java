@@ -28,6 +28,14 @@ public class CargoArm extends SubsystemBase{
 
     public void moveElbow(double power) {
         m_cargoArmElbow.set(power);
+
+    }
+    public int getElbowPosition() {
+       return m_cargoArmElbowEncoder.get();
+    }
+
+    public int getShoulderPosition() {
+        return m_cargoArmShoulderEncoder.get();
     }
 
     public void moveShoulder(double power) {
