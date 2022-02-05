@@ -10,8 +10,6 @@ public class CargoHandler extends SubsystemBase {
      m_cargoHandlerMotor = new Spark(CargoHandlerInfo.CARGO_HANDLER_MOTOR_ID);
      m_cargoHandlerMotor.setInverted(CargoHandlerInfo.CARGO_HANDLER_MOTOR_IS_INVERTED);
  }
-
-
  public void intakeCargo(){
      intakeCargo(CargoHandlerInfo.DEFAULT_INTAKE_CARGO_SPEED);
  }
@@ -33,14 +31,6 @@ public class CargoHandler extends SubsystemBase {
  public void stopRotating(){
      m_cargoHandlerMotor.set(0.0);
  }
- 
-
-
-
-
-
-
-
 }
 
 
