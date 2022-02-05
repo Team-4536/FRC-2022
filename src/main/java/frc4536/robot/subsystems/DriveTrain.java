@@ -48,6 +48,9 @@ public class DriveTrain extends SubsystemBase{
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
         m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);
     }
+    public void stopDriving(){
+        m_differentialDrive.tankDrive(0,0);
+    }
 
     public void resetEncoders() {
         m_leftDriveEncoder.reset();
