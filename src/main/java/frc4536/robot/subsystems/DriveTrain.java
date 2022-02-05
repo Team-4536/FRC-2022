@@ -34,11 +34,11 @@ public class DriveTrain extends SubsystemBase{
 
         m_leftDriveEncoder = new Encoder(DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_A, 
                                          DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_B, 
-                                         DriveInfo.LEFT_DRIVE_ENCODER_IS_INVERTED, 
+                                         DriveInfo.LEFT_DRIVE_MOTORS_ARE_INVERTED, 
                                          DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE); 
         m_rightDriveEncoder = new Encoder(DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_A,
                                           DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_B, 
-                                          DriveInfo.RIGHT_DRIVE_ENCODER_IS_INVERTED, 
+                                          DriveInfo.RIGHT_DRIVE_MOTORS_ARE_INVERTED, 
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);  
     } 
 
