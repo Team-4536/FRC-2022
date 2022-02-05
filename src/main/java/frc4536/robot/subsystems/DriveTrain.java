@@ -1,7 +1,7 @@
 package frc4536.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-
+import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -11,8 +11,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.math.controller.PIDController;
-
-import frc4536.robot.Constants.DriveInfo;;
+import frc4536.robot.Constants;
+import frc4536.robot.Constants.DriveInfo;
+import edu.wpi.first.math.controller.RamseteController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.math.geometry.Pose2d;
 
 public class DriveTrain extends SubsystemBase{
     private final  DifferentialDrive m_differentialDrive;
@@ -21,6 +26,8 @@ public class DriveTrain extends SubsystemBase{
     private final MotorControllerGroup m_leftMotorControllerGroup;
     private final MotorControllerGroup m_rightMotorControllerGroup;
     private TrajectoryConfig m_config;
+    private DifferentialDriveKinematics kDriveKinematics;
+    private Pose2d m_pose = new Pose2d();
 
     public DriveTrain(){
         CANSparkMax frontLeftDriveMotor = new CANSparkMax(DriveInfo.LEFT_FRONT_DRIVE_MOTOR_ID, DriveInfo.DRIVE_MOTOR_BRUSHED_TYPE);
@@ -48,6 +55,7 @@ public class DriveTrain extends SubsystemBase{
                                           
         m_config = new TrajectoryConfig(0.5,05);
         //TODO: put in robot constants for max cceleration and max velocity instead of the 0.5s
+        kDriveKinematics = new DifferentialDriveKinematics(22.2);
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
@@ -61,7 +69,13 @@ public class DriveTrain extends SubsystemBase{
         m_leftDriveEncoder.reset();
         m_rightDriveEncoder.reset();
     }
-
+    public Pose2d getPose() {
+        return m_pose;
+    }
+    public void setOutput(double leftVolts, double rightVolts) {
+        m_leftMotorControllerGroup.setVoltage(leftVolts);
+        m_rightMotorControllerGroup.setVoltage(rightVolts);
+    }
     public double leftDriveMotorSpeed(){
         return m_leftMotorControllerGroup.get();
     }
@@ -91,6 +105,30 @@ public class DriveTrain extends SubsystemBase{
     }
     public TrajectoryConfig getConfig(){
         return m_config;
+    }
+    public DifferentialDriveWheelSpeeds getSpeeds() {
+        return new DifferentialDriveWheelSpeeds(
+                leftDriveMotorSpeed() * 6.0,
+                rightDriveMotorSpeed() * 6.0
+        );
+    }
+    //TODO:change numbers in scurveTo to the proper variables 
+    public Command scurveTo(Trajectory trajectory) {
+        System.out.println("Pathing to: " + trajectory.sample(trajectory.getTotalTimeSeconds()).poseMeters.toString() + " from " + trajectory.getInitialPose().toString());
+        return new RamseteCommand(
+                trajectory,
+                this::getPose,
+                new RamseteController(0.5, 0.5),
+                new SimpleMotorFeedforward(0.5,
+                        0.5,
+                        0.5),
+                        kDriveKinematics,
+                this::getSpeeds,
+                new PIDController(0.0, 0, 0),
+                new PIDController(0.0, 0, 0),
+                this::setOutput,
+                this
+        ).andThen(new InstantCommand(() -> setOutput(0,0)));
     }
 
     @Override
