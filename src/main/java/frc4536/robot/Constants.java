@@ -30,4 +30,11 @@ public final class Constants {
 
       public static final EncodingType DRIVE_MOTOR_ENCODER_ENCODINGTYPE = EncodingType.k2X;
    }
+
+   public static final class GyroInfo {
+      public static final boolean Gyro_IS_REVERSED = true; 
+//TODO change after testing 
+
+
+   }
 }
