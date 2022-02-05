@@ -18,13 +18,10 @@ import frc4536.robot.subsystems.DriveTrain;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-  private final DriveTrain m_driveTrain;
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
-    m_driveTrain = new DriveTrain();
+    new DriveTrain();
     // Configure the button bindings
     configureButtonBindings();
   }
