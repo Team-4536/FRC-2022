@@ -35,6 +35,5 @@ public final class Constants {
       public static final boolean Gyro_IS_REVERSED = true; 
 //TODO change after testing 
 
-
    }
 }
