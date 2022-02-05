@@ -6,7 +6,6 @@ import edu.wpi.first.math.trajectory.Trajectory;
 //this auto will run through every pose in poses.java to ensure they are in the correct spot 
 public class PoseCheckAuto extends SequentialCommandGroup{
 
-
     public PoseCheckAuto(DriveTrain driveTrain, Pose2d initialPose, Trajectory poseCheck ) {
     
         addCommands(
@@ -18,6 +17,4 @@ public class PoseCheckAuto extends SequentialCommandGroup{
     public String getName() {
         return "Pose Check Auto";
     }
-    
-
 }
