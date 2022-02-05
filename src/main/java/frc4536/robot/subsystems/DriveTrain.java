@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.math.controller.PIDController;
-import frc4536.robot.Constants;
 import frc4536.robot.Constants.DriveInfo;
 import edu.wpi.first.math.controller.RamseteController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
@@ -106,6 +105,7 @@ public class DriveTrain extends SubsystemBase{
     public TrajectoryConfig getConfig(){
         return m_config;
     }
+    //TODO: change multipliers to wheel circumference 
     public DifferentialDriveWheelSpeeds getSpeeds() {
         return new DifferentialDriveWheelSpeeds(
                 leftDriveMotorSpeed() * 6.0,
