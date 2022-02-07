@@ -12,7 +12,6 @@ public class PoseCheckAuto extends SequentialCommandGroup{
             driveTrain.scurveTo(poseCheck)
         );
     }
-
     @Override
     public String getName() {
         return "Pose Check Auto";
