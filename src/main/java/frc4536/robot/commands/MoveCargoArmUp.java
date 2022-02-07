@@ -4,13 +4,15 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc4536.robot.Constants;
 import frc4536.robot.subsystems.CargoArm;
 
-public class MoveCargoElbow extends CommandBase  {
-    private final int m_elbowSetPoint;
+public class MoveCargoArmUp extends CommandBase  {
+    private final int m_upperSetPoint;
+    private final int m_lowerSetPoint;
     private final CargoArm m_cargoArmSubsystem;
 
-    public MoveCargoElbow(int elbowSetPoint, CargoArm cargoArm) {
+    public MoveCargoArmUp(int upperSetPoint, int lowerSetPoint, CargoArm cargoArm) {
         m_cargoArmSubsystem = cargoArm;
-        m_elbowSetPoint = elbowSetPoint;
+        m_upperSetPoint = upperSetPoint;
+        m_lowerSetPoint = lowerSetPoint;
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(cargoArm);
       }
@@ -32,13 +34,16 @@ public class MoveCargoElbow extends CommandBase  {
       setpoints; one should be included to move in and out of the resting position as well.
     */
     public void execute() {
-      if (m_cargoArmSubsystem.getElbowPosition() < m_elbowSetPoint) {
+      
+      
+      if (m_cargoArmSubsystem.getElbowPosition() < m_upperSetPoint) {
         m_cargoArmSubsystem.moveElbow(-Constants.CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
       }
-      else if (m_cargoArmSubsystem.getElbowPosition() > m_elbowSetPoint) {
+      else if (m_cargoArmSubsystem.getElbowPosition() > m_upperSetPoint) {
         m_cargoArmSubsystem.moveElbow(Constants.CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
       }
-      else {m_cargoArmSubsystem.moveElbow(0);
+      else {
+        m_cargoArmSubsystem.moveElbow(0);
      }
     }
     @Override
