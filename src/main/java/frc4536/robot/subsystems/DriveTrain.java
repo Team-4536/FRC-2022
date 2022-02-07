@@ -118,7 +118,7 @@ public class DriveTrain extends SubsystemBase{
         return new RamseteCommand(
                 trajectory,
                 this::getPose,
-                new RamseteController(0.5, 0.5),
+                new RamseteController(2.0, 0.7),
                 new SimpleMotorFeedforward(0.5,
                         0.5,
                         0.5),
