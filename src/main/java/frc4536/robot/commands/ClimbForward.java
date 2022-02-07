@@ -14,7 +14,8 @@ public class ClimbForward extends CommandBase{
 
       @Override
       public void initialize() {
-        //TODO reset gyroscope
+        //m_gyroscope.reset();
+        //m_gyroscope.resetDisplacement();
       }
     
       @Override
