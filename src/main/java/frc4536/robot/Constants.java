@@ -21,7 +21,7 @@ public final class Constants {
 
     public static final class RobotInfo{
         private static final double DRIVE_WHEEL_DIAMETER = 6.0;
-        private static final double WHEEL_CIRCUMFERENCE_IN_INCHES = DRIVE_WHEEL_DIAMETER * Math.PI;
+        public static final double WHEEL_CIRCUMFERENCE_IN_INCHES = DRIVE_WHEEL_DIAMETER * Math.PI;
         private static final double DRIVE_ENCODER_CLICKS_PER_ROTATION = 1.0;
         public static final double CLICKS_PER_INCH = WHEEL_CIRCUMFERENCE_IN_INCHES / DRIVE_ENCODER_CLICKS_PER_ROTATION;
 

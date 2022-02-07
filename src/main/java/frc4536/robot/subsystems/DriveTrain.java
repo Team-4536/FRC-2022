@@ -17,6 +17,7 @@ import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.geometry.Pose2d;
+import frc4536.robot.Constants;
 
 public class DriveTrain extends SubsystemBase{
     private final  DifferentialDrive m_differentialDrive;
@@ -105,11 +106,10 @@ public class DriveTrain extends SubsystemBase{
     public TrajectoryConfig getConfig(){
         return m_config;
     }
-    //TODO: change multipliers to wheel circumference 
     public DifferentialDriveWheelSpeeds getSpeeds() {
         return new DifferentialDriveWheelSpeeds(
-                leftDriveMotorSpeed() * 6.0,
-                rightDriveMotorSpeed() * 6.0
+                leftDriveMotorSpeed() * Constants.RobotInfo.WHEEL_CIRCUMFERENCE_IN_INCHES,
+                rightDriveMotorSpeed() * Constants.RobotInfo.WHEEL_CIRCUMFERENCE_IN_INCHES
         );
     }
     //TODO:change numbers in scurveTo to the proper variables 
