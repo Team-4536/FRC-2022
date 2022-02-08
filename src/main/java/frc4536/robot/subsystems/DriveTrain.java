@@ -118,7 +118,7 @@ public class DriveTrain extends SubsystemBase{
         return new RamseteCommand(
                 trajectory,
                 this::getPose,
-                new RamseteController(2.0, 0.7),
+                new RamseteController(Constants.DriveInfo.RAMSETE_B_TUNING_PARAMETER, Constants.DriveInfo.RAMSETE_ZETA_TUNING_PARAMETER),
                 new SimpleMotorFeedforward(0.5,
                         0.5,
                         0.5),

@@ -52,6 +52,9 @@ public final class Constants {
       public static final int RIGHT_DRIVE_ENCODER_CHANNEL_B = 3;
 
       public static final EncodingType DRIVE_MOTOR_ENCODER_ENCODINGTYPE = EncodingType.k2X;
+      
+      public static final double RAMSETE_B_TUNING_PARAMETER = 2.0;
+      public static final double RAMSETE_ZETA_TUNING_PARAMETER = 0.7;
    }
 }
 
