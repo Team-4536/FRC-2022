@@ -32,11 +32,4 @@ public class ClimbForward extends CommandBase{
       public boolean isFinished() {
         return false;
   }
-  
-
-
-
-
-
 }
-//great
