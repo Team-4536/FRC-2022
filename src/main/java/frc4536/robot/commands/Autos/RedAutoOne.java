@@ -8,7 +8,12 @@ import edu.wpi.first.math.trajectory.Trajectory;
 public class RedAutoOne extends SequentialCommandGroup {
     public RedAutoOne(DriveTrain driveTrain, Pose2d initialPose, Trajectory redAutoOneTrajectoryOne){
             addCommands(
+                //initial pose is score three 
+                //shoot command 
+                //start intake command 
                 driveTrain.scurveTo(redAutoOneTrajectoryOne)
+                //stop intake command 
+                //shoot command 
             );
     }
     @Override

@@ -8,8 +8,14 @@ import edu.wpi.first.math.trajectory.Trajectory;
 public class RedAutoThree extends SequentialCommandGroup {
     public RedAutoThree(DriveTrain driveTrain, Pose2d initialPose, Trajectory redAutoThreeTrajectoryOne, Trajectory redAutoThreeTrajectoryTwo){
         addCommands(
+            //start intake command 
             driveTrain.scurveTo(redAutoThreeTrajectoryOne),
+            //stop intake command
+            //run shoot comand 
+            //start intake command 
             driveTrain.scurveTo(redAutoThreeTrajectoryTwo)
+            //stop intake command 
+            //run shoot command 
         );
     }
     
