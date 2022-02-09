@@ -7,9 +7,13 @@ import edu.wpi.first.math.trajectory.Trajectory;
 public class BlueAutoOne extends SequentialCommandGroup{
     //TODO: add intake and output subsystem
     public BlueAutoOne(DriveTrain driveTrain, Pose2d initialPose, Trajectory blueAutoOneTrajectoryOne ) {
-    //TODO: add intake command and shoot command 
         addCommands(
+            //initial pose is score one 
+            //shoot command 
+            //start intake command 
             driveTrain.scurveTo(blueAutoOneTrajectoryOne)
+            //stop intake command 
+            //shoot command 
         );
     }
     @Override
