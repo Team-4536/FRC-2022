@@ -14,9 +14,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.Command;
-
+import frc4536.robot.commands.Autos.*;
 import frc4536.robot.subsystems.DriveTrain;
-
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.networktables.NetworkTableEntry;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -27,6 +28,8 @@ import frc4536.robot.subsystems.DriveTrain;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain;
+  private final NetworkTableEntry m_xInitial, m_yInitial;
+  private final SendableChooser<Autonomous> m_chooser = new SendableChooser<>();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   Trajectory t_poseCheck;
@@ -56,8 +59,16 @@ public class RobotContainer {
     generateRedAuto3Trajectry2();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
-
-  
+    
+    m_xInitial = auto.add("Initial X", 0.0).getEntry();
+    m_yInitial = auto.add("Initial Y", 0.0).getEntry();
+    m_chooser.addOption("Blue Auto One", Autonomous.BLUE_AUTO_ONE);
+    m_chooser.addOption("Blue Auto Two", Autonomous.BLUE_AUTO_TWO);
+    m_chooser.addOption("Blue Auto Three", Autonomous.BLUE_AUTO_THREE);
+    m_chooser.addOption("Red Auto One", Autonomous.RED_AUTO_ONE);
+    m_chooser.addOption("Red Auto Two", Autonomous.RED_AUTO_TWO);
+    m_chooser.addOption("Red Auto Three", Autonomous.RED_AUTO_THREE);
+    m_chooser.addOption("Pose Check Auto", Autonomous.POSECHECK_AUTO);
   }
   private void generatePoseCheckTrajectory(){
     var poseCheckWaypoints = new ArrayList<Pose2d>();
@@ -150,6 +161,27 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {}
 
+  public Command generateAutoCommands(Autonomous chose, Pose2d initialPose ){
+    switch(chose){
+      case RED_AUTO_ONE:
+          return new RedAutoOne(m_driveTrain, initialPose, t_redAutoOneOne);
+      case RED_AUTO_TWO:
+          return new RedAutoTwo(m_driveTrain, initialPose, t_redAutoTwoOne);
+      case RED_AUTO_THREE:
+          return new RedAutoThree(m_driveTrain, initialPose, t_redAutoThreeOne, t_redAutoThreeTwo);
+      case BLUE_AUTO_ONE:
+          return new BlueAutoOne(m_driveTrain, initialPose, t_blueAutoOneOne);
+      case BLUE_AUTO_TWO:
+          return new BlueAutoTwo(m_driveTrain, initialPose, t_blueAutoTwoOne);
+      case BLUE_AUTO_THREE:
+          return new BlueAutoThree(m_driveTrain, initialPose, t_blueAutoThreeOne, t_blueAutoThreeTwo);
+      case POSECHECK_AUTO:
+          return new PoseCheckAuto(m_driveTrain, initialPose, t_poseCheck);
+      default:
+          return new PoseCheckAuto(m_driveTrain, initialPose, t_poseCheck);
+
+    }
+  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
@@ -158,5 +190,14 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return null;
+  }
+  private enum Autonomous{
+    RED_AUTO_ONE,
+    RED_AUTO_TWO,
+    RED_AUTO_THREE,
+    BLUE_AUTO_ONE,
+    BLUE_AUTO_TWO,
+    BLUE_AUTO_THREE,
+    POSECHECK_AUTO;
   }
 }
