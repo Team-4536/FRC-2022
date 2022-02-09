@@ -7,7 +7,9 @@ package frc4536.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc4536.robot.commands.ClimbForward;
+import frc4536.robot.subsystems.Climber;
 import frc4536.robot.subsystems.DriveTrain;
 
 
@@ -20,13 +22,18 @@ import frc4536.robot.subsystems.DriveTrain;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain;
+  private final Climber m_climber;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     m_driveTrain = new DriveTrain();
+    m_climber = new Climber();
     // Configure the button bindings
     configureButtonBindings();
+    XboxController mechanismController = new XboxController(0);
+    JoystickButton climberButton = new JoystickButton(mechanismController, XboxController.Button.kA.value);
+    climberButton.whenPressed(new ClimbForward(m_climber));
   }
 
   /**
