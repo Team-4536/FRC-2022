@@ -28,6 +28,8 @@ public final class Constants {
       public static final int RIGHT_DRIVE_ENCODER_CHANNEL_A = 2;
       public static final int RIGHT_DRIVE_ENCODER_CHANNEL_B = 3;
 
+      public static final double SLEW_RATE_LIMIT = 0.5;
+
       public static final EncodingType DRIVE_MOTOR_ENCODER_ENCODINGTYPE = EncodingType.k2X;
    }
 
