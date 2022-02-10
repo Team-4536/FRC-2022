@@ -38,7 +38,7 @@ public class CargoArmToUpper extends CommandBase  {
         int finalShoulderPos = 20;
         int firstElbowPos = 10;
         int finalElbowPos = 0;
-
+        //Disregard previous commit
      if (currentShoulderPosition < firstShoulderPos) {
        m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
       m_cargoArmSubsystem.moveElbow(0);
