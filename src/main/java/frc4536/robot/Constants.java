@@ -31,5 +31,6 @@ public final class Constants {
         public final static CounterBase.EncodingType CARGO_ARM_ELBOW_ENCODER_TYPE = 
         EncodingType.k2X;
         public final static double CARGO_ARM_ELBOW_DEFAULT_POWER = 0.5;
+        public final static double CARGO_ARM_SHOULDER_DEFAULT_POWER = 0.5;
     }
 }

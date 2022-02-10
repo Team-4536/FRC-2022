@@ -1,18 +1,16 @@
 package frc4536.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc4536.robot.Constants;
+import frc4536.robot.Constants.CargoArmInfo;
 import frc4536.robot.subsystems.CargoArm;
 
-public class MoveCargoArmUp extends CommandBase  {
-    private final int m_upperSetPoint;
-    private final int m_lowerSetPoint;
+public class CargoArmToUpper extends CommandBase  {
+    private final int m_lowerElbowSetPoint;
+    private final int m_lowerShoulderSetPoint;
     private final CargoArm m_cargoArmSubsystem;
 
-    public MoveCargoArmUp(int upperSetPoint, int lowerSetPoint, CargoArm cargoArm) {
-        m_cargoArmSubsystem = cargoArm;
-        m_upperSetPoint = upperSetPoint;
-        m_lowerSetPoint = lowerSetPoint;
+    public CargoArmToUpper(CargoArm cargoArm) {
+      
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(cargoArm);
       }
@@ -34,17 +32,31 @@ public class MoveCargoArmUp extends CommandBase  {
       setpoints; one should be included to move in and out of the resting position as well.
     */
     public void execute() {
-      
-      
-      if (m_cargoArmSubsystem.getElbowPosition() < m_upperSetPoint) {
-        m_cargoArmSubsystem.moveElbow(-Constants.CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+        int currentShoulderPosition = m_cargoArmSubsystem.getShoulderPosition();
+        int currentElbowPosition = m_cargoArmSubsystem.getElbowPosition();
+        int firstShoulderPos = 10;
+        int finalShoulderPos = 20;
+        int firstElbowPos = 10;
+        int finalElbowPos = 0;
+
+     if (currentShoulderPosition < firstShoulderPos) {
+       m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
+      m_cargoArmSubsystem.moveElbow(0);
+     } else {
+      if (currentElbowPosition <= firstElbowPos) {
+        m_cargoArmSubsystem.moveShoulder(0);
+        m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
       }
-      else if (m_cargoArmSubsystem.getElbowPosition() > m_upperSetPoint) {
-        m_cargoArmSubsystem.moveElbow(Constants.CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+      else if (currentShoulderPosition < finalShoulderPos && currentElbowPosition > finalElbowPos) {
+          m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
+          m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
       }
       else {
+        m_cargoArmSubsystem.moveShoulder(0);
         m_cargoArmSubsystem.moveElbow(0);
-     }
+      }
+    }
+      
     }
     @Override
   public void end(boolean interrupted) {}
