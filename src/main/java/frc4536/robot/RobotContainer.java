@@ -18,6 +18,7 @@ import frc4536.robot.commands.Autos.*;
 import frc4536.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.math.geometry.Rotation2d;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -59,7 +60,7 @@ public class RobotContainer {
     generateRedAuto3Trajectry2();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
-    
+
     m_xInitial = auto.add("Initial X", 0.0).getEntry();
     m_yInitial = auto.add("Initial Y", 0.0).getEntry();
     m_chooser.addOption("Blue Auto One", Autonomous.BLUE_AUTO_ONE);
@@ -69,6 +70,7 @@ public class RobotContainer {
     m_chooser.addOption("Red Auto Two", Autonomous.RED_AUTO_TWO);
     m_chooser.addOption("Red Auto Three", Autonomous.RED_AUTO_THREE);
     m_chooser.addOption("Pose Check Auto", Autonomous.POSECHECK_AUTO);
+    auto.add(m_chooser);
   }
   private void generatePoseCheckTrajectory(){
     var poseCheckWaypoints = new ArrayList<Pose2d>();
@@ -179,7 +181,6 @@ public class RobotContainer {
           return new PoseCheckAuto(m_driveTrain, initialPose, t_poseCheck);
       default:
           return new PoseCheckAuto(m_driveTrain, initialPose, t_poseCheck);
-
     }
   }
   /**
@@ -188,8 +189,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return null;
+    Pose2d initialPose = new Pose2d( m_xInitial.getDouble(0.0), m_yInitial.getDouble(0.0), Rotation2d.fromDegrees(0.0));
+    return generateAutoCommands(m_chooser.getSelected(), initialPose);
   }
   private enum Autonomous{
     RED_AUTO_ONE,
