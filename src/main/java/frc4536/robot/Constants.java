@@ -50,4 +50,9 @@ public final class Constants {
       private static final double ROBOT_ROTATION_CIRCUMFERENCE = DIAGONAL_INCHES_BETWEEN_AXES * Math.PI;
       public static final double DRIVE_ENCODER_CLICKS_PER_DEGREE = ROBOT_ROTATION_CIRCUMFERENCE / CLICKS_PER_INCH / 360;
     }
+   public static final class GyroInfo {
+      public static final boolean Gyro_IS_REVERSED = true; 
+//TODO change after testing 
+
+   }
 }
