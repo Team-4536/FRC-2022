@@ -13,6 +13,12 @@ public class Gyroscope extends SubsystemBase{
     public Gyroscope(){
         m_gyroscope = new AHRS();
     }
+
+    public void resetGyroscope(){
+        m_gyroscope.reset();
+        m_gyroscope.resetDisplacement();
+    }
+
     public float getPitch(){
         return m_gyroscope.getPitch();
     }
@@ -22,26 +28,23 @@ public class Gyroscope extends SubsystemBase{
     public float getYaw(){
         return m_gyroscope.getYaw();
     }
-    public void resetGyroscope(){
-        m_gyroscope.reset();
-        m_gyroscope.resetDisplacement();
-    }
-    @Override
-    public void periodic(){
-        SmartDashboard.putNumber("Pitch", getPitch());
-        SmartDashboard.putNumber("Roll", getRoll());
-        SmartDashboard.putNumber("Yaw", getYaw());
-    }
     public double getAngle(){
         return Math.IEEEremainder(m_gyroscope.getAngle(),360) * (Constants.GyroInfo.Gyro_IS_REVERSED ? -1.0 : 1.0);
     }
     public double getTurnRate(){
         return m_gyroscope.getRate() * (Constants.GyroInfo.Gyro_IS_REVERSED ? -1.0 : 1.0);
     }
-
     public Rotation2d getRotation2d() {
         return m_gyroscope.getRotation2d();
     }
 
+    @Override
+    public void periodic(){
+        SmartDashboard.putNumber("Pitch", getPitch());
+        SmartDashboard.putNumber("Roll", getRoll());
+        SmartDashboard.putNumber("Yaw", getYaw());
+        SmartDashboard.putNumber("Gyro Angle", getAngle());
+        SmartDashboard.putNumber("Gyro Turn Rate", getTurnRate());
+    }
 } 
 
