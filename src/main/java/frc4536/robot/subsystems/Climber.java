@@ -10,7 +10,7 @@ public class Climber extends SubsystemBase {
 
     public CANSparkMax m_climbMotor;
 
-    public Climber) {
+    public Climber() {
         m_climbMotor = new CANSparkMax(ClimberInfo.CLIMBER_MOTOR_ID, ClimberInfo.CLIMBER_MOTOR_BRUSHED_TYPE);
         m_climbMotor.setInverted(ClimberInfo.CLIMBER_MOTOR_IS_INVERTED);
     }
