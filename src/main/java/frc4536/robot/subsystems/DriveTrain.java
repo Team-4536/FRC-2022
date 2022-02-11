@@ -64,10 +64,10 @@ public class DriveTrain extends SubsystemBase{
         return m_rightMotorControllerGroup.get();
     }
 
-    public int getLeftDriveEncoderCount(){
+    public double getLeftDriveEncoderCount(){
         return m_leftDriveEncoder.get();
     }
-    public int getRightDriveEncoderCount(){
+    public double getRightDriveEncoderCount(){
         return m_rightDriveEncoder.get();
     }
 
