@@ -42,6 +42,7 @@ public class RobotContainer {
   Trajectory t_redAutoTwoOne;
   Trajectory t_redAutoThreeOne;
   Trajectory t_redAutoThreeTwo;
+  Trajectory t_constantsTest;
 
   public RobotContainer() {
 
@@ -58,6 +59,7 @@ public class RobotContainer {
     generateRedAuto2Trajectory1();
     generateRedAuto3Trajectory1();
     generateRedAuto3Trajectry2();
+    generateConstantsTestTrajectory();
 
     ShuffleboardTab auto = Shuffleboard.getTab("Autonomous");
 
@@ -152,8 +154,11 @@ public class RobotContainer {
     redThreeTwoWaypoints.add(Poses.SCORE_FOUR);
     t_redAutoThreeTwo = TrajectoryGenerator.generateTrajectory(redThreeTwoWaypoints, m_driveTrain.getConfig());
   }
-
-  
+  private void generateConstantsTestTrajectory(){
+    var constantsTestWaypoints = new ArrayList<Pose2d>();
+    constantsTestWaypoints.add(Poses.BALL_FIVE);
+    constantsTestWaypoints.add(Poses.BALL_TWELVE);
+  }
 
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -179,6 +184,8 @@ public class RobotContainer {
           return new BlueAutoThree(m_driveTrain, initialPose, t_blueAutoThreeOne, t_blueAutoThreeTwo);
       case POSECHECK_AUTO:
           return new PoseCheckAuto(m_driveTrain, initialPose, t_poseCheck);
+      case CONSTANTS_TEST_AUTO:
+          return new ConstantsTest(m_driveTrain, initialPose, t_constantsTest);
       default:
           return new PoseCheckAuto(m_driveTrain, initialPose, t_poseCheck);
     }
@@ -199,6 +206,7 @@ public class RobotContainer {
     BLUE_AUTO_ONE,
     BLUE_AUTO_TWO,
     BLUE_AUTO_THREE,
-    POSECHECK_AUTO;
+    POSECHECK_AUTO,
+    CONSTANTS_TEST_AUTO;
   }
 }
