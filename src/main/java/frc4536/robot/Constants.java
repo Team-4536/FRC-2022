@@ -34,13 +34,9 @@ public final class Constants {
    public static final class ClimberInfo {
 
       public static final int CLIMBER_MOTOR_ID = 5;
-
-      public static final double CLIMBER_MOTOR_SPEED = 2.5;
-      
       public static final MotorType CLIMBER_MOTOR_BRUSHED_TYPE = MotorType.kBrushless;
-
       public static final boolean CLIMBER_MOTOR_IS_INVERTED = true;
 
-   
+      public static final double CLIMBER_MOTOR_SPEED = 0.25;
    }
 }
