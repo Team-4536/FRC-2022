@@ -20,8 +20,7 @@ public class Climber extends SubsystemBase {
     } 
     
     public void climbForward(double climbSpeed){
-        m_climbMotor.set(climbSpeed);
-        
+        m_climbMotor.set(Math.abs(climbSpeed));
     }
 
     public void climbBackward() {
@@ -29,7 +28,7 @@ public class Climber extends SubsystemBase {
     }
 
     public void climbBackward(double climbSpeed){
-        m_climbMotor.set(climbSpeed);
+        m_climbMotor.set(-Math.abs(climbSpeed));
     }
 
     public void stopClimbing() {
