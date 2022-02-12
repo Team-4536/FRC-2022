@@ -16,7 +16,7 @@ public class Climber extends SubsystemBase {
     }
 
     public void climbForward(){
-        m_climbMotor.set(ClimberInfo.CLIMBER_MOTOR_SPEED);
+        this.climbForward(ClimberInfo.CLIMBER_MOTOR_SPEED);
     } 
     
     public void climbForward(double climbSpeed){
@@ -24,7 +24,7 @@ public class Climber extends SubsystemBase {
     }
 
     public void climbBackward() {
-        m_climbMotor.set(-ClimberInfo.CLIMBER_MOTOR_SPEED);
+        this.climbForward(-ClimberInfo.CLIMBER_MOTOR_SPEED);
     }
 
     public void climbBackward(double climbSpeed){
