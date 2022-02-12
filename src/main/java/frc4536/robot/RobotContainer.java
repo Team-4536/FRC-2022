@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 
 import frc4536.robot.subsystems.DriveTrain;
+import frc4536.robot.subsystems.Gyroscope;
 
 
 /**
@@ -20,11 +21,13 @@ import frc4536.robot.subsystems.DriveTrain;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain;
+  private final Gyroscope m_gyroscope;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     m_driveTrain = new DriveTrain();
+    m_gyroscope = new Gyroscope();
     // Configure the button bindings
     configureButtonBindings();
   }
