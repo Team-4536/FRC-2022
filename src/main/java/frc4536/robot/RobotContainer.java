@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc4536.robot.subsystems.DriveTrain;
+import frc4536.robot.subsystems.Gyroscope;
 
 
 /**
@@ -25,11 +26,13 @@ public class RobotContainer {
   private final XboxController m_drivController;
   private final JoystickButton m_intakeCargoButton;
 
+  private final Gyroscope m_gyroscope;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     m_driveTrain = new DriveTrain();
+    m_gyroscope = new Gyroscope();
     // Configure the button bindings
     configureButtonBindings();
 
