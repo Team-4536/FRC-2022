@@ -2,6 +2,7 @@ package frc4536.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -16,6 +17,7 @@ public class DriveTrain extends SubsystemBase{
     private final Encoder m_rightDriveEncoder;
     private final MotorControllerGroup m_leftMotorControllerGroup;
     private final MotorControllerGroup m_rightMotorControllerGroup;
+    private final SlewRateLimiter m_SlewRateLimiter;
 
     public DriveTrain(){
         CANSparkMax frontLeftDriveMotor = new CANSparkMax(DriveInfo.LEFT_FRONT_DRIVE_MOTOR_ID, DriveInfo.DRIVE_MOTOR_BRUSHED_TYPE);
@@ -40,13 +42,16 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_B, 
                                           DriveInfo.RIGHT_DRIVE_ENCODER_IS_INVERTED, 
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);  
+
+        m_SlewRateLimiter = new SlewRateLimiter(DriveInfo.SLEW_RATE_LIMIT);
+                                        
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
-        m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
+        m_differentialDrive.arcadeDrive(m_SlewRateLimiter.calculate(driveSpeed), robotRotation);
     }
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
-        m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);
+        m_differentialDrive.tankDrive(m_SlewRateLimiter.calculate(leftSideSpeed), m_SlewRateLimiter.calculate(rightSideSpeed));
     }
     public void stopDriving(){
         m_differentialDrive.tankDrive(0,0);
