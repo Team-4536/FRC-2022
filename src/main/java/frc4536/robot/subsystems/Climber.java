@@ -13,6 +13,11 @@ public class Climber extends SubsystemBase {
 
     public  DigitalInput m_limitSwitchAlpha;
     public  DigitalInput m_limitSwitchBeta;
+    public boolean m_limitSwitchAlphaIsHoldingPole = false;
+    public boolean m_limitSwitchBetaIsHoldingPole = false;
+
+
+
 
     public Climber() {
         m_climbMotor = new CANSparkMax(ClimberInfo.CLIMBER_MOTOR_ID, ClimberInfo.CLIMBER_MOTOR_BRUSHED_TYPE);
@@ -20,12 +25,15 @@ public class Climber extends SubsystemBase {
 
         m_limitSwitchAlpha = new DigitalInput(ClimberInfo.LIMIT_SWITCH_ALPHA_MOTOR_ID);
         m_limitSwitchBeta = new DigitalInput(ClimberInfo.LIMIT_SWITCH_BETA_MOTOR_ID);
+
+        
     }
 
-    public boolean m_limitSwitchAlphaIsTripped(){
+    public boolean limitSwitchAlphaIsTripped(){
         return m_limitSwitchAlpha.get();
     }
-    public boolean m_limitSwitchBetasTripped(){
+    
+    public boolean limitSwitchBetaIsTripped(){
         return m_limitSwitchBeta.get();
     }
     
@@ -52,6 +60,8 @@ public class Climber extends SubsystemBase {
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
+        SmartDashboard.putBoolean("is limit alpha switch tripped", limitSwitchAlphaIsTripped());
+        SmartDashboard.putBoolean("is limit beta switch tripped", limitSwitchBetaIsTripped());
     }
 
     
