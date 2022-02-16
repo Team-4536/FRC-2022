@@ -32,7 +32,8 @@ public final class Constants {
    }
 
    public static final class RobotInfo{
-      public static int CONTROLLER_ID = 0;
+      public static int DRIVE_CONTROLLER_ID = 0;
+      public static int MECHANISM_CONTROLLER_ID = 1;
 
    }
 }

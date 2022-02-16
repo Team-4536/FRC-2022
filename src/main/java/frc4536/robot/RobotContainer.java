@@ -4,6 +4,8 @@
 
 package frc4536.robot;
 
+import javax.xml.xpath.XPathVariableResolver;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -21,7 +23,8 @@ import frc4536.robot.subsystems.DriveTrain;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain;
-  private final XboxController m_controller;
+  private final XboxController m_driveController;
+  private final XboxController m_mechanismController;
   private final JoystickButton m_intakeCargoButton;
   private final JoystickButton m_outputCargoButton;
   private final JoystickButton m_toggleArmButton;
@@ -34,16 +37,17 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    m_controller = new XboxController(Constants.RobotInfo.CONTROLLER_ID);
+    m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
+    m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
    
-    m_outputCargoButton = new JoystickButton(m_controller, XboxController.Button.kX.value);
-    m_intakeCargoButton = new JoystickButton(m_controller, XboxController.Button.kY.value);
-    m_toggleArmButton = new JoystickButton(m_controller, XboxController.Button.kA.value);
+    m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
+    m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
+    m_toggleArmButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
     
    // m_intakeCargoButton.whenHeld(new IntakeCargo());
 
     m_driveTrain.setDefaultCommand
-        (new RunCommand(()-> m_driveTrain.arcadeDrive(-m_controller.getRightY(), m_controller.getLeftX()), m_driveTrain));
+        (new RunCommand(()-> m_driveTrain.arcadeDrive(-m_driveController.getRightY(), m_driveController.getLeftX()), m_driveTrain));
   }
 
   /**
