@@ -21,9 +21,10 @@ import frc4536.robot.subsystems.DriveTrain;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain;
-  private final XboxController m_mechanismController;
-  private final XboxController m_drivController;
+  private final XboxController m_controller;
   private final JoystickButton m_intakeCargoButton;
+  private final JoystickButton m_outputCargoButton;
+  private final JoystickButton m_toggleArmButton;
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -33,14 +34,16 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
-    m_drivController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
-
-    m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+    m_controller = new XboxController(Constants.RobotInfo.CONTROLLER_ID);
+   
+    m_outputCargoButton = new JoystickButton(m_controller, XboxController.Button.kX.value);
+    m_intakeCargoButton = new JoystickButton(m_controller, XboxController.Button.kY.value);
+    m_toggleArmButton = new JoystickButton(m_controller, XboxController.Button.kA.value);
+    
    // m_intakeCargoButton.whenHeld(new IntakeCargo());
 
     m_driveTrain.setDefaultCommand
-        (new RunCommand(()-> m_driveTrain.arcadeDrive(-m_drivController.getRightY(), m_drivController.getLeftX()), m_driveTrain));
+        (new RunCommand(()-> m_driveTrain.arcadeDrive(-m_controller.getRightY(), m_controller.getLeftX()), m_driveTrain));
   }
 
   /**
