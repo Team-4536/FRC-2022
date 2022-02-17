@@ -1,6 +1,7 @@
 package frc4536.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -10,14 +11,11 @@ import frc4536.robot.Constants.ClimberInfo;
 public class Climber extends SubsystemBase {
 
     public CANSparkMax m_climbMotor;
-
-    public  DigitalInput m_limitSwitchAlpha;
-    public  DigitalInput m_limitSwitchBeta;
+    public DigitalInput m_limitSwitchAlpha;
+    public DigitalInput m_limitSwitchBeta;
+    private final RelativeEncoder m_climbEncoder;
     public boolean m_limitSwitchAlphaIsHoldingPole = false;
     public boolean m_limitSwitchBetaIsHoldingPole = false;
-
-
-
 
     public Climber() {
         m_climbMotor = new CANSparkMax(ClimberInfo.CLIMBER_MOTOR_ID, ClimberInfo.CLIMBER_MOTOR_BRUSHED_TYPE);
@@ -26,7 +24,8 @@ public class Climber extends SubsystemBase {
         m_limitSwitchAlpha = new DigitalInput(ClimberInfo.LIMIT_SWITCH_ALPHA_MOTOR_ID);
         m_limitSwitchBeta = new DigitalInput(ClimberInfo.LIMIT_SWITCH_BETA_MOTOR_ID);
 
-        
+        m_climbEncoder = m_climbMotor.getEncoder();
+
     }
 
     public boolean limitSwitchAlphaIsTripped(){
