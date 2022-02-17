@@ -16,6 +16,7 @@ public class Climber extends SubsystemBase {
     private final RelativeEncoder m_climbEncoder;
     public boolean m_limitSwitchAlphaIsHoldingPole = false;
     public boolean m_limitSwitchBetaIsHoldingPole = false;
+    private final double m_lastEncoderValue;
 
     public Climber() {
         m_climbMotor = new CANSparkMax(ClimberInfo.CLIMBER_MOTOR_ID, ClimberInfo.CLIMBER_MOTOR_BRUSHED_TYPE);
@@ -25,7 +26,7 @@ public class Climber extends SubsystemBase {
         m_limitSwitchBeta = new DigitalInput(ClimberInfo.LIMIT_SWITCH_BETA_MOTOR_ID);
 
         m_climbEncoder = m_climbMotor.getEncoder();
-
+        m_lastEncoderValue = 0;
     }
 
     public boolean limitSwitchAlphaIsTripped(){
@@ -50,6 +51,10 @@ public class Climber extends SubsystemBase {
 
     public void climbBackward(double climbSpeed){
         m_climbMotor.set(-Math.abs(climbSpeed));
+    }
+
+    public double getEncoderDistance() {
+        return m_climbEncoder.getPosition();
     }
 
     public void stopClimbing() {
