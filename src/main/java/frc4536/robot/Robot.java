@@ -22,12 +22,12 @@ import edu.wpi.first.cscore.CvSource;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
-
   private Thread m_visionThread;
 
   private RobotContainer m_robotContainer;
 
+  private Command m_autonomousCommand;
+ 
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
