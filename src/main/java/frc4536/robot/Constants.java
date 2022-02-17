@@ -32,9 +32,9 @@ public final class Constants {
    }
 
    public static final class CargoHandlerInfo {
-      public static final int CARGO_HANDLER_MOTOR_ID = 2;
-      public static final double DEFAULT_INTAKE_CARGO_SPEED = 0.8;
+      public static final int CARGO_HANDLER_MOTOR_ID = 2; //TODO: CargoHandler ID = 5 or 6?
+      public static final double DEFAULT_INTAKE_CARGO_SPEED = 0.8; //TODO: check speeds for cargo handler
       public static final double DEFAULT_OUTPUT_CARGO_SPEED = 0.9;
-      public static final boolean CARGO_HANDLER_MOTOR_IS_INVERTED = true;
+      public static final boolean CARGO_HANDLER_MOTOR_IS_INVERTED = true; //TODO: check if cargo hander motor is inverted
    }
 }
