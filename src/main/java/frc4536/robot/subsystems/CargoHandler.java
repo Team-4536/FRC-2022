@@ -14,14 +14,14 @@ public class CargoHandler extends SubsystemBase {
      intakeCargo(CargoHandlerInfo.DEFAULT_INTAKE_CARGO_SPEED);
  }
  public void intakeCargo(double intakeSpeed){
-    m_cargoHandlerMotor.set(intakeSpeed);
+    m_cargoHandlerMotor.set(-Math.abs(intakeSpeed));
  }
 
  public void outputCargo(){
     outputCargo(CargoHandlerInfo.DEFAULT_OUTPUT_CARGO_SPEED);
  }
  public void outputCargo(double outputSpeed){
-     m_cargoHandlerMotor.set(outputSpeed);
+     m_cargoHandlerMotor.set(Math.abs(outputSpeed));
  }
 
  public double getCargoHandlerMotorsSpeed(){
