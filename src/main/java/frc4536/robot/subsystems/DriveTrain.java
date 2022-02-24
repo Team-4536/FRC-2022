@@ -17,7 +17,6 @@ public class DriveTrain extends SubsystemBase{
     private final Encoder m_rightDriveEncoder;
     private final MotorControllerGroup m_leftMotorControllerGroup;
     private final MotorControllerGroup m_rightMotorControllerGroup;
-    private final SlewRateLimiter m_SlewRateLimiter;
 
     public DriveTrain(){
         CANSparkMax frontLeftDriveMotor = new CANSparkMax(DriveInfo.LEFT_FRONT_DRIVE_MOTOR_ID, DriveInfo.DRIVE_MOTOR_BRUSHED_TYPE);
@@ -41,10 +40,7 @@ public class DriveTrain extends SubsystemBase{
         m_rightDriveEncoder = new Encoder(DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_A,
                                           DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_B, 
                                           DriveInfo.RIGHT_DRIVE_ENCODER_IS_INVERTED, 
-                                          DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);  
-
-    //    m_SlewRateLimiter = new SlewRateLimiter(DriveInfo.SLEW_RATE_LIMIT);
-                                        
+                                          DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);                            
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
