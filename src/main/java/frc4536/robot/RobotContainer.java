@@ -12,10 +12,12 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 
-import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.subsystems.CargoHandler;
+import frc4536.robot.subsystems.Climber;
 import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
+
+import frc4536.robot.commands.IntakeCargo;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -28,6 +30,7 @@ public class RobotContainer {
   private final DriveTrain m_driveTrain;
   private final Gyroscope m_gyroscope;
   private final CargoHandler m_cargoHandler;
+  private final Climber m_climber;
 
   private final XboxController m_mechanismController;
   private final XboxController m_driveController;
@@ -38,6 +41,7 @@ public class RobotContainer {
     m_driveTrain = new DriveTrain();
     m_gyroscope = new Gyroscope();
     m_cargoHandler = new CargoHandler();
+    m_climber = new Climber();
 
     m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
     m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);

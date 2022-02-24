@@ -16,6 +16,7 @@ public final class Constants {
       public static final int RIGHT_FRONT_DRIVE_MOTOR_ID = 4;
       public static final int RIGHT_REAR_DRIVE_MOTOR_ID = 3;
       public static final MotorType DRIVE_MOTOR_BRUSHED_TYPE = MotorType.kBrushed;
+ 
       public static final boolean LEFT_DRIVE_MOTORS_ARE_INVERTED = true;
       public static final boolean RIGHT_DRIVE_MOTORS_ARE_INVERTED = false;
 
@@ -25,9 +26,7 @@ public final class Constants {
       public static final int LEFT_DRIVE_ENCODER_CHANNEL_B = 1;
       public static final int RIGHT_DRIVE_ENCODER_CHANNEL_A = 2;
       public static final int RIGHT_DRIVE_ENCODER_CHANNEL_B = 3;
-
-      public static final double SLEW_RATE_LIMIT = 0.5;
-
+      
       public static final EncodingType DRIVE_MOTOR_ENCODER_ENCODINGTYPE = EncodingType.k2X;
 
       public static final boolean LEFT_DRIVE_ENCODER_IS_INVERTED = false;
@@ -63,5 +62,16 @@ public final class Constants {
       public static final double DEFAULT_INTAKE_CARGO_SPEED = -0.8;
       public static final double DEFAULT_OUTPUT_CARGO_SPEED = 0.8;
       public static final boolean CARGO_HANDLER_MOTOR_IS_INVERTED = true;
+   }
+
+   public static final class ClimberInfo {
+      public static final int CLIMBER_MOTOR_ID = 5;
+      public static final MotorType CLIMBER_MOTOR_BRUSHED_TYPE = MotorType.kBrushless;
+      public static final boolean CLIMBER_MOTOR_IS_INVERTED = true;
+
+      public static final int LIMIT_SWITCH_ALPHA_MOTOR_ID = 8;
+      public static final int LIMIT_SWITCH_BETA_MOTOR_ID = 9;
+
+      public static final double CLIMBER_MOTOR_SPEED = 0.25;
    }
 }
