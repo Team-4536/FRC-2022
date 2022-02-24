@@ -15,9 +15,7 @@ public final class Constants {
       public static final int LEFT_REAR_DRIVE_MOTOR_ID = 2;
       public static final int RIGHT_FRONT_DRIVE_MOTOR_ID = 4;
       public static final int RIGHT_REAR_DRIVE_MOTOR_ID = 3;
-
       public static final MotorType DRIVE_MOTOR_BRUSHED_TYPE = MotorType.kBrushed;
-
       public static final boolean LEFT_DRIVE_MOTORS_ARE_INVERTED = true;
       public static final boolean RIGHT_DRIVE_MOTORS_ARE_INVERTED = false;
 
@@ -37,7 +35,7 @@ public final class Constants {
 
    }
 
-   public static final class RobotInfo{
+   public static final class RobotInfo {
       public static int MECHANISM_CONTROLLER_ID = 0;
       public static int DRIVE_CONTROLLER_ID = 1;
 
@@ -48,13 +46,22 @@ public final class Constants {
 
       private static final double INCHES_WIDTH_OF_AXLE = 22.0;
       private static final double INCHES_LENGTH_OF_AXLE = 24.0;
-      private static final double DIAGONAL_INCHES_BETWEEN_AXES = Math.sqrt((INCHES_WIDTH_OF_AXLE * INCHES_WIDTH_OF_AXLE) + (INCHES_LENGTH_OF_AXLE * INCHES_LENGTH_OF_AXLE)) ;
+      private static final double DIAGONAL_INCHES_BETWEEN_AXES = Math
+            .sqrt((INCHES_WIDTH_OF_AXLE * INCHES_WIDTH_OF_AXLE) + (INCHES_LENGTH_OF_AXLE * INCHES_LENGTH_OF_AXLE));
       private static final double ROBOT_ROTATION_CIRCUMFERENCE = DIAGONAL_INCHES_BETWEEN_AXES * Math.PI;
       public static final double DRIVE_ENCODER_CLICKS_PER_DEGREE = ROBOT_ROTATION_CIRCUMFERENCE / CLICKS_PER_INCH / 360;
-    }
-   public static final class GyroInfo {
-      public static final boolean Gyro_IS_REVERSED = true; 
-//TODO change after testing 
+   }
 
+   public static final class GyroInfo {
+      public static final boolean Gyro_IS_REVERSED = true;
+      // TODO change after testing
+
+   }
+
+   public static final class CargoHandlerInfo {
+      public static final int CARGO_HANDLER_MOTOR_ID = 0;
+      public static final double DEFAULT_INTAKE_CARGO_SPEED = -0.8;
+      public static final double DEFAULT_OUTPUT_CARGO_SPEED = 0.8;
+      public static final boolean CARGO_HANDLER_MOTOR_IS_INVERTED = true;
    }
 }
