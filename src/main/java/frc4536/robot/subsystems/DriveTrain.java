@@ -43,15 +43,15 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.RIGHT_DRIVE_ENCODER_IS_INVERTED, 
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);  
 
-        m_SlewRateLimiter = new SlewRateLimiter(DriveInfo.SLEW_RATE_LIMIT);
+    //    m_SlewRateLimiter = new SlewRateLimiter(DriveInfo.SLEW_RATE_LIMIT);
                                         
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
-        m_differentialDrive.arcadeDrive(m_SlewRateLimiter.calculate(driveSpeed), robotRotation);
+        m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
     }
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
-        m_differentialDrive.tankDrive(m_SlewRateLimiter.calculate(leftSideSpeed), m_SlewRateLimiter.calculate(rightSideSpeed));
+        m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);
     }
     public void stopDriving(){
         m_differentialDrive.tankDrive(0,0);
