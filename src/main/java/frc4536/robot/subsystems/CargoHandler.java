@@ -1,6 +1,7 @@
 package frc4536.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc4536.robot.Constants.CargoHandlerInfo;;
 
@@ -24,13 +25,19 @@ public class CargoHandler extends SubsystemBase {
      m_cargoHandlerMotor.set(Math.abs(outputSpeed));
  }
 
- public double getCargoHandlerMotorsSpeed(){
-     return m_cargoHandlerMotor.get();
- }
+public void stopRotating(){
+    m_cargoHandlerMotor.set(0.0);
+}
 
- public void stopRotating(){
-     m_cargoHandlerMotor.set(0.0);
- }
+public double getCargoHandlerMotorsSpeed(){
+    return m_cargoHandlerMotor.get();
+}
+
+@Override
+public void periodic() {
+    SmartDashboard.putNumber("Cargo Handler Speed", getCargoHandlerMotorsSpeed());
+}
+
 }
 
 

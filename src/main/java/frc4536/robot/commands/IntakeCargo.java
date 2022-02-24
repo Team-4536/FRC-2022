@@ -8,11 +8,8 @@ public class IntakeCargo extends CommandBase{
 
     public IntakeCargo(CargoHandler cargoHandler){
         m_cargoHandler = cargoHandler;
-        addRequirements(cargoHandler);
+        addRequirements(m_cargoHandler);
     }
-
-    @Override
-    public void initialize(){}
 
     @Override
     public void execute(){

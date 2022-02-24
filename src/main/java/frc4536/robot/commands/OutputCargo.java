@@ -10,11 +10,7 @@ public class OutputCargo extends CommandBase {
         m_cargoHandler = cargoHandler;
         addRequirements(cargoHandler);
     }
-
-    @Override
-    public void initialize() {
-    }
-
+    
     @Override
     public void execute() {
         m_cargoHandler.outputCargo();
