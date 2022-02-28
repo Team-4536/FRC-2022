@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 public final class Constants {
     public final static class CargoArmInfo{
         public final static int CARGO_ARM_ELBOW_ID = 1;
-        public final static int CARGO_ARM_SHOULDER_ID = 2;
+        public final static int CARGO_ARM_SHOULDER_ID = 6;
 
         public final static int CHANNEL_A_CARGO_ARM_SHOULDER_ENCODER = 4;
         public final static int CHANNEL_B_CARGO_ARM_SHOULDER_ENCODER = 5;
@@ -25,6 +25,8 @@ public final class Constants {
 
         public final static CounterBase.EncodingType CARGO_ARM_SHOULDER_ENCODER_TYPE = EncodingType.k2X;
         public final static CounterBase.EncodingType CARGO_ARM_ELBOW_ENCODER_TYPE = EncodingType.k2X;
+
+        public final static MotorType CARGOARM_SHOULDER_BRUSHED_TYPE = MotorType.kBrushless;
     }
    public static final class DriveInfo {
       public static final int LEFT_FRONT_DRIVE_MOTOR_ID = 1;
