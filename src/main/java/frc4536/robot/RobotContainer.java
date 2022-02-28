@@ -73,6 +73,10 @@ public class RobotContainer {
       new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm)
     );
 
+    runToUpperButton.whenHeld(
+      new CargoArmToUpper(m_cargoArm)
+    );
+
     
   }
 
