@@ -5,6 +5,7 @@ import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc4536.robot.Constants.CargoArmInfo;
@@ -36,5 +37,11 @@ public class CargoArm extends SubsystemBase{
     }
     public double getShoulderPosition(){
         return m_cargoArmShoulderEncoder.getPosition();
+    }
+
+    @Override
+    public void periodic() {
+        SmartDashboard.putNumber("Elbow Position", getElbowPosition());
+        SmartDashboard.putNumber("Shoulder Position", getShoulderPosition());
     }
 }
