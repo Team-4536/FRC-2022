@@ -43,5 +43,7 @@ public class CargoArm extends SubsystemBase{
     public void periodic() {
         SmartDashboard.putNumber("Elbow Position", getElbowPosition());
         SmartDashboard.putNumber("Shoulder Position", getShoulderPosition());
+        SmartDashboard.putNumber("Elbow Motor", m_cargoArmElbow.get());
+        SmartDashboard.putNumber("Shoulder Motor", m_cargoArmShoulder.get());
     }
 }
