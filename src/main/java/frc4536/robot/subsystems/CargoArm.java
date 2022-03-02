@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc4536.robot.Constants.CargoArmInfo;
 
@@ -40,5 +41,11 @@ public class CargoArm extends SubsystemBase{
 
     public void moveShoulder(double power) {
         m_cargoArmShoulder.set(power);
+    }
+
+    @Override
+    public void periodic() {
+        SmartDashboard.putNumber("Elbow Position", getElbowPosition());
+        SmartDashboard.putNumber("Shoulder Position", getShoulderPosition());
     }
 }
