@@ -34,7 +34,7 @@ public class RobotContainer {
   private final CargoArm m_cargoArm;
 
   private final XboxController m_mechanismController;
-  private final XboxController m_driveController;
+ // private final XboxController m_driveController;
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -46,7 +46,7 @@ public class RobotContainer {
     m_cargoArm = new CargoArm();
 
     m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
-    m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
+    //m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
 
     JoystickButton raiseShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
     JoystickButton lowerShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
@@ -91,9 +91,9 @@ public class RobotContainer {
 
   private void setDefaultCommands() {
 
-    m_driveTrain.setDefaultCommand(new RunCommand(()-> 
+  /*  m_driveTrain.setDefaultCommand(new RunCommand(()-> 
          m_driveTrain.arcadeDrive(-m_driveController.getRightY(), m_driveController.getLeftX()), 
-         m_driveTrain));
+         m_driveTrain)); */
 
   }
 

@@ -13,7 +13,7 @@ public final class Constants {
         public final static int CARGO_ARM_ELBOW_ID = 1;
         public final static int CARGO_ARM_SHOULDER_ID = 6;
 
-        public final static boolean CARGO_ARM_SHOULDER_ENCODER_IS_INVERTED = false;
+        public final static boolean CARGO_ARM_SHOULDER_ENCODER_IS_INVERTED = true;
         public final static int CHANNEL_A_CARGO_ARM_ELBOW_ENCODER = 4;
         public final static int CHANNEL_B_CARGO_ARM_ELBOW_ENCODER = 5;
         public final static boolean CARGO_ARM_ELBOW_ENCODER_IS_INVERTED = true; 

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import frc4536.robot.Constants;
 import frc4536.robot.Constants.CargoArmInfo;
 public class CargoArm extends SubsystemBase{
     private Spark m_cargoArmElbow;
@@ -18,6 +18,8 @@ public class CargoArm extends SubsystemBase{
     public CargoArm(){
         m_cargoArmElbow = new Spark(CargoArmInfo.CARGO_ARM_ELBOW_ID);
         m_cargoArmShoulder = new CANSparkMax(CargoArmInfo.CARGO_ARM_SHOULDER_ID, CargoArmInfo.CARGOARM_SHOULDER_BRUSHED_TYPE);
+        m_cargoArmShoulder.setInverted(Constants.CargoArmInfo.CARGO_ARM_SHOULDER_ENCODER_IS_INVERTED);
+        m_cargoArmElbow.setInverted(Constants.CargoArmInfo.CARGO_ARM_ELBOW_ENCODER_IS_INVERTED);
 
         m_cargoArmElbowEncoder = new Encoder(CargoArmInfo.CHANNEL_A_CARGO_ARM_ELBOW_ENCODER,
                 CargoArmInfo.CHANNEL_B_CARGO_ARM_ELBOW_ENCODER, CargoArmInfo.CARGO_ARM_ELBOW_ENCODER_IS_INVERTED,
