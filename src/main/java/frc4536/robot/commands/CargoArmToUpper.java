@@ -18,7 +18,7 @@ public class CargoArmToUpper extends CommandBase  {
 
     @Override
     public void execute() {
-        int currentShoulderPos = m_cargoArmSubsystem.getShoulderPosition();
+        double currentShoulderPos = m_cargoArmSubsystem.getShoulderPosition();
         int currentElbowPos = m_cargoArmSubsystem.getElbowPosition();
         int restingShoulderPos = 0;
         int intermediateShoulderPos = 10;
