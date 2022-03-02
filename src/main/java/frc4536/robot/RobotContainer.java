@@ -58,19 +58,19 @@ public class RobotContainer {
     setDefaultCommands();
 
     raiseShoulderButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveShoulder(0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveShoulder(0.25), m_cargoArm)
     );
 
     lowerShoulderButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveShoulder(-0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveShoulder(-0.25), m_cargoArm)
     );
 
     extendElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveElbow(0.25), m_cargoArm)
     );
 
     retractElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveElbow(-0.25), m_cargoArm)
     );
 
     runToUpperButton.whenHeld(
