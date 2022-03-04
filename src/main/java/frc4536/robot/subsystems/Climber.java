@@ -42,7 +42,6 @@ public class Climber extends SubsystemBase {
     public void climbBackward(double climbSpeed){
         m_climbMotor.set(-Math.abs(climbSpeed));
     }
-
     public void stopClimbing() {
         m_climbMotor.set(0.0);
     }
@@ -57,7 +56,6 @@ public class Climber extends SubsystemBase {
     public double getEncoderDistance() {
         return m_climbEncoder.getPosition();
     }
-
     public double getEncoderVelocity() {
         return m_climbEncoder.getVelocity();
     }
