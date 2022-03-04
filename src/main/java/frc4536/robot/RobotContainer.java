@@ -69,11 +69,11 @@ public class RobotContainer {
     );
 
     extendElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(0.25), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveElbow(0.5), m_cargoArm)
     );
 
     retractElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(-0.25), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm)
     );
 
     runToUpperButton.whenHeld(
