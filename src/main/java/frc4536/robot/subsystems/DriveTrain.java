@@ -89,7 +89,6 @@ public class DriveTrain extends SubsystemBase{
     public int getRightDriveEncoderCount(){
         return m_rightDriveEncoder.get();
     }
-//pooop
     public boolean getRightDriveEncoderDirection(){
         return m_rightDriveEncoder.getDirection();
     }
