@@ -58,6 +58,10 @@ public class Climber extends SubsystemBase {
         return m_climbEncoder.getPosition();
     }
 
+    public double getEncoderVelocity() {
+        return m_climbEncoder.getVelocity();
+    }
+
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
