@@ -16,6 +16,7 @@ import frc4536.robot.subsystems.CargoHandler;
 import frc4536.robot.subsystems.Climber;
 import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
+import frc4536.robot.commands.CargoArmStop;
 import frc4536.robot.commands.CargoArmToUpper;
 import frc4536.robot.commands.IntakeCargo;
 
@@ -34,7 +35,7 @@ public class RobotContainer {
   private final CargoArm m_cargoArm;
 
   private final XboxController m_mechanismController;
-  private final XboxController m_driveController;
+ // private final XboxController m_driveController;
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -46,7 +47,7 @@ public class RobotContainer {
     m_cargoArm = new CargoArm();
 
     m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
-    m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
+    //m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
 
     JoystickButton raiseShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
     JoystickButton lowerShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
@@ -57,20 +58,22 @@ public class RobotContainer {
     configureButtonBindings();
     setDefaultCommands();
 
+    m_cargoArm.setDefaultCommand(new CargoArmStop(m_cargoArm));
+
     raiseShoulderButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveShoulder(0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveShoulder(0.25), m_cargoArm)
     );
 
     lowerShoulderButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveShoulder(-0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveShoulder(-0.25), m_cargoArm)
     );
 
     extendElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveElbow(0.25), m_cargoArm)
     );
 
     retractElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm)
+      new RunCommand(() -> m_cargoArm.moveElbow(-0.25), m_cargoArm)
     );
 
     runToUpperButton.whenHeld(
@@ -91,9 +94,9 @@ public class RobotContainer {
 
   private void setDefaultCommands() {
 
-    m_driveTrain.setDefaultCommand(new RunCommand(()-> 
+  /*  m_driveTrain.setDefaultCommand(new RunCommand(()-> 
          m_driveTrain.arcadeDrive(-m_driveController.getRightY(), m_driveController.getLeftX()), 
-         m_driveTrain));
+         m_driveTrain)); */
 
   }
 
