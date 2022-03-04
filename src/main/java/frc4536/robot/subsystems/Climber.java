@@ -37,7 +37,7 @@ public class Climber extends SubsystemBase {
     }
 
     public void climbBackward() {
-        this.climbForward(-ClimberInfo.CLIMBER_MOTOR_SPEED);
+        this.climbBackward(ClimberInfo.CLIMBER_MOTOR_SPEED);
     }
     public void climbBackward(double climbSpeed){
         m_climbMotor.set(-Math.abs(climbSpeed));
