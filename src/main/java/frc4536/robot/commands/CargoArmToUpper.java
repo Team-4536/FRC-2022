@@ -1,5 +1,6 @@
 package frc4536.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc4536.robot.Constants.CargoArmInfo;
 import frc4536.robot.subsystems.CargoArm;
@@ -25,8 +26,8 @@ public class CargoArmToUpper extends CommandBase  {
         int upperShoulderPos = 70;
         int intakeElbowPos = 60;
         int restingElbowPos = 0;
-        int intermediateElbowPos = 10;
-        int finalElbowPos = 0;
+        int intermediateElbowPos = 30;
+        int finalElbowPos = 50;
 
         /*
             if(cs < 1st){
@@ -52,10 +53,12 @@ public class CargoArmToUpper extends CommandBase  {
 
         if (currentShoulderPos < intermediateShoulderPos) {
           if (currentElbowPos < intermediateElbowPos) {
+            SmartDashboard.putString("Current Loop", "loop 1");
             m_cargoArmSubsystem.moveShoulder(0);
             m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           }
           else {
+            SmartDashboard.putString("Current Loop", "loop 2");
             m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
             m_cargoArmSubsystem.moveElbow(0);
           }
@@ -64,9 +67,11 @@ public class CargoArmToUpper extends CommandBase  {
           m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
           if (currentElbowPos < finalElbowPos) {
             m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+            SmartDashboard.putString("Current Loop", "loop 3");
           }
           else {
             m_cargoArmSubsystem.moveElbow(0);
+            SmartDashboard.putString("Current Loop", "loop 4");
           }
           
         }
