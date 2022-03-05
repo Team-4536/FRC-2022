@@ -20,7 +20,7 @@ public final class Constants {
       public static final boolean LEFT_DRIVE_MOTORS_ARE_INVERTED = true;
       public static final boolean RIGHT_DRIVE_MOTORS_ARE_INVERTED = false;
 
-      public static final double DIFFERENTIAL_DRIVE_DEADBAND = 0.08;
+      public static final double DIFFERENTIAL_DRIVE_DEADBAND = 0.4;
 
       public static final int LEFT_DRIVE_ENCODER_CHANNEL_A = 0;
       public static final int LEFT_DRIVE_ENCODER_CHANNEL_B = 1;
