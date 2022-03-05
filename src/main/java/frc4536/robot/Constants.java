@@ -24,6 +24,9 @@ public final class Constants {
         public final static CounterBase.EncodingType CARGO_ARM_SHOULDER_ENCODER_TYPE = EncodingType.k2X;
         public final static CounterBase.EncodingType CARGO_ARM_ELBOW_ENCODER_TYPE = EncodingType.k2X;
 
+        public final static boolean CARGO_ARM_SHOULDER_MOTOR_IS_INVERTED = true;
+        public final static boolean CARGO_ARM_ELBOW_MOTOR_IS_INVERTED = true;
+
         public final static MotorType CARGOARM_SHOULDER_BRUSHED_TYPE = MotorType.kBrushless;
     }
    public static final class DriveInfo {
