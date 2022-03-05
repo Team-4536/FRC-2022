@@ -33,7 +33,7 @@ public class RobotContainer {
     configureButtonBindings();
     XboxController mechanismController = new XboxController(0);
     JoystickButton climberButton = new JoystickButton(mechanismController, XboxController.Button.kA.value);
-    climberButton.whenPressed(new ClimbForward(m_climber));
+    climberButton.whenHeld(new ClimbForward(m_climber));
   }
 
   /**
