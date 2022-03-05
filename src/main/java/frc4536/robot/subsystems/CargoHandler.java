@@ -35,7 +35,9 @@ public double getCargoHandlerMotorsSpeed(){
 
 @Override
 public void periodic() {
-    SmartDashboard.putNumber("Cargo Handler Speed", getCargoHandlerMotorsSpeed());
+    if (CargoHandlerInfo.SHOW_CARGOHANDLER_IN_DASHBOARD){
+        SmartDashboard.putNumber("Cargo Handler Speed", getCargoHandlerMotorsSpeed());
+    }
 }
 
 }
