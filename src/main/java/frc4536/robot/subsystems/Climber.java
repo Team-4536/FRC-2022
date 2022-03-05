@@ -62,8 +62,10 @@ public class Climber extends SubsystemBase {
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
-        SmartDashboard.putBoolean("is limit alpha switch tripped", limitSwitchAlphaIsTripped());
-        SmartDashboard.putBoolean("is limit beta switch tripped", limitSwitchBetaIsTripped());
+        if (ClimberInfo.SHOW_CLIMBER_IN_DASHBOARD){
+            SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
+            SmartDashboard.putBoolean("is limit alpha switch tripped", limitSwitchAlphaIsTripped());
+            SmartDashboard.putBoolean("is limit beta switch tripped", limitSwitchBetaIsTripped());
+        }
     }    
 }
