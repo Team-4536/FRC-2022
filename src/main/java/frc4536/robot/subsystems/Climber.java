@@ -63,7 +63,8 @@ public class Climber extends SubsystemBase {
     @Override
     public void periodic() {
         if (ClimberInfo.SHOW_CLIMBER_IN_DASHBOARD){
-            SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
+            SmartDashboard.putNumber("Climb Speed", m_climbMotor.get());
+            SmartDashboard.putNumber("Climber Location", m_climbEncoder.getPosition()); 
             SmartDashboard.putBoolean("is limit alpha switch tripped", limitSwitchAlphaIsTripped());
             SmartDashboard.putBoolean("is limit beta switch tripped", limitSwitchBetaIsTripped());
             SmartDashboard.putNumber("climber velocity", getEncoderVelocity());
