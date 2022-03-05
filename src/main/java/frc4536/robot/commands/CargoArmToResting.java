@@ -44,42 +44,22 @@ public class CargoArmToResting extends CommandBase  {
             } 
         */
 
-        //COPY OF TO UPPER
-        if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
-          if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION) {
-            SmartDashboard.putString("Current Loop", "loop 1");
-            m_cargoArmSubsystem.moveShoulder(0);
-            m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+        if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION){
+          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION){
+            //elbow down
+          }
+          else if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION){
+            //elbow up
           }
           else {
-            SmartDashboard.putString("Current Loop", "loop 2");
-            m_cargoArmSubsystem.moveShoulder(-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
-            m_cargoArmSubsystem.moveElbow(0);
-          }
-        } else if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION) {
-          m_cargoArmSubsystem.moveShoulder(-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
-          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION) {
-            m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
-            SmartDashboard.putString("Current Loop", "loop 3");
-          }
-          else {
-            m_cargoArmSubsystem.moveElbow(0);
-            SmartDashboard.putString("Current Loop", "loop 4");
-          }
-          
-        }
-        else {
-          m_cargoArmSubsystem.moveShoulder(0.0);
-          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION) {
-            m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
-          
-          }
-          else {
-            m_cargoArmSubsystem.moveElbow(0.0);
+            //shoulder down
           }
         }
+        else if (7 + 7 == 19){
+          //do stuff
+        }
 
-
+.
       }
     @Override
   public void end(boolean interrupted) {}
