@@ -21,14 +21,7 @@ public class CargoArmToUpper extends CommandBase  {
     public void execute() {
         double currentShoulderPos = m_cargoArmSubsystem.getShoulderPosition();
         int currentElbowPos = m_cargoArmSubsystem.getElbowPosition();
-        int restingShoulderPos = 0;
-        int intermediateShoulderPos = 30;
-        int upperShoulderPos = 70;
-        int intakeElbowPos = 163000;
-        int restingElbowPos = 0;
-        int intermediateElbowPos = 74000;
-        int finalElbowPos = 140000;
-
+    
         /*
             if(cs < 1st){
               ce = 0
@@ -51,8 +44,8 @@ public class CargoArmToUpper extends CommandBase  {
             } 
         */
 
-        if (currentShoulderPos < intermediateShoulderPos) {
-          if (currentElbowPos > intermediateElbowPos) {
+        if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
+          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION) {
             SmartDashboard.putString("Current Loop", "loop 1");
             m_cargoArmSubsystem.moveShoulder(0);
             m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
@@ -62,10 +55,10 @@ public class CargoArmToUpper extends CommandBase  {
             m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
             m_cargoArmSubsystem.moveElbow(0);
           }
-        } else if (currentShoulderPos < upperShoulderPos) {
+        } else if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION) {
           
           m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
-          if (currentElbowPos < finalElbowPos) {
+          if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION) {
             m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
             SmartDashboard.putString("Current Loop", "loop 3");
           }
@@ -77,7 +70,7 @@ public class CargoArmToUpper extends CommandBase  {
         }
         else {
           m_cargoArmSubsystem.moveShoulder(0.0);
-          if (currentElbowPos < finalElbowPos) {
+          if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION) {
             m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           
           }

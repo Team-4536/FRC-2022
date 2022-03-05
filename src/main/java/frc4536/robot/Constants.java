@@ -28,6 +28,15 @@ public final class Constants {
         public final static boolean CARGO_ARM_ELBOW_MOTOR_IS_INVERTED = false;
 
         public final static MotorType CARGOARM_SHOULDER_BRUSHED_TYPE = MotorType.kBrushless;
+
+        public final static int CARGOARM_SHOULDER_RESTING_POSITION = 0;
+        public final static int CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 30;
+        public final static int CARGOARM_SHOULDER_UPPER_POSITION = 90;
+        
+        public final static int CARGOARM_ELBOW_RESTING_POSITION = 0;
+        public final static int CARGOARM_ELBOW_INTERMEDIATE_POSITION = 74000;
+        public final static int CARGOARM_ELBOW_FINAL_POSITION = 140000;
+        public final static int CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 163000;
     }
    public static final class DriveInfo {
       public static final int LEFT_FRONT_DRIVE_MOTOR_ID = 1;
