@@ -73,5 +73,6 @@ public final class Constants {
       public static final int LIMIT_SWITCH_BETA_MOTOR_ID = 9;
 
       public static final double CLIMBER_MOTOR_SPEED = 0.25;
+      public static final boolean SHOW_CLIMBER_IN_DASHBOARD = true;
    }
 }

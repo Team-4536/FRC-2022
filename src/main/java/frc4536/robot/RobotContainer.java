@@ -18,6 +18,7 @@ import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
 
 import frc4536.robot.commands.IntakeCargo;
+import frc4536.robot.commands.ClimbForward;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -48,6 +49,9 @@ public class RobotContainer {
 
     configureButtonBindings();
     setDefaultCommands();
+    XboxController mechanismController = new XboxController(0);
+    JoystickButton climberButton = new JoystickButton(mechanismController, XboxController.Button.kA.value);
+    climberButton.whenHeld(new ClimbForward(m_climber));
   }
 
   private void configureButtonBindings() {
