@@ -66,6 +66,7 @@ public class Climber extends SubsystemBase {
             SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
             SmartDashboard.putBoolean("is limit alpha switch tripped", limitSwitchAlphaIsTripped());
             SmartDashboard.putBoolean("is limit beta switch tripped", limitSwitchBetaIsTripped());
+            SmartDashboard.putNumber("climber velocity", getEncoderVelocity());
         }
     }    
 }
