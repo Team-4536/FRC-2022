@@ -55,11 +55,8 @@ public class CargoArmToResting extends CommandBase  {
             //shoulder down
           }
         }
-        else if (7 + 7 == 19){
-          //do stuff
-        }
+        
 
-.
       }
     @Override
   public void end(boolean interrupted) {}
