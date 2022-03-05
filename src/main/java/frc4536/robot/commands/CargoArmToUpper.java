@@ -52,10 +52,10 @@ public class CargoArmToUpper extends CommandBase  {
         */
 
         if (currentShoulderPos < intermediateShoulderPos) {
-          if (currentElbowPos < intermediateElbowPos) {
+          if (currentElbowPos > intermediateElbowPos) {
             SmartDashboard.putString("Current Loop", "loop 1");
             m_cargoArmSubsystem.moveShoulder(0);
-            m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+            m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           }
           else {
             SmartDashboard.putString("Current Loop", "loop 2");
