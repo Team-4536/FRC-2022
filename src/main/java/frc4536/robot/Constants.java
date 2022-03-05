@@ -59,6 +59,8 @@ public final class Constants {
       public static final double SCURVE_TO_KS = 0.5;
       public static final double SCURVE_TO_KV = 0.5;
       public static final double SCURVE_TO_KA = 0.5;
+
+      public static final double KP_DRIVE_VELOCITY = 3.596;
       
    }
 }

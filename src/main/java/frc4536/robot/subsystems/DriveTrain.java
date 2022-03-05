@@ -123,8 +123,8 @@ public class DriveTrain extends SubsystemBase{
                         Constants.DriveInfo.SCURVE_TO_KA),
                         kDriveKinematics,
                 this::getSpeeds,
-                new PIDController(0.0, 0, 0),
-                new PIDController(0.0, 0, 0),
+                new PIDController(Constants.DriveInfo.KP_DRIVE_VELOCITY, 0, 0),
+                new PIDController(Constants.DriveInfo.KP_DRIVE_VELOCITY, 0, 0),
                 this::setOutput,
                 this
         ).andThen(new InstantCommand(() -> setOutput(0,0)));
