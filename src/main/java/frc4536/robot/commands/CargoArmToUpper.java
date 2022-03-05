@@ -24,10 +24,10 @@ public class CargoArmToUpper extends CommandBase  {
         int restingShoulderPos = 0;
         int intermediateShoulderPos = 30;
         int upperShoulderPos = 70;
-        int intakeElbowPos = 60;
+        int intakeElbowPos = 163000;
         int restingElbowPos = 0;
-        int intermediateElbowPos = 30;
-        int finalElbowPos = 50;
+        int intermediateElbowPos = 74000;
+        int finalElbowPos = 140000;
 
         /*
             if(cs < 1st){
