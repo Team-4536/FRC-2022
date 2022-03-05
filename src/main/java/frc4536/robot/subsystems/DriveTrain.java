@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import frc4536.robot.Constants;
 import frc4536.robot.Constants.DriveInfo;;
 
 public class DriveTrain extends SubsystemBase{
@@ -89,10 +89,12 @@ public class DriveTrain extends SubsystemBase{
     }
 
     @Override
-    public void periodic() {
-        SmartDashboard.putNumber("Left Drive Speed", leftDriveMotorSpeed());
-        SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
-        SmartDashboard.putNumber("Left Encoder Value", getLeftDriveEncoderCount());
-        SmartDashboard.putNumber("Right Encoder Value", getRightDriveEncoderCount());
+    public void periodic() { 
+        if (Constants.DriveInfo.SHOW_DRIVETRAIN_IN_DASHBOARD){
+            SmartDashboard.putNumber("Left Drive Speed", leftDriveMotorSpeed());
+            SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
+            SmartDashboard.putNumber("Left Encoder Value", getLeftDriveEncoderCount());
+            SmartDashboard.putNumber("Right Encoder Value", getRightDriveEncoderCount());
+        }
     }
 }
