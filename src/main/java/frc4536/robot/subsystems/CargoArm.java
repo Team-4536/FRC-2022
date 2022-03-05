@@ -25,7 +25,8 @@ public class CargoArm extends SubsystemBase{
         m_cargoArmShoulder.setInverted(CargoArmInfo.CARGO_ARM_SHOULDER_MOTOR_IS_INVERTED);
 
         m_cargoArmElbowEncoder = new Encoder(CargoArmInfo.CHANNEL_A_CARGO_ARM_ELBOW_ENCODER,
-                CargoArmInfo.CHANNEL_B_CARGO_ARM_ELBOW_ENCODER, CargoArmInfo.CARGO_ARM_ELBOW_ENCODER_IS_INVERTED,
+                CargoArmInfo.CHANNEL_B_CARGO_ARM_ELBOW_ENCODER, 
+                CargoArmInfo.CARGO_ARM_ELBOW_ENCODER_IS_INVERTED,
                 CargoArmInfo.CARGO_ARM_ELBOW_ENCODER_TYPE);
         m_cargoArmShoulderEncoder = m_cargoArmShoulder.getEncoder();
     }
