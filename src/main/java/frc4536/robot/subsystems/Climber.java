@@ -37,12 +37,11 @@ public class Climber extends SubsystemBase {
     }
 
     public void climbBackward() {
-        this.climbForward(-ClimberInfo.CLIMBER_MOTOR_SPEED);
+        this.climbBackward(ClimberInfo.CLIMBER_MOTOR_SPEED);
     }
     public void climbBackward(double climbSpeed){
         m_climbMotor.set(-Math.abs(climbSpeed));
     }
-
     public void stopClimbing() {
         m_climbMotor.set(0.0);
     }
@@ -57,11 +56,17 @@ public class Climber extends SubsystemBase {
     public double getEncoderDistance() {
         return m_climbEncoder.getPosition();
     }
+    public double getEncoderVelocity() {
+        return m_climbEncoder.getVelocity();
+    }
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
-        SmartDashboard.putBoolean("is limit alpha switch tripped", limitSwitchAlphaIsTripped());
-        SmartDashboard.putBoolean("is limit beta switch tripped", limitSwitchBetaIsTripped());
+        if (ClimberInfo.SHOW_CLIMBER_IN_DASHBOARD){
+            SmartDashboard.putNumber("Climb Speed", m_climbMotor.get()); 
+            SmartDashboard.putBoolean("is limit alpha switch tripped", limitSwitchAlphaIsTripped());
+            SmartDashboard.putBoolean("is limit beta switch tripped", limitSwitchBetaIsTripped());
+            SmartDashboard.putNumber("climber velocity", getEncoderVelocity());
+        }
     }    
 }
