@@ -16,6 +16,7 @@ import frc4536.robot.subsystems.CargoHandler;
 import frc4536.robot.subsystems.Climber;
 import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
+import frc4536.robot.commands.CargoArmHoldInPlace;
 import frc4536.robot.commands.CargoArmStop;
 import frc4536.robot.commands.CargoArmToUpper;
 import frc4536.robot.commands.IntakeCargo;
@@ -58,7 +59,7 @@ public class RobotContainer {
     configureButtonBindings();
     setDefaultCommands();
 
-    m_cargoArm.setDefaultCommand(new CargoArmStop(m_cargoArm));
+    m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
 
     raiseShoulderButton.whenHeld(
       new RunCommand(() -> m_cargoArm.moveShoulder(0.25), m_cargoArm)
