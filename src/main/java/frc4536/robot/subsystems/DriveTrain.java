@@ -2,12 +2,13 @@ package frc4536.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import frc4536.robot.Constants;
 import frc4536.robot.Constants.DriveInfo;;
 
 public class DriveTrain extends SubsystemBase{
@@ -32,14 +33,16 @@ public class DriveTrain extends SubsystemBase{
         m_differentialDrive = new DifferentialDrive(m_leftMotorControllerGroup, m_rightMotorControllerGroup);
         m_differentialDrive.setDeadband(DriveInfo.DIFFERENTIAL_DRIVE_DEADBAND);
 
+    
+
         m_leftDriveEncoder = new Encoder(DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_A, 
                                          DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_B, 
-                                         DriveInfo.LEFT_DRIVE_MOTORS_ARE_INVERTED, 
+                                         DriveInfo.LEFT_DRIVE_ENCODER_IS_INVERTED, 
                                          DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE); 
         m_rightDriveEncoder = new Encoder(DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_A,
                                           DriveInfo.RIGHT_DRIVE_ENCODER_CHANNEL_B, 
-                                          DriveInfo.RIGHT_DRIVE_MOTORS_ARE_INVERTED, 
-                                          DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);  
+                                          DriveInfo.RIGHT_DRIVE_ENCODER_IS_INVERTED, 
+                                          DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);                            
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
@@ -64,10 +67,10 @@ public class DriveTrain extends SubsystemBase{
         return m_rightMotorControllerGroup.get();
     }
 
-    public int getLeftDriveEncoderCount(){
+    public double getLeftDriveEncoderCount(){
         return m_leftDriveEncoder.get();
     }
-    public int getRightDriveEncoderCount(){
+    public double getRightDriveEncoderCount(){
         return m_rightDriveEncoder.get();
     }
 
@@ -86,10 +89,12 @@ public class DriveTrain extends SubsystemBase{
     }
 
     @Override
-    public void periodic() {
-        SmartDashboard.putNumber("Left Drive Speed", leftDriveMotorSpeed());
-        SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
-        SmartDashboard.putNumber("Left Encoder Value", getLeftDriveEncoderCount());
-        SmartDashboard.putNumber("Right Encoder Value", getRightDriveEncoderCount());
+    public void periodic() { 
+        if (Constants.DriveInfo.SHOW_DRIVETRAIN_IN_DASHBOARD){
+            SmartDashboard.putNumber("Left Drive Speed", leftDriveMotorSpeed());
+            SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
+            SmartDashboard.putNumber("Left Encoder Value", getLeftDriveEncoderCount());
+            SmartDashboard.putNumber("Right Encoder Value", getRightDriveEncoderCount());
+        }
     }
 }
