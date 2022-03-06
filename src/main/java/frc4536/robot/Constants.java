@@ -84,9 +84,13 @@ public final class Constants {
    }
    public static final class CargoHandlerInfo {
       public static final int CARGO_HANDLER_MOTOR_ID = 0;
+      
       public static final double DEFAULT_INTAKE_CARGO_SPEED = -0.8;
       public static final double DEFAULT_OUTPUT_CARGO_SPEED = 0.8;
+
       public static final boolean CARGO_HANDLER_MOTOR_IS_INVERTED = true;
+
+      public static final boolean SHOW_CARGOHANDLER_IN_DASHBOARD = true;
    }
    public static final class ClimberInfo {
       public static final int CLIMBER_MOTOR_ID = 5;
