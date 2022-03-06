@@ -12,7 +12,6 @@ public class CargoArmHoldInPlace extends CommandBase {
 
     public CargoArmHoldInPlace(CargoArm cargoArm) {
         m_cargoArm = cargoArm;
-        // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(m_cargoArm);
     }
 
@@ -20,6 +19,9 @@ public class CargoArmHoldInPlace extends CommandBase {
     public void initialize() {
         m_cargoElbowTargetLocation = m_cargoArm.getElbowPosition();
         m_cargoShoulderTargetLocation = m_cargoArm.getShoulderPosition();
+
+        m_cargoArm.moveElbow(0.0);
+        m_cargoArm.moveShoulder(0.0);
     }
 
     @Override
@@ -27,9 +29,8 @@ public class CargoArmHoldInPlace extends CommandBase {
         double elbowError = (m_cargoElbowTargetLocation - m_cargoArm.getElbowPosition()) / 10000;
         double shoulderError = m_cargoShoulderTargetLocation - m_cargoArm.getShoulderPosition();
 
-        m_cargoArm.moveElbow(elbowError * 0.2);
-        m_cargoArm.moveShoulder(shoulderError * 0.2);
-
+        m_cargoArm.moveElbow(elbowError * 0.1);
+        m_cargoArm.moveShoulder(shoulderError * 0.1);
     }
 
     @Override
