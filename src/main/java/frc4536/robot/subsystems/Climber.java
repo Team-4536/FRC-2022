@@ -16,9 +16,6 @@ public class Climber extends SubsystemBase {
     public DigitalInput m_limitSwitchBeta;
     private final RelativeEncoder m_climbEncoder;
 
-    public boolean m_limitSwitchAlphaIsHoldingPole = false;
-    public boolean m_limitSwitchBetaIsHoldingPole = false;
-
     public Climber() {
         m_climbMotor = new CANSparkMax(ClimberInfo.CLIMBER_MOTOR_ID, ClimberInfo.CLIMBER_MOTOR_BRUSHED_TYPE);
         m_climbMotor.setInverted(ClimberInfo.CLIMBER_MOTOR_IS_INVERTED);
