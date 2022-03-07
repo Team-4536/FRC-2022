@@ -28,7 +28,7 @@ public final class Constants {
       public final static CounterBase.EncodingType CARGO_ARM_SHOULDER_ENCODER_TYPE = EncodingType.k2X;
       public final static CounterBase.EncodingType CARGO_ARM_ELBOW_ENCODER_TYPE = EncodingType.k2X;
 
-      public final static boolean CARGO_ARM_ELBOW_ENCODER_IS_INVERTED = false;
+      public final static boolean CARGO_ARM_ELBOW_ENCODER_IS_INVERTED = true;
       public final static boolean CARGO_ARM_SHOULDER_ENCODER_IS_INVERTED = false;
 
       public final static int CARGOARM_SHOULDER_RESTING_POSITION = 0;
