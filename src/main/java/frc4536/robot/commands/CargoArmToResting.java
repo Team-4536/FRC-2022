@@ -64,7 +64,7 @@ public class CargoArmToResting extends CommandBase  {
             m_cargoArmSubsystem.moveElbow(-Constants.CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           }
           else{
-            m_cargoArmSubsystem.moveShoulder(Constants.CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
+            m_cargoArmSubsystem.moveShoulder(-Constants.CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
           }
         }
         else {

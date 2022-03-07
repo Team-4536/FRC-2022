@@ -18,6 +18,7 @@ import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
 
 import frc4536.robot.commands.CargoArmHoldInPlace;
+import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
 import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.commands.ClimbForward;
@@ -62,9 +63,9 @@ public class RobotContainer {
     setDefaultCommands();
     XboxController mechanismController = new XboxController(0);
     JoystickButton climberButton = new JoystickButton(mechanismController, XboxController.Button.kA.value);
-    climberButton.whenHeld(new ClimbForward(m_climber));
+    //climberButton.whenHeld(new ClimbForward(m_climber));
 
-    /*
+    
     raiseShoulderButton.whenHeld(
       new RunCommand(() -> m_cargoArm.moveShoulder(0.25), m_cargoArm)
     );
@@ -81,14 +82,14 @@ public class RobotContainer {
       new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm)
     );
 
-    runToUpperButton.whenHeld(
-      new CargoArmToUpper(m_cargoArm)
-    );
+   // runToUpperButton.whenHeld(
+   //   new CargoArmToUpper(m_cargoArm)
+   // );
 
     runToRestingButton.whenHeld(
-      new CargoArmtoResting(m_cargoArm)
+      new CargoArmToResting(m_cargoArm)
     );
-    */
+   
   }
 
   private void configureButtonBindings() {
