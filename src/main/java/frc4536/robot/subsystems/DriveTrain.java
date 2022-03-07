@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc4536.robot.Constants;
-import frc4536.robot.Constants.DriveInfo;;
+import frc4536.robot.Constants.DriveInfo;
 
 public class DriveTrain extends SubsystemBase{
     private final  DifferentialDrive m_differentialDrive;
@@ -32,8 +32,6 @@ public class DriveTrain extends SubsystemBase{
 
         m_differentialDrive = new DifferentialDrive(m_leftMotorControllerGroup, m_rightMotorControllerGroup);
         m_differentialDrive.setDeadband(DriveInfo.DIFFERENTIAL_DRIVE_DEADBAND);
-
-    
 
         m_leftDriveEncoder = new Encoder(DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_A, 
                                          DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_B, 
