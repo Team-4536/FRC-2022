@@ -53,7 +53,7 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.RIGHT_DRIVE_MOTORS_ARE_INVERTED, 
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);  
                                           
-        m_config = new TrajectoryConfig(0.5,05);
+        m_config = new TrajectoryConfig(0.5,Constants.DriveInfo.KP_DRIVE_VELOCITY);
         //TODO: put in robot constants for max cceleration and max velocity instead of the 0.5s
         kDriveKinematics = new DifferentialDriveKinematics(22.2);
     } 
