@@ -41,6 +41,8 @@ public final class Constants {
       public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 163000.0;
 
       public final static boolean CARGO_ARM_IN_DASHBOARD = true;
+
+      public final static double CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE = (CARGOARM_ELBOW_FINAL_POSITION-CARGOARM_ELBOW_INTERMEDIATE_POSITION)/(CARGOARM_SHOULDER_UPPER_POSITION-CARGOARM_SHOULDER_INTERMEDIATE_POSITION);
    }
 
    public static final class DriveInfo {
