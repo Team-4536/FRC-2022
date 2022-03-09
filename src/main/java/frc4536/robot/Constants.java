@@ -31,14 +31,14 @@ public final class Constants {
       public final static boolean CARGO_ARM_ELBOW_ENCODER_IS_INVERTED = true;
       public final static boolean CARGO_ARM_SHOULDER_ENCODER_IS_INVERTED = false;
 
-      public final static int CARGOARM_SHOULDER_RESTING_POSITION = 0;
-      public final static int CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 30;
-      public final static int CARGOARM_SHOULDER_UPPER_POSITION = 90;
+      public final static double CARGOARM_SHOULDER_RESTING_POSITION = 0.0;
+      public final static double CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 50.0;
+      public final static double CARGOARM_SHOULDER_UPPER_POSITION = 88.0;
 
-      public final static int CARGOARM_ELBOW_RESTING_POSITION = 0;
-      public final static int CARGOARM_ELBOW_INTERMEDIATE_POSITION = 74000;
-      public final static int CARGOARM_ELBOW_FINAL_POSITION = 140000;
-      public final static int CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 163000;
+      public final static double CARGOARM_ELBOW_RESTING_POSITION = 0.0;
+      public final static double CARGOARM_ELBOW_INTERMEDIATE_POSITION = 75000.0;
+      public final static double CARGOARM_ELBOW_FINAL_POSITION = 137000.0;
+      public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 163000.0;
 
       public final static boolean CARGO_ARM_IN_DASHBOARD = true;
    }
