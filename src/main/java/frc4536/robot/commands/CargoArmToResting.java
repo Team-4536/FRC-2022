@@ -36,7 +36,7 @@ public class CargoArmToResting extends CommandBase  {
         }
         else {
           if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION){
-            m_cargoArmSubsystem.moveElbow(-Constants.CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+            m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           }
           else{
             m_cargoArmSubsystem.moveElbow(0.0);
