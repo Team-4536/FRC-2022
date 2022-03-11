@@ -64,9 +64,9 @@ public class RobotContainer {
     m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
 
 
-    JoystickButton runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
+    JoystickButton runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
 
-    runToUpperButton.whenHeld(new CargoArmToUpper(m_cargoArm));
+    runToIntakeButton.whenHeld(new CargoArmToUpper(m_cargoArm));
     
   //  JoystickButton climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
   //  climberButton.whenHeld(new ClimbForward(m_climber));
