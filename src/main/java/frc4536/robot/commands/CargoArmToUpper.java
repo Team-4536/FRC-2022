@@ -21,28 +21,7 @@ public class CargoArmToUpper extends CommandBase  {
     public void execute() {
         double currentShoulderPos = m_cargoArmSubsystem.getShoulderPosition();
         int currentElbowPos = m_cargoArmSubsystem.getElbowPosition();
-    
-        /*
-            if(cs < 1st){
-              ce = 0
-              cs = 0.25
-            } else if (cs < 2nd){
-              if(ce < 1){
-                cs = 0
-                ce = 0.25
-              }else {
-                cs = 0.25
-                ce= 0
-              }
-            } else if (cs < 3rd) {
-              cs = 0.25
-              ce = -cs/0.6
-
-            } else{
-              cs = 0
-              ce = 0
-            } 
-        */
+        double targetElbowPos = (currentShoulderPos - CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION)*CargoArmInfo.CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE+CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION;
 
         if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
           if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION) {
