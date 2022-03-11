@@ -36,7 +36,6 @@ public class CargoArmToUpper extends CommandBase  {
           }
         } else if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION) {
           m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
-          if
         }
         else {
           m_cargoArmSubsystem.moveShoulder(0.0);
