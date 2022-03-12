@@ -72,6 +72,7 @@ public class RobotContainer {
     m_chooser.addOption("Red Auto Two", Autonomous.RED_AUTO_TWO);
     m_chooser.addOption("Red Auto Three", Autonomous.RED_AUTO_THREE);
     m_chooser.addOption("Pose Check Auto", Autonomous.POSECHECK_AUTO);
+    m_chooser.addOption("Test One", Autonomous.CONSTANTS_TEST_AUTO);
     auto.add(m_chooser);
   }
   private void generatePoseCheckTrajectory(){
