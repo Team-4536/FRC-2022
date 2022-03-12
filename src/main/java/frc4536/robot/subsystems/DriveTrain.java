@@ -46,17 +46,20 @@ public class DriveTrain extends SubsystemBase{
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
-       // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
+      // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
         
-        if(robotRotation > 0){
+        if(robotRotation > 0.04){
 
-            m_differentialDrive.tankDrive(driveSpeed * Math.abs(robotRotation), driveSpeed);
+            m_differentialDrive.tankDrive(driveSpeed * 6 * Math.abs(robotRotation), driveSpeed);
+
+        }
+        else if(robotRotation < -0.04){
+
+            m_differentialDrive.tankDrive(driveSpeed , driveSpeed * 6 * Math.abs(robotRotation));
 
         }
         else{
-
-            m_differentialDrive.tankDrive(driveSpeed , driveSpeed * Math.abs(robotRotation));
-
+            m_differentialDrive.tankDrive(driveSpeed , driveSpeed);
         }
     }
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
