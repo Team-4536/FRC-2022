@@ -68,15 +68,7 @@ public class RobotContainer {
     m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
     m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
     
-    m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
-    m_outputCargoButton.whenHeld(new OutputCargo(m_cargoHandler));
-
-    //m_runToIntakeButton.whenPressed(new runToIntake(m_cargoArm));
-    //m_runToUpperButton.whenPressed(new runToUpper(m_cargoArm));
-    m_restingPosButton.whenPressed(new CargoArmToResting(m_cargoArm));
-    
-  //  JoystickButton climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
-  //  climberButton.whenHeld(new ClimbForward(m_climber));
+   
 
     configureButtonBindings();
     setDefaultCommands();
@@ -86,6 +78,20 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
+
+    m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
+    m_outputCargoButton.whenHeld(new OutputCargo(m_cargoHandler));
+
+    
+
+    //m_runToIntakeButton.whenPressed(new runToIntake(m_cargoArm));
+    //m_runToUpperButton.whenPressed(new runToUpper(m_cargoArm));
+    m_restingPosButton.whenPressed(new CargoArmToResting(m_cargoArm));
+    
+  //  JoystickButton climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+  //  climberButton.whenHeld(new ClimbForward(m_climber));
+
+  
     // this is where you define your buttons (do they need to be class level?)
     // and assign the appropriate Commands to them. example:
 //    JoystickButton intakeCargoButton = 
