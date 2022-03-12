@@ -160,6 +160,7 @@ public class RobotContainer {
     constantsTestWaypoints.add(Poses.BALL_FIVE);
     constantsTestWaypoints.add(Poses.BALL_TWELVE);
     constantsTestWaypoints.add(Poses.BALL_FIVE);
+    t_constantsCheck = TrajectoryGenerator.generateTrajectory(constantsTestWaypoints, m_driveTrain.getConfig());
   }
 
   /**
