@@ -60,6 +60,7 @@ public class RobotContainer {
 
     m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
     m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
+
    
     //mechanism controller
     m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
@@ -75,6 +76,7 @@ public class RobotContainer {
 
 
 
+
   }
 
   private void configureButtonBindings() {
@@ -82,14 +84,11 @@ public class RobotContainer {
     m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
     m_outputCargoButton.whenHeld(new OutputCargo(m_cargoHandler));
 
-    
-
-    //m_runToIntakeButton.whenPressed(new runToIntake(m_cargoArm));
-    //m_runToUpperButton.whenPressed(new runToUpper(m_cargoArm));
+    m_runToIntakeButton.whenPressed(new CargoArmToUpper(m_cargoArm));
     m_restingPosButton.whenPressed(new CargoArmToResting(m_cargoArm));
     
-  //  JoystickButton climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
-  //  climberButton.whenHeld(new ClimbForward(m_climber));
+    JoystickButton climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+   climberButton.whenHeld(new ClimbForward(m_climber));
 
   
     // this is where you define your buttons (do they need to be class level?)

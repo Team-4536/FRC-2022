@@ -21,33 +21,15 @@ public class CargoArmToUpper extends CommandBase  {
     public void execute() {
         double currentShoulderPos = m_cargoArmSubsystem.getShoulderPosition();
         int currentElbowPos = m_cargoArmSubsystem.getElbowPosition();
-    
-        /*
-            if(cs < 1st){
-              ce = 0
-              cs = 0.25
-            } else if (cs < 2nd){
-              if(ce < 1){
-                cs = 0
-                ce = 0.25
-              }else {
-                cs = 0.25
-                ce= 0
-              }
-            } else if (cs < 3rd) {
-              cs = 0.25
-              ce = -cs/0.6
-
-            } else{
-              cs = 0
-              ce = 0
-            } 
-        */
+        double targetElbowPos = (currentShoulderPos - CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION)*CargoArmInfo.CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE+CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION;
 
         if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
-          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION) {
+          if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION) {
             SmartDashboard.putString("Current Loop", "loop 1");
             m_cargoArmSubsystem.moveShoulder(0);
+            m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+          }
+          else if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION){
             m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           }
           else {
@@ -56,17 +38,10 @@ public class CargoArmToUpper extends CommandBase  {
             m_cargoArmSubsystem.moveElbow(0);
           }
         } else if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION) {
-          
           m_cargoArmSubsystem.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
-          if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION) {
-            m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
-            SmartDashboard.putString("Current Loop", "loop 3");
+          if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION){
+            m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * ((targetElbowPos - currentElbowPos)/3000));
           }
-          else {
-            m_cargoArmSubsystem.moveElbow(0);
-            SmartDashboard.putString("Current Loop", "loop 4");
-          }
-          
         }
         else {
           m_cargoArmSubsystem.moveShoulder(0.0);

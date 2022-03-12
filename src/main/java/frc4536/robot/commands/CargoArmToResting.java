@@ -20,52 +20,38 @@ public class CargoArmToResting extends CommandBase  {
     @Override
     public void execute() {
         double currentShoulderPos = m_cargoArmSubsystem.getShoulderPosition();
-        int currentElbowPos = m_cargoArmSubsystem.getElbowPosition();
-    
-        /*
-            if(cs < 1st){
-              ce = 0
-              cs = 0.25
-            } else if (cs < 2nd){
-              if(ce < 1){
-                cs = 0
-                ce = 0.25
-              }else {
-                cs = 0.25
-                ce= 0
-              }
-            } else if (cs < 3rd) {
-              cs = 0.25
-              ce = -cs/0.6
-
-            } else{
-              cs = 0
-              ce = 0
-            } 
-        */
+        double currentElbowPos = m_cargoArmSubsystem.getElbowPosition();
+        double targetElbowPos = (currentShoulderPos - CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION)*CargoArmInfo.CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE+CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION;
 
         if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION){
-          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION){
-            //elbow down
+          m_cargoArmSubsystem.moveShoulder(-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);  
+          m_cargoArmSubsystem.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * ((targetElbowPos - currentElbowPos)/(3000)));
+        }
+        else if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION){
+          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION){
+            m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           }
-          else if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION){
-            //elbow up
+          else m_cargoArmSubsystem.moveElbow(0.0);
+          m_cargoArmSubsystem.moveShoulder((-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER)/2);
+        }
+        else {
+          m_cargoArmSubsystem.moveShoulder(0.0);
+          if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION){
+            m_cargoArmSubsystem.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
           }
-          else {
-            //shoulder down
+          else{
+            m_cargoArmSubsystem.moveElbow(0.0);
           }
+
         }
         
 
       }
     @Override
-  public void end(boolean interrupted) {}
-
-  // Returns true when the command should end.  
-  @Override
-  public boolean isFinished() {
-    return false;
+  public void end(boolean interrupted) {
+    m_cargoArmSubsystem.moveElbow(0.0);
+    m_cargoArmSubsystem.moveShoulder(0.0);
   }
-}
 
+}
 
