@@ -19,8 +19,10 @@ import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
 
 import frc4536.robot.commands.CargoArmHoldInPlace;
+import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
 import frc4536.robot.commands.IntakeCargo;
+import frc4536.robot.commands.OutputCargo;
 import frc4536.robot.commands.ClimbForward;
 
 /**
@@ -42,7 +44,10 @@ public class RobotContainer {
 
  private final JoystickButton m_intakeCargoButton;
  private final JoystickButton m_outputCargoButton;
- private final JoystickButton m_toggleArmButton;
+
+ private final JoystickButton m_runToUpperButton;
+ private final JoystickButton m_runToIntakeButton;
+ private final JoystickButton m_restingPosButton;
  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -56,17 +61,19 @@ public class RobotContainer {
     m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
     m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
    
-    m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
-    m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
-    
-    m_toggleArmButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+    //mechanism controller
+    m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
+    m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kLeftBumper.value);
+    m_runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
+    m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
+    m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
     
     m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
+    m_outputCargoButton.whenHeld(new OutputCargo(m_cargoHandler));
 
-
-    JoystickButton runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
-
-    runToUpperButton.whenHeld(new CargoArmToUpper(m_cargoArm));
+    //m_runToIntakeButton.whenPressed(new runToIntake(m_cargoArm));
+    //m_runToUpperButton.whenPressed(new runToUpper(m_cargoArm));
+    m_restingPosButton.whenPressed(new CargoArmToResting(m_cargoArm));
     
   //  JoystickButton climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
   //  climberButton.whenHeld(new ClimbForward(m_climber));
