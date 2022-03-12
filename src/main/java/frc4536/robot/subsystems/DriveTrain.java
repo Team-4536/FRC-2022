@@ -92,8 +92,8 @@ public class DriveTrain extends SubsystemBase{
         if (Constants.DriveInfo.SHOW_DRIVETRAIN_IN_DASHBOARD){
             SmartDashboard.putNumber("Left Drive Speed", leftDriveMotorSpeed());
             SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
-            SmartDashboard.putNumber("Left Encoder Value", getLeftDriveEncoderCount());
-            SmartDashboard.putNumber("Right Encoder Value", getRightDriveEncoderCount());
+            SmartDashboard.putNumber("Left Drive Encoder Value", getLeftDriveEncoderCount());
+            SmartDashboard.putNumber("Right Drive Encoder Value", getRightDriveEncoderCount());
         }
     }
 }
