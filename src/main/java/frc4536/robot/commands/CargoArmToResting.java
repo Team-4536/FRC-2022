@@ -47,12 +47,10 @@ public class CargoArmToResting extends CommandBase  {
 
       }
     @Override
-  public void end(boolean interrupted) {}
-
-  // Returns true when the command should end.  
-  @Override
-  public boolean isFinished() {
-    return false;
+  public void end(boolean interrupted) {
+    m_cargoArmSubsystem.moveElbow(0.0);
+    m_cargoArmSubsystem.moveShoulder(0.0);
   }
+
 }
 
