@@ -92,7 +92,7 @@ public class RobotContainer {
     m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
 
     m_driveTrain.setDefaultCommand(new RunCommand(()-> 
-         m_driveTrain.arcadeDrive(-m_mechanismController.getRightY(), m_mechanismController.getLeftX()), 
+         m_driveTrain.arcadeDrive(m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis()  , m_mechanismController.getLeftX()), 
          m_driveTrain));
   }
 
