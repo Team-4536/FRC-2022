@@ -158,6 +158,7 @@ public class RobotContainer {
     var constantsTestWaypoints = new ArrayList<Pose2d>();
     constantsTestWaypoints.add(Poses.BALL_FIVE);
     constantsTestWaypoints.add(Poses.BALL_TWELVE);
+    constantsTestWaypoints.add(Poses.BALL_FIVE);
   }
 
   /**
