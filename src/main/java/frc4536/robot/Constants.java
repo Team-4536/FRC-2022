@@ -66,6 +66,8 @@ public final class Constants {
       public static final boolean RIGHT_DRIVE_ENCODER_IS_INVERTED = true;
 
       public static final boolean SHOW_DRIVETRAIN_IN_DASHBOARD = true;
+
+      public static final double SET_MAX_RATE = 0.5;
    }
 
    public static final class RobotInfo {
