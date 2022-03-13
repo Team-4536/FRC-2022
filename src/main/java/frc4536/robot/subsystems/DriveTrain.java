@@ -45,8 +45,12 @@ public class DriveTrain extends SubsystemBase{
     } 
 
     public void arcadeDrive(double driveSpeed, double robotRotation){
-        m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
+        double safeDriveSpeed = 
+            (m_rightDriveEncoder.getRate() + m_leftDriveEncoder.getRate()) * robotRotation > 6000 ?  0.0 : driveSpeed;
+
+        m_differentialDrive.arcadeDrive(safeDriveSpeed, robotRotation);
     }
+
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
         m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);
     }
