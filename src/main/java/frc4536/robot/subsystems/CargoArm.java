@@ -7,9 +7,12 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import frc4536.robot.Constants;
 import frc4536.robot.Constants.CargoArmInfo;
+
 public class CargoArm extends SubsystemBase{
+
     private Spark m_cargoArmElbow;
     private CANSparkMax m_cargoArmShoulder;
     private Encoder m_cargoArmElbowEncoder;
@@ -39,7 +42,7 @@ public class CargoArm extends SubsystemBase{
         m_cargoArmShoulder.set(power);
     }
 
-    public int getElbowPosition(){
+    public double getElbowPosition(){
         return m_cargoArmElbowEncoder.get();
     }
     
