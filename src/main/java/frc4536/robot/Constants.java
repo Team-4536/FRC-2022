@@ -68,6 +68,8 @@ public final class Constants {
       public static final boolean RIGHT_DRIVE_ENCODER_IS_INVERTED = true;
 
       public static final boolean SHOW_DRIVETRAIN_IN_DASHBOARD = true;
+
+      public static final double SET_MAX_RATE = 0.5;
    }
 
    public static final class RobotInfo {
@@ -95,8 +97,8 @@ public final class Constants {
    public static final class CargoHandlerInfo {
       public static final int CARGO_HANDLER_MOTOR_ID = 0;
 
-      public static final double DEFAULT_INTAKE_CARGO_SPEED = -0.8;
-      public static final double DEFAULT_OUTPUT_CARGO_SPEED = 0.8;
+      public static final double DEFAULT_INTAKE_CARGO_SPEED = -1.0;
+      public static final double DEFAULT_OUTPUT_CARGO_SPEED = 1.0;
 
       public static final boolean CARGO_HANDLER_MOTOR_IS_INVERTED = true;
 
@@ -111,7 +113,7 @@ public final class Constants {
       public static final int LIMIT_SWITCH_ALPHA_MOTOR_ID = 8;
       public static final int LIMIT_SWITCH_BETA_MOTOR_ID = 9;
 
-      public static final double CLIMBER_MOTOR_SPEED = 0.25;
+      public static final double CLIMBER_MOTOR_SPEED = 0.5;
       public static final boolean SHOW_CLIMBER_IN_DASHBOARD = true;
    }
 }

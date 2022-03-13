@@ -56,6 +56,7 @@ public class RobotContainer {
     JoystickButton extendElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
     JoystickButton retractElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
     JoystickButton runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
+    JoystickButton runToRestingButton = new JoystickButton(m_mechanismController, XboxController.Button.kLeftBumper.value);
 
     configureButtonBindings();
     setDefaultCommands();
@@ -82,6 +83,10 @@ public class RobotContainer {
 
     runToUpperButton.whenHeld(
       new CargoArmToUpper(m_cargoArm)
+    );
+
+    runToRestingButton.whenHeld(
+      new CargoArmtoResting(m_cargoArm)
     );
     */
   }
