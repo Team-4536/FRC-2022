@@ -91,8 +91,9 @@ public class RobotContainer {
     m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
     m_outputCargoButton.whenHeld(new OutputCargo(m_cargoHandler));
 
-    m_runToUpperButton.whenPressed(new CargoArmToUpper(m_cargoArm));
-    m_restingPosButton.whenPressed(new CargoArmToResting(m_cargoArm));
+    m_runToUpperButton.whenHeld(new CargoArmToUpper(m_cargoArm));
+    m_restingPosButton.whenHeld(new CargoArmToResting(m_cargoArm));
+    m_runToIntakeButton.whenHeld(new CargoArmToIntake(m_cargoArm));
     
     m_climberButton.whenHeld(new ClimbForward(m_climber));
 
