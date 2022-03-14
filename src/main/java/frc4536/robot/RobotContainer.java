@@ -90,7 +90,7 @@ public class RobotContainer {
     m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
     m_outputCargoButton.whenHeld(new OutputCargo(m_cargoHandler));
 
-    m_runToIntakeButton.whenPressed(new CargoArmToUpper(m_cargoArm));
+    m_runToUpperButton.whenPressed(new CargoArmToUpper(m_cargoArm));
     m_restingPosButton.whenPressed(new CargoArmToResting(m_cargoArm));
     
     m_climberButton.whenHeld(new ClimbForward(m_climber));
@@ -109,7 +109,8 @@ public class RobotContainer {
     m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
 
     m_driveTrain.setDefaultCommand(new RunCommand(()-> 
-         m_driveTrain.arcadeDrive(m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis()  , m_mechanismController.getLeftX(), m_mechanismController.getRightX())));
+         m_driveTrain.drive(m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis()  , m_mechanismController.getLeftX(), m_mechanismController.getRightX()),
+         m_driveTrain));
   }
 
   /**
