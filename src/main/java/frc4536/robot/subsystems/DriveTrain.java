@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc4536.robot.Constants;
-import frc4536.robot.Constants.DriveInfo;;
+import frc4536.robot.Constants.DriveInfo;
 
 public class DriveTrain extends SubsystemBase{
     private final  DifferentialDrive m_differentialDrive;
@@ -32,8 +32,7 @@ public class DriveTrain extends SubsystemBase{
 
         m_differentialDrive = new DifferentialDrive(m_leftMotorControllerGroup, m_rightMotorControllerGroup);
         m_differentialDrive.setDeadband(DriveInfo.DIFFERENTIAL_DRIVE_DEADBAND);
-
-    
+        m_differentialDrive.setMaxOutput(DriveInfo.SET_MAX_RATE);
 
         m_leftDriveEncoder = new Encoder(DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_A, 
                                          DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_B, 
@@ -44,6 +43,7 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.RIGHT_DRIVE_ENCODER_IS_INVERTED, 
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);                            
     } 
+
 
     public void drive(double driveSpeed, double robotRotation, double spin){
       // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
@@ -73,6 +73,7 @@ public class DriveTrain extends SubsystemBase{
     }
 
     //public void arcadeDrive
+
 
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
         m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);
@@ -119,8 +120,8 @@ public class DriveTrain extends SubsystemBase{
         if (Constants.DriveInfo.SHOW_DRIVETRAIN_IN_DASHBOARD){
             SmartDashboard.putNumber("Left Drive Speed", leftDriveMotorSpeed());
             SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
-            SmartDashboard.putNumber("Left Encoder Value", getLeftDriveEncoderCount());
-            SmartDashboard.putNumber("Right Encoder Value", getRightDriveEncoderCount());
+            SmartDashboard.putNumber("Left Drive Encoder Value", getLeftDriveEncoderCount());
+            SmartDashboard.putNumber("Right Drive Encoder Value", getRightDriveEncoderCount());
         }
     }
 }

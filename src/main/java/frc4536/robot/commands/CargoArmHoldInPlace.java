@@ -1,6 +1,5 @@
 package frc4536.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc4536.robot.subsystems.CargoArm;
 

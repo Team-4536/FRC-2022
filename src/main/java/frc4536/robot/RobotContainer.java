@@ -19,6 +19,7 @@ import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
 
 import frc4536.robot.commands.CargoArmHoldInPlace;
+import frc4536.robot.commands.CargoArmToIntake;
 import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
 import frc4536.robot.commands.IntakeCargo;
