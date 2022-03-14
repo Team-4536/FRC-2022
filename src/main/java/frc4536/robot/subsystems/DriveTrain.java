@@ -45,7 +45,7 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);                            
     } 
 
-    public void arcadeDrive(double driveSpeed, double robotRotation){
+    public void arcadeDrive(double driveSpeed, double robotRotation, double spin){
       // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
         
         if(robotRotation > 0.04){
@@ -56,6 +56,14 @@ public class DriveTrain extends SubsystemBase{
         else if(robotRotation < -0.04){
 
             m_differentialDrive.tankDrive(driveSpeed , driveSpeed * 6 * Math.abs(robotRotation));
+
+        }
+        else if(spin < -0.04){
+            m_differentialDrive.tankDrive(spin, -spin);
+
+        }
+        else if(spin < 0.04){
+            m_differentialDrive.tankDrive(-spin, spin);
 
         }
         else{

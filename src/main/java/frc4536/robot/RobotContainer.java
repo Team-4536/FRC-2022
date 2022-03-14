@@ -48,6 +48,8 @@ public class RobotContainer {
  private final JoystickButton m_runToUpperButton;
  private final JoystickButton m_runToIntakeButton;
  private final JoystickButton m_restingPosButton;
+
+ private final JoystickButton m_climberButton;
  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -58,18 +60,22 @@ public class RobotContainer {
     m_climber = new Climber();
     m_cargoArm = new CargoArm();
 
-    m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
+    //the controller id needs to be changed
+    m_driveController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
     m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
 
    
     //mechanism controller
     m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
     m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kLeftBumper.value);
+
     m_runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
     m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
     m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
-    
-   
+
+    //drive controller
+    m_climberButton = new JoystickButton(m_driveController, XboxController.Button.kX.value);
+  
 
     configureButtonBindings();
     setDefaultCommands();
@@ -87,8 +93,7 @@ public class RobotContainer {
     m_runToIntakeButton.whenPressed(new CargoArmToUpper(m_cargoArm));
     m_restingPosButton.whenPressed(new CargoArmToResting(m_cargoArm));
     
-    JoystickButton climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
-   climberButton.whenHeld(new ClimbForward(m_climber));
+    m_climberButton.whenHeld(new ClimbForward(m_climber));
 
   
     // this is where you define your buttons (do they need to be class level?)
@@ -104,8 +109,7 @@ public class RobotContainer {
     m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
 
     m_driveTrain.setDefaultCommand(new RunCommand(()-> 
-         m_driveTrain.arcadeDrive(m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis()  , m_mechanismController.getLeftX()), 
-         m_driveTrain));
+         m_driveTrain.arcadeDrive(m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis()  , m_mechanismController.getLeftX(), m_mechanismController.getRightX())));
   }
 
   /**
