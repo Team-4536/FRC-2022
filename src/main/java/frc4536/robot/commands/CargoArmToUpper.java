@@ -25,7 +25,9 @@ public class CargoArmToUpper extends CommandBase {
     if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
       if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION) {
         m_cargoArm.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
-      } else {
+      } else if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_INTER_RESTING_POSITION){
+        m_cargoArm.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+      }else {
         m_cargoArm.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
         m_cargoArm.moveElbow(0);
       }
