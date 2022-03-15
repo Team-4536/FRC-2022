@@ -25,104 +25,102 @@ import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.commands.ClimbForward;
 
 /**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a
+ * "declarative" paradigm, very little robot logic should actually be handled in
+ * the {@link Robot}
+ * periodic methods (other than the scheduler calls). Instead, the structure of
+ * the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-  private final DriveTrain m_driveTrain;
-  private final Gyroscope m_gyroscope;
-  private final CargoHandler m_cargoHandler;
-  private final Climber m_climber;
-  private final CargoArm m_cargoArm;
+    // The robot's subsystems and commands are defined here...
+    private final DriveTrain m_driveTrain;
+    private final Gyroscope m_gyroscope;
+    private final CargoHandler m_cargoHandler;
+    private final Climber m_climber;
+    private final CargoArm m_cargoArm;
 
-  private final XboxController m_mechanismController;
- // private final XboxController m_driveController;
-  
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
+    private final XboxController m_mechanismController;
+    // private final XboxController m_driveController;
 
-    m_driveTrain = new DriveTrain();
-    m_gyroscope = new Gyroscope();
-    m_cargoHandler = new CargoHandler();
-    m_climber = new Climber();
-    m_cargoArm = new CargoArm();
+    public RobotContainer() {
 
-    m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
-    //m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
+        m_driveTrain = new DriveTrain();
+        m_gyroscope = new Gyroscope();
+        m_cargoHandler = new CargoHandler();
+        m_climber = new Climber();
+        m_cargoArm = new CargoArm();
 
-    JoystickButton raiseShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
-    JoystickButton lowerShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
-    JoystickButton extendElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
-    JoystickButton retractElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
-    JoystickButton runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
-    JoystickButton runToRestingButton = new JoystickButton(m_mechanismController, XboxController.Button.kLeftBumper.value);
+        m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
+        // m_driveController = new
+        // XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
 
-    configureButtonBindings();
-    setDefaultCommands();
-    XboxController mechanismController = new XboxController(0);
-    JoystickButton climberButton = new JoystickButton(mechanismController, XboxController.Button.kA.value);
-    //climberButton.whenHeld(new ClimbForward(m_climber));
+        JoystickButton raiseShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+        JoystickButton lowerShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
+        JoystickButton extendElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
+        JoystickButton retractElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
+        JoystickButton runToUpperButton = new JoystickButton(m_mechanismController,
+                XboxController.Button.kRightBumper.value);
+        JoystickButton runToRestingButton = new JoystickButton(m_mechanismController,
+                XboxController.Button.kLeftBumper.value);
 
-    
-    raiseShoulderButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveShoulder(0.25), m_cargoArm)
-    );
+        configureButtonBindings();
+        setDefaultCommands();
+        XboxController mechanismController = new XboxController(0);
+        JoystickButton climberButton = new JoystickButton(mechanismController, XboxController.Button.kA.value);
+        // climberButton.whenHeld(new ClimbForward(m_climber));
 
-    lowerShoulderButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveShoulder(-0.25), m_cargoArm)
-    );
+        raiseShoulderButton.whenHeld(
+                new RunCommand(() -> m_cargoArm.moveShoulder(0.25), m_cargoArm));
 
-    extendElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(0.5), m_cargoArm)
-    );
+        lowerShoulderButton.whenHeld(
+                new RunCommand(() -> m_cargoArm.moveShoulder(-0.25), m_cargoArm));
 
-    retractElbowButton.whenHeld(
-      new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm)
-    );
+        extendElbowButton.whenHeld(
+                new RunCommand(() -> m_cargoArm.moveElbow(0.5), m_cargoArm));
 
-    runToUpperButton.whenHeld(
-      new CargoArmToUpper(m_cargoArm)
-    );
+        retractElbowButton.whenHeld(
+                new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm));
 
-    runToRestingButton.whenHeld(
-      new CargoArmToResting(m_cargoArm)
-    );
-   
-  }
+        runToUpperButton.whenHeld(
+                new CargoArmToUpper(m_cargoArm));
 
-  private void configureButtonBindings() {
-    // this is where you define your buttons (do they need to be class level?)
-    // and assign the appropriate Commands to them. example:
-//    JoystickButton intakeCargoButton = 
-//        new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
-//    intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler)); 
+        runToRestingButton.whenHeld(
+                new CargoArmToResting(m_cargoArm));
 
-  }
+    }
 
-  private void setDefaultCommands() {
+    private void configureButtonBindings() {
+        // this is where you define your buttons (do they need to be class level?)
+        // and assign the appropriate Commands to them. example:
+        // JoystickButton intakeCargoButton =
+        // new JoystickButton(m_mechanismController,
+        // XboxController.Button.kRightBumper.value);
+        // intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
 
-    m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
+    }
 
-    /*
-    m_driveTrain.setDefaultCommand(new RunCommand(()-> 
-         m_driveTrain.arcadeDrive(-m_mechanismController.getRightY(), m_mechanismController.getLeftX()), 
-         m_driveTrain));
+    private void setDefaultCommands() {
+
+        m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
+
+        /*
+         * m_driveTrain.setDefaultCommand(new RunCommand(()->
+         * m_driveTrain.arcadeDrive(-m_mechanismController.getRightY(),
+         * m_mechanismController.getLeftX()),
+         * m_driveTrain));
          */
 
-  }
+    }
 
-
-
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return null;
-  }
+    /**
+     * Use this to pass the autonomous command to the main {@link Robot} class.
+     *
+     * @return the command to run in autonomous
+     */
+    public Command getAutonomousCommand() {
+        // An ExampleCommand will run in autonomous
+        return null;
+    }
 }
