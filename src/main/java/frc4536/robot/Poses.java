@@ -19,6 +19,13 @@ public class Poses {
     BALL_TEN = new Pose2d(Units.inchesToMeters(145.38), Units.inchesToMeters(29.3), Rotation2d.fromDegrees(0)),
     BALL_ELEVEN = new Pose2d(Units.inchesToMeters(126.7), Units.inchesToMeters(-77.0), Rotation2d.fromDegrees(0)),
     BALL_TWELVE = new Pose2d(Units.inchesToMeters(81.66), Units.inchesToMeters(-120.28), Rotation2d.fromDegrees(0)),
+    
+    TEST_ONE = new Pose2d(Units.inchesToMeters(60.0), Units.inchesToMeters(60.0), Rotation2d.fromDegrees(0.0)),
+    TEST_TWO = new Pose2d(Units.inchesToMeters(0.0), Units.inchesToMeters(0.0), Rotation2d.fromDegrees(180.0)),
+    TEST_THREE = new Pose2d(Units.inchesToMeters(60.0), Units.inchesToMeters(60.0), Rotation2d.fromDegrees(0.0)),
+    TEST_FOUR = new Pose2d(Units.inchesToMeters(0.0), Units.inchesToMeters(0.0), Rotation2d.fromDegrees(180.0)),
+    
+
     /* 
     TODO: confirm score position
     (score is just a guess on where the robot will score from, score positions were placed right up against the hub in the middle of each fender, 

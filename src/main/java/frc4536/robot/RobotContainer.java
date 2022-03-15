@@ -91,7 +91,7 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
-    
+
     generatePoseCheckTrajectory();
     generateBlueAuto1Trajectory1();
     generateBlueAuto2Trajectory1();
@@ -201,11 +201,11 @@ public class RobotContainer {
 
   private void generateConstantsTestTrajectory() {
     var constantsTestWaypoints = new ArrayList<Pose2d>();
-    constantsTestWaypoints.add(Poses.BALL_FIVE);
-    constantsTestWaypoints.add(Poses.BALL_TWELVE);
-    constantsTestWaypoints.add(Poses.BALL_FIVE);
+    constantsTestWaypoints.add(Poses.TEST_ONE);
+    constantsTestWaypoints.add(Poses.TEST_TWO);
+    constantsTestWaypoints.add(Poses.TEST_THREE);
+    constantsTestWaypoints.add(Poses.TEST_FOUR);
     t_constantsTest = TrajectoryGenerator.generateTrajectory(constantsTestWaypoints, m_driveTrain.getConfig());
-
   }
 
   private void configureButtonBindings() {
