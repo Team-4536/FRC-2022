@@ -93,11 +93,11 @@ public final class Constants {
       public static final double RAMSETE_B_TUNING_PARAMETER = 2.0;
       public static final double RAMSETE_ZETA_TUNING_PARAMETER = 0.7;
 
-      public static final double SCURVE_TO_KS = 1.0;
-      public static final double SCURVE_TO_KV = 1.0;
-      public static final double SCURVE_TO_KA = 1.0;
+      public static final double SCURVE_TO_KS = 0.85306;
+      public static final double SCURVE_TO_KV = 0.00075042;
+      public static final double SCURVE_TO_KA = 0.00089725;
 
-      public static final double KP_DRIVE_VELOCITY = 0.0596;      
+      public static final double KP_DRIVE_VELOCITY = 0.0012497;      
 
       public static final boolean LEFT_DRIVE_ENCODER_IS_INVERTED = false;
       public static final boolean RIGHT_DRIVE_ENCODER_IS_INVERTED = true;
