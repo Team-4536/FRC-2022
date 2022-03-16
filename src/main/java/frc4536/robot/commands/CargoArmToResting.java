@@ -24,8 +24,12 @@ public class CargoArmToResting extends CommandBase {
         * CargoArmInfo.CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE
         + CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION;
 
-    double pidPowerElbowValue = (-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * Math.abs(CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION-currentElbowPos))/30000;
-    double pidPowerShoulderValue = (-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER * Math.abs(CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION-currentShoulderPos))/40;
+    double pidPowerElbowValue = -Math.min((CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER
+                                         * Math.abs(CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION-currentElbowPos))/15000,
+                                         CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+    double pidPowerShoulderValue = -Math.min((CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER
+                                         * Math.abs(CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION-currentShoulderPos))/40, 
+                                         CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
 
     if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
       m_cargoArm.moveShoulder(-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
