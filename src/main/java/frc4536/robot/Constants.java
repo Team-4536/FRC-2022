@@ -97,7 +97,7 @@ public final class Constants {
       public static final double SCURVE_TO_KV = 1.0;
       public static final double SCURVE_TO_KA = 1.0;
 
-      public static final double KP_DRIVE_VELOCITY = 0.596;      
+      public static final double KP_DRIVE_VELOCITY = 0.0596;      
 
       public static final boolean LEFT_DRIVE_ENCODER_IS_INVERTED = false;
       public static final boolean RIGHT_DRIVE_ENCODER_IS_INVERTED = true;
