@@ -45,8 +45,8 @@ public final class Constants {
 
       public final static double CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE = (CARGOARM_ELBOW_FINAL_POSITION-CARGOARM_ELBOW_INTERMEDIATE_POSITION)/(CARGOARM_SHOULDER_UPPER_POSITION-CARGOARM_SHOULDER_INTERMEDIATE_POSITION);
 
-      public final static double CARGO_ARM_PID_ELBOW_VALUE = 15000.0;
-      public final static double CARGO_ARM_PID_SHOULDER_VALUE = 20.0;
+      public final static double CARGO_ARM_PID_ELBOW_VALUE = 20000.0;
+      public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
 
       
    }
