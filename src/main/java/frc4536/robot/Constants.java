@@ -33,7 +33,7 @@ public final class Constants {
 
         public final static double CARGOARM_SHOULDER_RESTING_POSITION = 0.0;
         public final static double CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 50.0;
-        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 88.0;
+        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 91.5;
 
         public final static double CARGOARM_ELBOW_RESTING_POSITION = 0.0;
         public final static double CARGOARM_ELBOW_INTERMEDIATE_POSITION = 75000.0;
@@ -47,10 +47,14 @@ public final class Constants {
                 - CARGOARM_ELBOW_INTERMEDIATE_POSITION)
                 / (CARGOARM_SHOULDER_UPPER_POSITION - CARGOARM_SHOULDER_INTERMEDIATE_POSITION);
 
+        public final static double CARGO_ARM_PID_ELBOW_VALUE = 10000.0;
+        public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
     }
-    
+
     public static final class CargoHandlerInfo {
         public static final int CARGO_HANDLER_MOTOR_ID = 0;
+        public final static double CARGO_ARM_PID_ELBOW_VALUE = 10000.0;
+        public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
 
         public static final double DEFAULT_INTAKE_CARGO_SPEED = -1.0;
         public static final double DEFAULT_OUTPUT_CARGO_SPEED = 1.0;
@@ -59,7 +63,7 @@ public final class Constants {
 
         public static final boolean SHOW_CARGOHANDLER_IN_DASHBOARD = true;
     }
-    
+
     public static final class ClimberInfo {
         public static final int CLIMBER_MOTOR_ID = 5;
         public static final MotorType CLIMBER_MOTOR_BRUSHED_TYPE = MotorType.kBrushless;
@@ -118,6 +122,7 @@ public final class Constants {
         private static final double DIAGONAL_INCHES_BETWEEN_AXES = Math
                 .sqrt((INCHES_WIDTH_OF_AXLE * INCHES_WIDTH_OF_AXLE) + (INCHES_LENGTH_OF_AXLE * INCHES_LENGTH_OF_AXLE));
         private static final double ROBOT_ROTATION_CIRCUMFERENCE = DIAGONAL_INCHES_BETWEEN_AXES * Math.PI;
-        public static final double DRIVE_ENCODER_CLICKS_PER_DEGREE = ROBOT_ROTATION_CIRCUMFERENCE / CLICKS_PER_INCH / 360;
+        public static final double DRIVE_ENCODER_CLICKS_PER_DEGREE = 
+                                  ROBOT_ROTATION_CIRCUMFERENCE / CLICKS_PER_INCH / 360;
     }
 }

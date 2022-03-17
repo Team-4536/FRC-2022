@@ -1,6 +1,7 @@
 package frc4536.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+
 import frc4536.robot.Constants.CargoArmInfo;
 import frc4536.robot.subsystems.CargoArm;
 
@@ -34,7 +35,7 @@ public class CargoArmToUpper extends CommandBase {
             m_cargoArm.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
             if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION) {
                 m_cargoArm.moveElbow(
-                        CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * ((targetElbowPos - currentElbowPos) / 3000));
+                        CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * ((targetElbowPos - currentElbowPos) / 10000));
             }
         } else {
             m_cargoArm.moveShoulder(0.0);
