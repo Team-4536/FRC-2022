@@ -44,12 +44,36 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);                            
     } 
 
-    public void arcadeDrive(double driveSpeed, double robotRotation){
-        double safeDriveSpeed = 
-            (m_rightDriveEncoder.getRate() + m_leftDriveEncoder.getRate()) * robotRotation > 6000 ?  0.0 : driveSpeed;
 
-        m_differentialDrive.arcadeDrive(safeDriveSpeed, robotRotation);
+    public void drive(double driveSpeed, double robotRotation, double spin){
+      // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
+        
+        if(robotRotation > 0.04){
+
+            m_differentialDrive.tankDrive(driveSpeed * 7 * Math.abs(robotRotation), driveSpeed);
+
+        }
+        else if(robotRotation < -0.04){
+
+            m_differentialDrive.tankDrive(driveSpeed , driveSpeed * 7 * Math.abs(robotRotation));
+
+        }
+        else if(driveSpeed> 0.01 || driveSpeed < -0.01){
+            m_differentialDrive.tankDrive(driveSpeed , driveSpeed);
+        }
+         else if(spin < -0.04){
+            m_differentialDrive.tankDrive(spin , -spin );
+
+        }
+        else if(spin > 0.04){
+            m_differentialDrive.tankDrive(spin , -spin );
+
+        }
+        
     }
+
+    //public void arcadeDrive
+
 
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
         m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);

@@ -23,20 +23,25 @@ public class CargoArmToResting extends CommandBase {
                 * CargoArmInfo.CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE
                 + CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION;
 
+        double pidPowerElbowValue = Math.min(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER
+                * Math.abs(CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION - currentElbowPos) / 30000, .75);
+        double pidPowerShoulderValue = (-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER
+                * Math.abs(CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION - currentShoulderPos)) / 40;
+
         if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
             m_cargoArm.moveShoulder(-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
             m_cargoArm.moveElbow(
                     CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * ((targetElbowPos - currentElbowPos) / (3000)));
         } else if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION) {
             if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION) {
-                m_cargoArm.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+                m_cargoArm.moveElbow(pidPowerElbowValue);
             } else
                 m_cargoArm.moveElbow(0.0);
-            m_cargoArm.moveShoulder((-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER) / 2);
+            m_cargoArm.moveShoulder(pidPowerShoulderValue);
         } else {
             m_cargoArm.moveShoulder(0.0);
             if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION) {
-                m_cargoArm.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+                m_cargoArm.moveElbow(pidPowerElbowValue);
             } else {
                 m_cargoArm.moveElbow(0.0);
             }

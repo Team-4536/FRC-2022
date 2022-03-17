@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+
 import frc4536.robot.subsystems.CargoArm;
 import frc4536.robot.subsystems.CargoHandler;
 import frc4536.robot.subsystems.Climber;
@@ -22,6 +23,7 @@ import frc4536.robot.commands.CargoArmToIntake;
 import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
 import frc4536.robot.commands.IntakeCargo;
+import frc4536.robot.commands.OutputCargo;
 import frc4536.robot.commands.ClimbForward;
 
 /**
@@ -34,7 +36,7 @@ import frc4536.robot.commands.ClimbForward;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    // The robot's subsystems and commands are defined here...
+
     private final DriveTrain m_driveTrain;
     private final Gyroscope m_gyroscope;
     private final CargoHandler m_cargoHandler;
@@ -42,8 +44,20 @@ public class RobotContainer {
     private final CargoArm m_cargoArm;
 
     private final XboxController m_mechanismController;
-    // private final XboxController m_driveController;
+    private final XboxController m_driveController;
 
+    private final JoystickButton m_intakeCargoButton;
+    private final JoystickButton m_outputCargoButton;
+
+    private final JoystickButton m_runToUpperButton;
+    private final JoystickButton m_runToIntakeButton;
+    private final JoystickButton m_restingPosButton;
+
+    private final JoystickButton m_climberButton;
+
+    /**
+     * The container for the robot. Contains subsystems, OI devices, and commands.
+     */
     public RobotContainer() {
 
         m_driveTrain = new DriveTrain();
@@ -52,66 +66,45 @@ public class RobotContainer {
         m_climber = new Climber();
         m_cargoArm = new CargoArm();
 
+        // TODO: the controller id needs to be changed for m_driveController
+        m_driveController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
         m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
-        // m_driveController = new
-        // XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
 
-        JoystickButton raiseShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
-        JoystickButton lowerShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
-        JoystickButton extendElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
-        JoystickButton retractElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
-        JoystickButton runToUpperButton = new JoystickButton(m_mechanismController,
-                XboxController.Button.kRightBumper.value);
-        JoystickButton runToRestingButton = new JoystickButton(m_mechanismController,
-                XboxController.Button.kLeftBumper.value);
+        // mechanism controller
+        m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
+        m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kLeftBumper.value);
+
+        m_runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
+        m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
+        m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+
+        // drive controller
+        m_climberButton = new JoystickButton(m_driveController, XboxController.Button.kX.value);
 
         configureButtonBindings();
         setDefaultCommands();
-        XboxController mechanismController = new XboxController(0);
-        JoystickButton climberButton = new JoystickButton(mechanismController, XboxController.Button.kA.value);
-        // climberButton.whenHeld(new ClimbForward(m_climber));
-
-        raiseShoulderButton.whenHeld(
-                new RunCommand(() -> m_cargoArm.moveShoulder(0.25), m_cargoArm));
-
-        lowerShoulderButton.whenHeld(
-                new RunCommand(() -> m_cargoArm.moveShoulder(-0.25), m_cargoArm));
-
-        extendElbowButton.whenHeld(
-                new RunCommand(() -> m_cargoArm.moveElbow(0.5), m_cargoArm));
-
-        retractElbowButton.whenHeld(
-                new RunCommand(() -> m_cargoArm.moveElbow(-0.5), m_cargoArm));
-
-        runToUpperButton.whenHeld(
-                new CargoArmToUpper(m_cargoArm));
-
-        runToRestingButton.whenHeld(
-                new CargoArmToResting(m_cargoArm));
-
     }
 
     private void configureButtonBindings() {
-        // this is where you define your buttons (do they need to be class level?)
-        // and assign the appropriate Commands to them. example:
-        // JoystickButton intakeCargoButton =
-        // new JoystickButton(m_mechanismController,
-        // XboxController.Button.kRightBumper.value);
-        // intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
 
+        m_intakeCargoButton.whenHeld(new IntakeCargo(m_cargoHandler));
+        m_outputCargoButton.whenHeld(new OutputCargo(m_cargoHandler));
+
+        m_runToUpperButton.whenHeld(new CargoArmToUpper(m_cargoArm));
+        m_restingPosButton.whenHeld(new CargoArmToResting(m_cargoArm));
+        m_runToIntakeButton.whenHeld(new CargoArmToIntake(m_cargoArm));
+
+        m_climberButton.whenHeld(new ClimbForward(m_climber));
     }
 
     private void setDefaultCommands() {
 
         m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
 
-        /*
-         * m_driveTrain.setDefaultCommand(new RunCommand(()->
-         * m_driveTrain.arcadeDrive(-m_mechanismController.getRightY(),
-         * m_mechanismController.getLeftX()),
-         * m_driveTrain));
-         */
-
+        m_driveTrain.setDefaultCommand(new RunCommand(() -> m_driveTrain.drive(
+                m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis(),
+                m_mechanismController.getLeftX(), m_mechanismController.getRightX()),
+                m_driveTrain));
     }
 
     /**
