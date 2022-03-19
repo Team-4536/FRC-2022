@@ -49,6 +49,7 @@ public final class Constants {
 
         public final static double CARGO_ARM_PID_ELBOW_VALUE = 8000.0;
         public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
+
     }
 
     public static final class CargoHandlerInfo {
