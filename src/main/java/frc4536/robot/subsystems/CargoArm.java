@@ -3,6 +3,7 @@ package frc4536.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -12,6 +13,8 @@ import frc4536.robot.Constants;
 import frc4536.robot.Constants.CargoArmInfo;
 
 public class CargoArm extends SubsystemBase{
+
+    private DigitalInput m_elbowHome;
 
     private Spark m_cargoArmElbow;
     private CANSparkMax m_cargoArmShoulder;
@@ -26,6 +29,8 @@ public class CargoArm extends SubsystemBase{
 
         m_cargoArmElbow.setInverted(CargoArmInfo.CARGO_ARM_ELBOW_MOTOR_IS_INVERTED);
         m_cargoArmShoulder.setInverted(CargoArmInfo.CARGO_ARM_SHOULDER_MOTOR_IS_INVERTED);
+
+        m_elbowHome = new DigitalInput(CargoArmInfo.CARGO_ARM_ELBOW_HOME_ID);
 
         m_cargoArmElbowEncoder = new Encoder(CargoArmInfo.CHANNEL_A_CARGO_ARM_ELBOW_ENCODER,
                 CargoArmInfo.CHANNEL_B_CARGO_ARM_ELBOW_ENCODER, 
@@ -50,6 +55,10 @@ public class CargoArm extends SubsystemBase{
         return m_cargoArmShoulderEncoder.getPosition();
     }
 
+    public boolean elbowIsHome(){
+        return !m_elbowHome.get();
+    }
+
     @Override
     public void periodic() {
         if (CargoArmInfo.CARGO_ARM_IN_DASHBOARD){
@@ -57,6 +66,7 @@ public class CargoArm extends SubsystemBase{
             SmartDashboard.putNumber("Shoulder Position", getShoulderPosition());
             SmartDashboard.putNumber("Elbow Motor", m_cargoArmElbow.get());
             SmartDashboard.putNumber("Shoulder Motor", m_cargoArmShoulder.get());
+            SmartDashboard.putBoolean("is elbow at home position", m_elbowHome.get());
         }
     }
 }
