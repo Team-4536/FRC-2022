@@ -18,7 +18,6 @@ public class CargoArmToResting extends CommandBase {
     public void execute() {
         double currentShoulderPos = m_cargoArm.getShoulderPosition();
         double currentElbowPos = m_cargoArm.getElbowPosition();
-        double integralPIDvalue = 0;
 
         double targetElbowPos = (currentShoulderPos - CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION)
                 * CargoArmInfo.CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE
@@ -32,10 +31,6 @@ public class CargoArmToResting extends CommandBase {
                 * Math.abs(CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION - currentShoulderPos))
                 / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE,
                 CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
-
-        while (currentElbowPos < 1000) {
-            integralPIDvalue += (currentElbowPos - CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION);
-        }
 
         if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
             m_cargoArm.moveShoulder(-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);

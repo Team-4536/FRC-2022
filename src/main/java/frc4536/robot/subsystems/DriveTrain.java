@@ -47,26 +47,38 @@ public class DriveTrain extends SubsystemBase{
 
     public void drive(double driveSpeed, double robotRotation, double spin){
       // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
-        
-        if(robotRotation > 0.04){
 
-            m_differentialDrive.tankDrive(driveSpeed * 7 * Math.abs(robotRotation), driveSpeed);
+
+        
+        if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
+
+            m_differentialDrive.tankDrive( driveSpeed, (driveSpeed - Math.abs(robotRotation)));
+            SmartDashboard.putNumber("rotation", robotRotation);
+            SmartDashboard.putNumber("speed", driveSpeed);
 
         }
-        else if(robotRotation < -0.04){
+        else if(robotRotation < -0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
 
-            m_differentialDrive.tankDrive(driveSpeed , driveSpeed * 7 * Math.abs(robotRotation));
+            m_differentialDrive.tankDrive((driveSpeed - Math.abs(robotRotation)), driveSpeed );
+            SmartDashboard.putNumber("rotation", robotRotation);
+            SmartDashboard.putNumber("speed", driveSpeed);
 
         }
         else if(driveSpeed> 0.01 || driveSpeed < -0.01){
             m_differentialDrive.tankDrive(driveSpeed , driveSpeed);
+            SmartDashboard.putNumber("rotation", robotRotation);
+            SmartDashboard.putNumber("speed", driveSpeed);
         }
          else if(spin < -0.04){
             m_differentialDrive.tankDrive(spin , -spin );
+            SmartDashboard.putNumber("rotation", robotRotation);
+            SmartDashboard.putNumber("speed", driveSpeed);
 
         }
         else if(spin > 0.04){
             m_differentialDrive.tankDrive(spin , -spin );
+            SmartDashboard.putNumber("rotation", robotRotation);
+            SmartDashboard.putNumber("speed", driveSpeed);
 
         }
         
@@ -122,6 +134,7 @@ public class DriveTrain extends SubsystemBase{
             SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
             SmartDashboard.putNumber("Left Drive Encoder Value", getLeftDriveEncoderCount());
             SmartDashboard.putNumber("Right Drive Encoder Value", getRightDriveEncoderCount());
+            
         }
     }
 }
