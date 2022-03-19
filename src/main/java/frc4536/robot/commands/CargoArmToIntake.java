@@ -27,8 +27,8 @@ public class CargoArmToIntake extends CommandBase {
             m_cargoArm.moveElbow(
                     CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * ((targetElbowPos - currentElbowPos) / (3000)));
         } else if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION) {
-            if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_RESTING_POSITION) {
-                m_cargoArm.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+            if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_INTAKE_ELBOW_POSITION){
+                m_cargoArm.moveElbow(CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
             } else
                 m_cargoArm.moveElbow(0.0);
             m_cargoArm.moveShoulder((-CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER) / 2);
