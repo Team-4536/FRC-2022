@@ -3,8 +3,11 @@ package frc4536.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SensorUtil;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -15,6 +18,8 @@ import frc4536.robot.Constants.CargoArmInfo;
 public class CargoArm extends SubsystemBase{
 
     private DigitalInput m_elbowHome;
+
+    private AnalogInput m_infraredSensor;
 
     private Spark m_cargoArmElbow;
     private CANSparkMax m_cargoArmShoulder;
@@ -31,6 +36,8 @@ public class CargoArm extends SubsystemBase{
         m_cargoArmShoulder.setInverted(CargoArmInfo.CARGO_ARM_SHOULDER_MOTOR_IS_INVERTED);
 
         m_elbowHome = new DigitalInput(CargoArmInfo.CARGO_ARM_ELBOW_HOME_ID);
+
+        m_infraredSensor = new AnalogInput(CargoArmInfo.CARGO_ARM_INFRARED_SENSOR_ID);
 
         m_cargoArmElbowEncoder = new Encoder(CargoArmInfo.CHANNEL_A_CARGO_ARM_ELBOW_ENCODER,
                 CargoArmInfo.CHANNEL_B_CARGO_ARM_ELBOW_ENCODER, 
@@ -59,6 +66,12 @@ public class CargoArm extends SubsystemBase{
         return !m_elbowHome.get();
     }
 
+    public double infraredSensorGetValue(){
+        return m_infraredSensor.getVoltage();
+    }
+    
+    
+
     @Override
     public void periodic() {
         if (CargoArmInfo.CARGO_ARM_IN_DASHBOARD){
@@ -67,6 +80,7 @@ public class CargoArm extends SubsystemBase{
             SmartDashboard.putNumber("Elbow Motor", m_cargoArmElbow.get());
             SmartDashboard.putNumber("Shoulder Motor", m_cargoArmShoulder.get());
             SmartDashboard.putBoolean("is elbow at home position", m_elbowHome.get());
+            SmartDashboard.putNumber("Range Sensor", m_infraredSensor.getVoltage());
         }
     }
 }
