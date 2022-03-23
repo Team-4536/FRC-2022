@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Counter;
 
 import frc4536.robot.Constants;
 import frc4536.robot.Constants.CargoArmInfo;
@@ -15,11 +16,14 @@ import frc4536.robot.Constants.CargoArmInfo;
 public class CargoArm extends SubsystemBase{
 
     private DigitalInput m_elbowHome;
+    private Counter m_wall;
+    
 
     private Spark m_cargoArmElbow;
     private CANSparkMax m_cargoArmShoulder;
     private Encoder m_cargoArmElbowEncoder;
     private RelativeEncoder m_cargoArmShoulderEncoder;
+    
 
     public CargoArm(){
         m_cargoArmElbow = new Spark(CargoArmInfo.CARGO_ARM_ELBOW_ID);
@@ -31,7 +35,8 @@ public class CargoArm extends SubsystemBase{
         m_cargoArmShoulder.setInverted(CargoArmInfo.CARGO_ARM_SHOULDER_MOTOR_IS_INVERTED);
 
         m_elbowHome = new DigitalInput(CargoArmInfo.CARGO_ARM_ELBOW_HOME_ID);
-
+        m_wall = new Counter(0);
+ 
         m_cargoArmElbowEncoder = new Encoder(CargoArmInfo.CHANNEL_A_CARGO_ARM_ELBOW_ENCODER,
                 CargoArmInfo.CHANNEL_B_CARGO_ARM_ELBOW_ENCODER, 
                 CargoArmInfo.CARGO_ARM_ELBOW_ENCODER_IS_INVERTED,
@@ -58,6 +63,9 @@ public class CargoArm extends SubsystemBase{
     public boolean elbowIsHome(){
         return !m_elbowHome.get();
     }
+    public double wall(){
+        return m_wall.get();
+    }
 
     @Override
     public void periodic() {
@@ -67,6 +75,7 @@ public class CargoArm extends SubsystemBase{
             SmartDashboard.putNumber("Elbow Motor", m_cargoArmElbow.get());
             SmartDashboard.putNumber("Shoulder Motor", m_cargoArmShoulder.get());
             SmartDashboard.putBoolean("is elbow at home position", elbowIsHome());
+            SmartDashboard.putNumber("wall distance :)", wall());
         }
     }
 }
