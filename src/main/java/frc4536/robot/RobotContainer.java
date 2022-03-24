@@ -67,7 +67,7 @@ public class RobotContainer {
         m_cargoArm = new CargoArm();
 
         // TODO: the controller id needs to be changed for m_driveController
-        m_driveController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
+        m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
         m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
 
         // mechanism controller
@@ -79,7 +79,7 @@ public class RobotContainer {
         m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
 
         // drive controller
-        m_climberButton = new JoystickButton(m_driveController, XboxController.Button.kX.value);
+        m_climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
 
         configureButtonBindings();
         setDefaultCommands();
@@ -94,6 +94,8 @@ public class RobotContainer {
         m_restingPosButton.whenHeld(new CargoArmToResting(m_cargoArm));
         m_runToIntakeButton.whenHeld(new CargoArmToIntake(m_cargoArm));
 
+        m_runToIntakeButton.whenReleased(new CargoArmToResting(m_cargoArm));
+
         m_climberButton.whenHeld(new ClimbForward(m_climber));
     }
 
@@ -102,8 +104,8 @@ public class RobotContainer {
         m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
 
         m_driveTrain.setDefaultCommand(new RunCommand(() -> m_driveTrain.drive(
-                m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis(),
-                m_mechanismController.getLeftX(), m_mechanismController.getRightX()),
+                m_driveController.getRightTriggerAxis() - m_driveController.getLeftTriggerAxis(),
+                m_driveController.getLeftX(), m_driveController.getRightX()),
                 m_driveTrain));
     }
 
