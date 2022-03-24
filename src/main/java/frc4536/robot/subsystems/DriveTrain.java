@@ -47,6 +47,8 @@ public class DriveTrain extends SubsystemBase{
 
     public void drive(double driveSpeed, double robotRotation, double spin){
       // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
+
+      spin = spin * .85;
         
         if(robotRotation > 0.04){
 
@@ -62,11 +64,11 @@ public class DriveTrain extends SubsystemBase{
             m_differentialDrive.tankDrive(driveSpeed , driveSpeed);
         }
          else if(spin < -0.04){
-            m_differentialDrive.tankDrive(spin , -spin );
+            m_differentialDrive.tankDrive(spin, -spin);
 
         }
         else if(spin > 0.04){
-            m_differentialDrive.tankDrive(spin , -spin );
+            m_differentialDrive.tankDrive(spin, -spin);
 
         }
         
