@@ -1,5 +1,7 @@
 package frc4536.robot.subsystems;
 
+import javax.swing.JList.DropLocation;
+
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
@@ -32,7 +34,7 @@ public class DriveTrain extends SubsystemBase{
 
         m_differentialDrive = new DifferentialDrive(m_leftMotorControllerGroup, m_rightMotorControllerGroup);
         m_differentialDrive.setDeadband(DriveInfo.DIFFERENTIAL_DRIVE_DEADBAND);
-        m_differentialDrive.setMaxOutput(DriveInfo.SET_MAX_RATE);
+        //m_differentialDrive.setMaxOutput(DriveInfo.SET_MAX_RATE);
 
         m_leftDriveEncoder = new Encoder(DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_A, 
                                          DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_B, 
@@ -46,8 +48,8 @@ public class DriveTrain extends SubsystemBase{
 
 
     public void drive(double driveSpeed, double robotRotation, double spin){
-      // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);
-
+      // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);  
+     
 
         
         if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
