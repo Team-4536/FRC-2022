@@ -73,17 +73,6 @@ public class RobotContainer {
     m_cargoArm = new CargoArm();
 
     m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
-    // m_driveController = new
-    // XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
-
-    JoystickButton raiseShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
-    JoystickButton lowerShoulderButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
-    JoystickButton extendElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
-    JoystickButton retractElbowButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
-    JoystickButton runToUpperButton = new JoystickButton(m_mechanismController,
-        XboxController.Button.kRightBumper.value);
-    JoystickButton runToRestingButton = new JoystickButton(m_mechanismController,
-        XboxController.Button.kLeftBumper.value);
 
     configureButtonBindings();
     setDefaultCommands();
@@ -260,8 +249,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    Pose2d initialPose = new Pose2d(m_xInitial.getDouble(0.0), m_yInitial.getDouble(0.0), Rotation2d.fromDegrees(0.0));
-    return generateAutoCommands(m_chooser.getSelected(), initialPose);
+      return new RamseteTest(m_driveTrain, m_gyroscope);
   }
 
   private enum Autonomous {
