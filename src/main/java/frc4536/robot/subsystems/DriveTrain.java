@@ -87,6 +87,7 @@ public class DriveTrain extends SubsystemBase{
     public void setOutput(double leftVolts, double rightVolts) {
         m_leftMotorControllerGroup.setVoltage(leftVolts);
         m_rightMotorControllerGroup.setVoltage(rightVolts);
+        m_differentialDrive.feed(); // to prevent the MotorSafety from stopping the robot
     }
 
     public double leftDriveMotorSpeed(){
