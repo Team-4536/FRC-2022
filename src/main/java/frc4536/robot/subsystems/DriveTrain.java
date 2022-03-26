@@ -1,24 +1,22 @@
 package frc4536.robot.subsystems;
 
-import javax.swing.JList.DropLocation;
-
 import com.revrobotics.CANSparkMax;
 
-import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import frc4536.robot.Constants;
 import frc4536.robot.Constants.DriveInfo;
 
 public class DriveTrain extends SubsystemBase{
-    private final  DifferentialDrive m_differentialDrive;
-    private final Encoder m_leftDriveEncoder;
-    private final Encoder m_rightDriveEncoder;
+    private final DifferentialDrive m_differentialDrive;
     private final MotorControllerGroup m_leftMotorControllerGroup;
     private final MotorControllerGroup m_rightMotorControllerGroup;
+    private final Encoder m_leftDriveEncoder;
+    private final Encoder m_rightDriveEncoder;
 
     public DriveTrain(){
         CANSparkMax frontLeftDriveMotor = new CANSparkMax(DriveInfo.LEFT_FRONT_DRIVE_MOTOR_ID, DriveInfo.DRIVE_MOTOR_BRUSHED_TYPE);
@@ -34,7 +32,6 @@ public class DriveTrain extends SubsystemBase{
 
         m_differentialDrive = new DifferentialDrive(m_leftMotorControllerGroup, m_rightMotorControllerGroup);
         m_differentialDrive.setDeadband(DriveInfo.DIFFERENTIAL_DRIVE_DEADBAND);
-        //m_differentialDrive.setMaxOutput(DriveInfo.SET_MAX_RATE);
 
         m_leftDriveEncoder = new Encoder(DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_A, 
                                          DriveInfo.LEFT_DRIVE_ENCODER_CHANNEL_B, 
@@ -46,52 +43,29 @@ public class DriveTrain extends SubsystemBase{
                                           DriveInfo.DRIVE_MOTOR_ENCODER_ENCODINGTYPE);                            
     } 
 
-
     public void drive(double driveSpeed, double robotRotation, double spin){
-      // m_differentialDrive.arcadeDrive(driveSpeed, robotRotation);  
-     
-
-        
         if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
-
-            m_differentialDrive.tankDrive( driveSpeed, (driveSpeed - Math.abs(robotRotation)));
-            SmartDashboard.putNumber("rotation", robotRotation);
-            SmartDashboard.putNumber("speed", driveSpeed);
-
+            m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation));
         }
         else if(robotRotation < -0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
-
-            m_differentialDrive.tankDrive((driveSpeed - Math.abs(robotRotation)), driveSpeed );
-            SmartDashboard.putNumber("rotation", robotRotation);
-            SmartDashboard.putNumber("speed", driveSpeed);
-
+            m_differentialDrive.tankDrive(driveSpeed - Math.abs(robotRotation), driveSpeed);
         }
         else if(driveSpeed> 0.01 || driveSpeed < -0.01){
-            m_differentialDrive.tankDrive(driveSpeed , driveSpeed);
-            SmartDashboard.putNumber("rotation", robotRotation);
-            SmartDashboard.putNumber("speed", driveSpeed);
+            m_differentialDrive.tankDrive(driveSpeed, driveSpeed);
         }
          else if(spin < -0.04){
-            m_differentialDrive.tankDrive(spin , -spin );
-            SmartDashboard.putNumber("rotation", robotRotation);
-            SmartDashboard.putNumber("speed", driveSpeed);
-
+            m_differentialDrive.tankDrive(spin, -spin);
         }
         else if(spin > 0.04){
-            m_differentialDrive.tankDrive(spin , -spin );
-            SmartDashboard.putNumber("rotation", robotRotation);
-            SmartDashboard.putNumber("speed", driveSpeed);
-
+            m_differentialDrive.tankDrive(spin, -spin);
         }
-        
+        SmartDashboard.putNumber("rotation", robotRotation);
+        SmartDashboard.putNumber("speed", driveSpeed);
     }
-
-    //public void arcadeDrive
-
-
     public void tankDrive(double leftSideSpeed, double rightSideSpeed ){
         m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);
     }
+
     public void stopDriving(){
         m_differentialDrive.tankDrive(0,0);
     }
@@ -136,7 +110,6 @@ public class DriveTrain extends SubsystemBase{
             SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
             SmartDashboard.putNumber("Left Drive Encoder Value", getLeftDriveEncoderCount());
             SmartDashboard.putNumber("Right Drive Encoder Value", getRightDriveEncoderCount());
-            
         }
     }
 }
