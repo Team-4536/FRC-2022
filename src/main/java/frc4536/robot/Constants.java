@@ -19,8 +19,8 @@ public final class Constants {
 
         public final static MotorType CARGOARM_SHOULDER_BRUSHED_TYPE = MotorType.kBrushless;
 
-        public final static double CARGO_ARM_ELBOW_DEFAULT_POWER = 0.5;
-        public final static double CARGO_ARM_SHOULDER_DEFAULT_POWER = 0.5;
+        public final static double CARGO_ARM_ELBOW_DEFAULT_POWER = 0.8;
+        public final static double CARGO_ARM_SHOULDER_DEFAULT_POWER = 0.8;
 
         public final static int CHANNEL_A_CARGO_ARM_ELBOW_ENCODER = 4;
         public final static int CHANNEL_B_CARGO_ARM_ELBOW_ENCODER = 5;
@@ -33,13 +33,13 @@ public final class Constants {
 
         public final static double CARGOARM_SHOULDER_RESTING_POSITION = 0.0;
         public final static double CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 50.0;
-        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 91.5;
+        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 101;
 
         public final static double CARGOARM_ELBOW_RESTING_POSITION = 0.0;
         public final static double CARGOARM_ELBOW_INTERMEDIATE_POSITION = 75000.0;
         public final static double CARGOARM_ELBOW_INTER_RESTING_POSITION = 62000.0;
-        public final static double CARGOARM_ELBOW_FINAL_POSITION = 137000.0;
-        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 163000.0;
+        public final static double CARGOARM_ELBOW_FINAL_POSITION = 133000.0;
+        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 175000.0;
 
         public final static boolean CARGO_ARM_IN_DASHBOARD = true;
 
@@ -50,6 +50,9 @@ public final class Constants {
         public final static double CARGO_ARM_PID_ELBOW_VALUE = 8000.0;
         public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
 
+        public final static int CARGO_ARM_ELBOW_HOME_ID = 6; 
+
+        public final static int CARGO_ARM_INFRARED_SENSOR_ID = 0;
     }
 
     public static final class CargoHandlerInfo {
