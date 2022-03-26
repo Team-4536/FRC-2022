@@ -5,8 +5,6 @@
 package frc4536.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -55,9 +53,6 @@ public class RobotContainer {
 
     private final JoystickButton m_climberButton;
 
-    /**
-     * The container for the robot. Contains subsystems, OI devices, and commands.
-     */
     public RobotContainer() {
 
         m_driveTrain = new DriveTrain();
@@ -66,20 +61,19 @@ public class RobotContainer {
         m_climber = new Climber();
         m_cargoArm = new CargoArm();
 
-        // TODO: the controller id needs to be changed for m_driveController
-        m_driveController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
+        m_driveController = new XboxController(Constants.RobotInfo.DRIVE_CONTROLLER_ID);
         m_mechanismController = new XboxController(Constants.RobotInfo.MECHANISM_CONTROLLER_ID);
 
         // mechanism controller
-        m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
-        m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kLeftBumper.value);
+        m_outputCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kLeftBumper.value);
+        m_intakeCargoButton = new JoystickButton(m_mechanismController, XboxController.Button.kRightBumper.value);
 
         m_runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
         m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
         m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
 
         // drive controller
-        m_climberButton = new JoystickButton(m_driveController, XboxController.Button.kX.value);
+        m_climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
 
         configureButtonBindings();
         setDefaultCommands();
@@ -93,7 +87,6 @@ public class RobotContainer {
         m_runToUpperButton.whenHeld(new CargoArmToUpper(m_cargoArm));
         m_restingPosButton.whenHeld(new CargoArmToResting(m_cargoArm));
         m_runToIntakeButton.whenHeld(new CargoArmToIntake(m_cargoArm));
-        //m_runToIntakeButton.whenReleased(new CargoArmToResting(m_cargoArm));
 
         m_climberButton.whenHeld(new ClimbForward(m_climber));
     }
@@ -103,8 +96,8 @@ public class RobotContainer {
         m_cargoArm.setDefaultCommand(new CargoArmHoldInPlace(m_cargoArm));
 
         m_driveTrain.setDefaultCommand(new RunCommand(() -> m_driveTrain.drive(
-                m_mechanismController.getRightTriggerAxis() - m_mechanismController.getLeftTriggerAxis(),
-                m_mechanismController.getLeftX(), m_mechanismController.getRightX()),
+                m_driveController.getRightTriggerAxis() - m_driveController.getLeftTriggerAxis(),
+                m_driveController.getLeftX(), m_driveController.getRightX()),
                 m_driveTrain));
     }
 
