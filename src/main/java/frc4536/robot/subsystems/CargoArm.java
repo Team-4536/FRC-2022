@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc4536.robot.Constants.CargoArmInfo;
+import pabeles.concurrency.ConcurrencyOps.Reset;
 
 public class CargoArm extends SubsystemBase {
 
@@ -76,10 +77,15 @@ public class CargoArm extends SubsystemBase {
 
     @Override
     public void periodic() {
+
         if (elbowIsHome()) {
             m_cargoArmElbowEncoder.reset();
         }
-        
+
+        if (shoulderIsHome()) {
+            m_cargoArmShoulderEncoder.setPosition(0.0);
+        }
+
         if (CargoArmInfo.CARGO_ARM_IN_DASHBOARD) {
             SmartDashboard.putNumber("Elbow Position", getElbowPosition());
             SmartDashboard.putNumber("Shoulder Position", getShoulderPosition());
