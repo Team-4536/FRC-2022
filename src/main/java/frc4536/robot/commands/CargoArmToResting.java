@@ -22,6 +22,12 @@ public class CargoArmToResting extends CommandBase {
     }
 
     @Override
+    public void initialize() {
+        m_elbowHasGoneHome = false;
+        m_shoulderHasGoneHome = false;
+    }
+
+    @Override
     public void execute() {
         double currentShoulderPos = m_cargoArm.getShoulderPosition();
         double currentElbowPos = m_cargoArm.getElbowPosition();
@@ -71,14 +77,13 @@ public class CargoArmToResting extends CommandBase {
                 m_cargoArm.moveElbow(0.0);
             }
         }
-        SmartDashboard.putBoolean("has gone home", m_elbowHasGoneHome);
+        SmartDashboard.putBoolean("shoulder has gone home", m_shoulderHasGoneHome);
     }
 
     @Override
     public void end(boolean interrupted) {
         m_cargoArm.moveElbow(0.0);
         m_cargoArm.moveShoulder(0.0);
-        m_elbowHasGoneHome = false;
     }
 
 
