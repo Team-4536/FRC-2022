@@ -22,6 +22,7 @@ import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
 import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.commands.OutputCargo;
+import frc4536.robot.commands.autos.autostryone;
 import frc4536.robot.commands.ClimbForward;
 
 /**
@@ -108,6 +109,6 @@ public class RobotContainer {
      */
     public Command getAutonomousCommand() {
         // An ExampleCommand will run in autonomous
-        return null;
+        return new autostryone(m_driveTrain, m_cargoArm, m_cargoHandler);
     }
 }
