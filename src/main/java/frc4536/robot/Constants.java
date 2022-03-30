@@ -33,13 +33,13 @@ public final class Constants {
 
         public final static double CARGOARM_SHOULDER_RESTING_POSITION = 0.0;
         public final static double CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 50.0;
-        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 101;
+        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 93;
 
         public final static double CARGOARM_ELBOW_RESTING_POSITION = 0.0;
         public final static double CARGOARM_ELBOW_INTERMEDIATE_POSITION = 75000.0;
         public final static double CARGOARM_ELBOW_INTER_RESTING_POSITION = 62000.0;
-        public final static double CARGOARM_ELBOW_FINAL_POSITION = 133000.0;
-        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 175000.0;
+        public final static double CARGOARM_ELBOW_FINAL_POSITION = 140000.0;
+        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 147000.0;
 
         public final static boolean CARGO_ARM_IN_DASHBOARD = true;
 
@@ -51,6 +51,7 @@ public final class Constants {
         public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
 
         public final static int CARGO_ARM_ELBOW_HOME_ID = 6; 
+        public final static int CARGO_ARM_SHOULDER_HOME_ID = 7; 
 
         public final static int CARGO_ARM_INFRARED_SENSOR_ID = 0;
     }
