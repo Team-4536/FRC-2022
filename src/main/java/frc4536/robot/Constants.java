@@ -33,7 +33,7 @@ public final class Constants {
 
         public final static double CARGOARM_SHOULDER_RESTING_POSITION = 0.0;
         public final static double CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 50.0;
-        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 101;
+        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 93;
 
         public final static double CARGOARM_ELBOW_RESTING_POSITION = 0.0;
         public final static double CARGOARM_ELBOW_INTERMEDIATE_POSITION = 75000.0;
