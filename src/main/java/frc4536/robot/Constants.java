@@ -120,7 +120,7 @@ public final class Constants {
 
         private static final double DRIVE_WHEEL_DIAMETER = 6.0;
         private static final double WHEEL_CIRCUMFERENCE_IN_INCHES = DRIVE_WHEEL_DIAMETER * Math.PI;
-        private static final double DRIVE_ENCODER_CLICKS_PER_ROTATION = 1.0;
+        private static final double DRIVE_ENCODER_CLICKS_PER_ROTATION = 2050.0; //encoder.getDistance();??
         public static final double CLICKS_PER_INCH = WHEEL_CIRCUMFERENCE_IN_INCHES / DRIVE_ENCODER_CLICKS_PER_ROTATION;
 
         private static final double INCHES_WIDTH_OF_AXLE = 22.0;

@@ -106,6 +106,7 @@ public class DriveTrain extends SubsystemBase{
     @Override
     public void periodic() { 
         if (Constants.DriveInfo.SHOW_DRIVETRAIN_IN_DASHBOARD){
+            SmartDashboard.putNumber("drive encoder", m_leftDriveEncoder.getDistance());
             SmartDashboard.putNumber("Left Drive Speed", leftDriveMotorSpeed());
             SmartDashboard.putNumber("Right Drive Speed", rightDriveMotorSpeed());
             SmartDashboard.putNumber("Left Drive Encoder Value", getLeftDriveEncoderCount());
