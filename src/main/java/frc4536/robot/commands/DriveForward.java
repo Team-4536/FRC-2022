@@ -3,6 +3,7 @@ package frc4536.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc4536.robot.Constants.RobotInfo;
 import frc4536.robot.subsystems.DriveTrain;
 
 public class DriveForward extends CommandBase{
@@ -11,9 +12,11 @@ public class DriveForward extends CommandBase{
     private double m_speed;
     private double m_distanceInFeet;
     private Timer m_timer;
+    private double m_goalPosition;
 
     public DriveForward(DriveTrain driveTrain, double speed, double distanceInFeet){
         m_driveTrain = driveTrain;
+        m_goalPosition = (distanceInFeet * 12) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
         addRequirements(m_driveTrain);
     }
 
