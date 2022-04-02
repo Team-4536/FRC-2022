@@ -48,7 +48,8 @@ public final class Constants {
                 / (CARGOARM_SHOULDER_UPPER_POSITION - CARGOARM_SHOULDER_INTERMEDIATE_POSITION);
 
         public final static double CARGO_ARM_PID_ELBOW_VALUE = 8000.0;
-        public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
+        public final static double CARGO_ARM_PID_SHOULDER_VALUE_RESTING = 30.0;
+        public final static double CARGO_ARM_PID_SHOULDER_VALUE_UPPER = 15.0;
 
         public final static int CARGO_ARM_ELBOW_HOME_ID = 6; 
         public final static int CARGO_ARM_SHOULDER_HOME_ID = 7; 

@@ -55,7 +55,7 @@ public class CargoArmToResting extends CommandBase {
                 CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
         double pidPowerShoulderValue = -Math.min(Math.max((CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER
                 * Math.abs(CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION - currentShoulderPos))
-                / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE, 0.2),
+                / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE_RESTING, 0.2),
                 CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
 
         if (currentShoulderPos > CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {

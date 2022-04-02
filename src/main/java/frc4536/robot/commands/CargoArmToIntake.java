@@ -25,7 +25,7 @@ public class CargoArmToIntake extends CommandBase {
         
         double pidPowerShoulderValue = -Math.min((CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER
                 * Math.abs(CargoArmInfo.CARGOARM_SHOULDER_RESTING_POSITION - currentShoulderPos))
-                / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE,
+                / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE_RESTING,
                 CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
         double pidPowerElbowValue = Math.min((CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER
                 * Math.abs(CargoArmInfo.CARGOARM_ELBOW_INTAKE_ELBOW_POSITION - currentElbowPos))

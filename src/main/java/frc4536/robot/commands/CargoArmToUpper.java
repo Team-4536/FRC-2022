@@ -24,7 +24,7 @@ public class CargoArmToUpper extends CommandBase {
 
         double pidPowerShoulderValue = Math.min(Math.max(Math.abs(
             currentShoulderPos - CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION)
-             / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE, .2),
+             / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE_RESTING, .3),
              CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
 
         if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
