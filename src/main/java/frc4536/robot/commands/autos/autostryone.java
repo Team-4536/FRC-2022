@@ -15,7 +15,7 @@ public class autostryone extends SequentialCommandGroup {
     public autostryone  (DriveTrain driveTrain, CargoArm cargoArm, CargoHandler cargoHandler) {
 
         addCommands(new CargoArmToUpper(cargoArm).deadlineWith(getDontMove(driveTrain)),
-                    new OutputCargo(cargoHandler).withTimeout(4).deadlineWith(getDontMove(driveTrain)),
+                    new OutputCargo(cargoHandler).withTimeout(2).deadlineWith(getDontMove(driveTrain)),
                     new CargoArmToResting(cargoArm).deadlineWith(getDontMove(driveTrain)),
                     new RunCommand(() -> driveTrain.tankDrive(-0.5, -0.5), driveTrain).withTimeout(1),
                     getDontMove(driveTrain));
