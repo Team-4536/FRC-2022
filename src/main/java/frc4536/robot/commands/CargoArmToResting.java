@@ -86,5 +86,10 @@ public class CargoArmToResting extends CommandBase {
         m_cargoArm.moveShoulder(0.0);
     }
 
+    @Override
+    public boolean isFinished(){
+        return m_elbowHasGoneHome && m_shoulderHasGoneHome;
+    }
+
 
 }
