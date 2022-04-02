@@ -57,4 +57,11 @@ public class CargoArmToUpper extends CommandBase {
         m_cargoArm.moveElbow(0.0);
         m_cargoArm.moveShoulder(0.0);
     }
+
+    @Override
+    public boolean isFinished(){
+        return (m_cargoArm.getElbowPosition() >= CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION)
+         && (m_cargoArm.getShoulderPosition() >= CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION);
+    }
+    
 }
