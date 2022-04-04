@@ -23,9 +23,6 @@ public class DriveForward extends CommandBase{
     @Override
     public void initialize() {
         SmartDashboard.putString("command","drive forward");
-        m_timer = new Timer();
-        m_timer.reset();
-        m_timer.start();
     }
 
     @Override
@@ -41,7 +38,7 @@ public class DriveForward extends CommandBase{
 
     @Override
     public boolean isFinished() {
-        return m_timer.get() >= 1.0;
+        return (m_driveTrain.getLeftDriveEncoderCount() >= m_goalPosition);
     }
 
 
