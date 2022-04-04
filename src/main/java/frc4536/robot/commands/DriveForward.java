@@ -27,7 +27,7 @@ public class DriveForward extends CommandBase{
 
     @Override
     public void execute(){
-        m_driveTrain.drive(0.6, 0, 0);
+        m_driveTrain.drive(0.5, 0, 0);
     }
 
     @Override
