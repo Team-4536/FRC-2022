@@ -33,13 +33,13 @@ public final class Constants {
 
         public final static double CARGOARM_SHOULDER_RESTING_POSITION = 0.0;
         public final static double CARGOARM_SHOULDER_INTERMEDIATE_POSITION = 50.0;
-        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 101;
+        public final static double CARGOARM_SHOULDER_UPPER_POSITION = 87.5;
 
         public final static double CARGOARM_ELBOW_RESTING_POSITION = 0.0;
         public final static double CARGOARM_ELBOW_INTERMEDIATE_POSITION = 75000.0;
-        public final static double CARGOARM_ELBOW_INTER_RESTING_POSITION = 62000.0;
-        public final static double CARGOARM_ELBOW_FINAL_POSITION = 133000.0;
-        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 175000.0;
+        public final static double CARGOARM_ELBOW_INTER_RESTING_POSITION = 70000.0;
+        public final static double CARGOARM_ELBOW_FINAL_POSITION = 140000.0;
+        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 180000.0;
 
         public final static boolean CARGO_ARM_IN_DASHBOARD = true;
 
@@ -48,9 +48,11 @@ public final class Constants {
                 / (CARGOARM_SHOULDER_UPPER_POSITION - CARGOARM_SHOULDER_INTERMEDIATE_POSITION);
 
         public final static double CARGO_ARM_PID_ELBOW_VALUE = 8000.0;
-        public final static double CARGO_ARM_PID_SHOULDER_VALUE = 30.0;
+        public final static double CARGO_ARM_PID_SHOULDER_VALUE_RESTING = 30.0;
+        public final static double CARGO_ARM_PID_SHOULDER_VALUE_UPPER = 15.0;
 
         public final static int CARGO_ARM_ELBOW_HOME_ID = 6; 
+        public final static int CARGO_ARM_SHOULDER_HOME_ID = 7; 
 
         public final static int CARGO_ARM_INFRARED_SENSOR_ID = 0;
     }
@@ -118,8 +120,8 @@ public final class Constants {
 
         private static final double DRIVE_WHEEL_DIAMETER = 6.0;
         private static final double WHEEL_CIRCUMFERENCE_IN_INCHES = DRIVE_WHEEL_DIAMETER * Math.PI;
-        private static final double DRIVE_ENCODER_CLICKS_PER_ROTATION = 1.0;
-        public static final double CLICKS_PER_INCH = WHEEL_CIRCUMFERENCE_IN_INCHES / DRIVE_ENCODER_CLICKS_PER_ROTATION;
+        private static final double DRIVE_ENCODER_CLICKS_PER_ROTATION = 2050.0; 
+        public static final double CLICKS_PER_INCH = DRIVE_ENCODER_CLICKS_PER_ROTATION/WHEEL_CIRCUMFERENCE_IN_INCHES;
 
         private static final double INCHES_WIDTH_OF_AXLE = 22.0;
         private static final double INCHES_LENGTH_OF_AXLE = 24.0;

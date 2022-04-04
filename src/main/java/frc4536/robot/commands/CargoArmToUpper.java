@@ -22,6 +22,11 @@ public class CargoArmToUpper extends CommandBase {
                 * CargoArmInfo.CARGO_ARM_ELBOW_TO_SHOULDER_RATIO_ABOVE_INTERMEDIATE
                 + CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION;
 
+        double pidPowerShoulderValue = Math.min(Math.max(Math.abs(
+            currentShoulderPos - CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION)
+             / CargoArmInfo.CARGO_ARM_PID_SHOULDER_VALUE_RESTING, .3),
+             CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
+
         if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_INTERMEDIATE_POSITION) {
             if (currentElbowPos > CargoArmInfo.CARGOARM_ELBOW_INTERMEDIATE_POSITION) {
                 m_cargoArm.moveElbow(-CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER);
@@ -32,7 +37,7 @@ public class CargoArmToUpper extends CommandBase {
                 m_cargoArm.moveElbow(0);
             }
         } else if (currentShoulderPos < CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION) {
-            m_cargoArm.moveShoulder(CargoArmInfo.CARGO_ARM_SHOULDER_DEFAULT_POWER);
+            m_cargoArm.moveShoulder(pidPowerShoulderValue);
             if (currentElbowPos < CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION) {
                 m_cargoArm.moveElbow(
                         CargoArmInfo.CARGO_ARM_ELBOW_DEFAULT_POWER * ((targetElbowPos - currentElbowPos) / 10000));
@@ -52,4 +57,11 @@ public class CargoArmToUpper extends CommandBase {
         m_cargoArm.moveElbow(0.0);
         m_cargoArm.moveShoulder(0.0);
     }
+
+    @Override
+    public boolean isFinished(){
+        return (m_cargoArm.getElbowPosition() >= CargoArmInfo.CARGOARM_ELBOW_FINAL_POSITION)
+         && (m_cargoArm.getShoulderPosition() >= CargoArmInfo.CARGOARM_SHOULDER_UPPER_POSITION);
+    }
+    
 }

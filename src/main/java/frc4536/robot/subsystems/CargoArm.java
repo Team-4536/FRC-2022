@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc4536.robot.Constants.CargoArmInfo;
+import pabeles.concurrency.ConcurrencyOps.Reset;
 
 public class CargoArm extends SubsystemBase {
 
     private DigitalInput m_elbowHome;
+    private DigitalInput m_shoulderHome;
 
     private AnalogInput m_infraredSensor;
 
@@ -34,6 +36,7 @@ public class CargoArm extends SubsystemBase {
         m_cargoArmShoulder.setInverted(CargoArmInfo.CARGO_ARM_SHOULDER_MOTOR_IS_INVERTED);
 
         m_elbowHome = new DigitalInput(CargoArmInfo.CARGO_ARM_ELBOW_HOME_ID);
+        m_shoulderHome = new DigitalInput(CargoArmInfo.CARGO_ARM_SHOULDER_HOME_ID);
 
         m_infraredSensor = new AnalogInput(CargoArmInfo.CARGO_ARM_INFRARED_SENSOR_ID);
 
@@ -64,22 +67,32 @@ public class CargoArm extends SubsystemBase {
         return !m_elbowHome.get();
     }
 
+    public boolean shoulderIsHome() {
+        return !m_shoulderHome.get();
+    }
+
     public double infraredSensorGetValue() {
         return m_infraredSensor.getVoltage();
     }
 
     @Override
     public void periodic() {
+
         if (elbowIsHome()) {
             m_cargoArmElbowEncoder.reset();
         }
-        
+
+        if (shoulderIsHome()) {
+            m_cargoArmShoulderEncoder.setPosition(0.0);
+        }
+
         if (CargoArmInfo.CARGO_ARM_IN_DASHBOARD) {
             SmartDashboard.putNumber("Elbow Position", getElbowPosition());
             SmartDashboard.putNumber("Shoulder Position", getShoulderPosition());
             SmartDashboard.putNumber("Elbow Motor", m_cargoArmElbow.get());
             SmartDashboard.putNumber("Shoulder Motor", m_cargoArmShoulder.get());
             SmartDashboard.putBoolean("is elbow at home position", !m_elbowHome.get());
+            SmartDashboard.putBoolean("is shoulder at home posotion", !m_shoulderHome.get());
             SmartDashboard.putNumber("Range Sensor", m_infraredSensor.getVoltage());
         }
     }
