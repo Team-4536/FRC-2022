@@ -21,8 +21,8 @@ public class autostryone extends SequentialCommandGroup {
                     new OutputCargo(cargoHandler).withTimeout(4).deadlineWith(getDontMove(driveTrain)),
                     new CargoArmToResting(cargoArm).deadlineWith(getDontMove(driveTrain)),
                     new TurnRobot(driveTrain, 90, gyroscope));*/
-                    new DriveForward(driveTrain, 0, 4, gyroscope),
-                    new DriveForward(driveTrain, 0, 4, gyroscope));
+                    new DriveForward(driveTrain, 4, gyroscope),
+                    new DriveForward(driveTrain, 4, gyroscope));
 
     }
 

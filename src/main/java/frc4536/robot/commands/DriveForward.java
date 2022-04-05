@@ -19,7 +19,7 @@ public class DriveForward extends CommandBase{
     private double m_distanceInFeet;
     private double m_goalPosition;
 
-    public DriveForward(DriveTrain driveTrain, double speed, double distanceInFeet, Gyroscope gyroscope){
+    public DriveForward(DriveTrain driveTrain,  double distanceInFeet, Gyroscope gyroscope){
         kP = .0001;
         kI = .000062;
         kD = .00002;
