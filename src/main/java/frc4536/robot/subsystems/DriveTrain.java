@@ -66,8 +66,12 @@ public class DriveTrain extends SubsystemBase{
         m_differentialDrive.tankDrive(leftSideSpeed, rightSideSpeed);
     }
 
-    public void arcadeDriveNoSquaredInptus(double speed, double rotation){
+    public void arcadeDriveNoSquaredInputs(double speed, double rotation){
         m_differentialDrive.arcadeDrive(speed, rotation, false);
+    }
+
+    public void tankDriveNoSquaredInputs(double left, double right){
+        m_differentialDrive.tankDrive(left, right, false);
     }
 
     public void stopDriving(){

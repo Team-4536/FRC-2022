@@ -49,7 +49,7 @@ public class DriveForward extends CommandBase{
         double speed = Math.abs(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()) * 0.0001;
         double dspeed = m_pidController.calculate(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount());
 
-        m_driveTrain.arcadeDriveNoSquaredInptus(0.5, turningValue);
+        m_driveTrain.arcadeDriveNoSquaredInputs(0.5, turningValue);
 
         SmartDashboard.putNumber("encoder value drive", m_driveTrain.getLeftDriveEncoderCount());
         SmartDashboard.putNumber("target position", m_goalPosition);
