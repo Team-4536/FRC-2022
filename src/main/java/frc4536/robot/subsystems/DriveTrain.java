@@ -70,6 +70,14 @@ public class DriveTrain extends SubsystemBase{
         m_differentialDrive.tankDrive(left, right, false);
     }
 
+    public void spin(double left, double right){
+        m_differentialDrive.tankDrive(left, right, false);
+    }
+
+    public void move(double left, double right){
+        m_differentialDrive.tankDrive(left, right, false);
+    }
+
     public void stopDriving(){
         m_differentialDrive.tankDrive(0,0);
     }
