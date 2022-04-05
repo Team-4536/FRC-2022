@@ -25,8 +25,9 @@ public class AutoPractice extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(new CargoArmToUpper(cargoArm).deadlineWith(stopDriving(driveTrain)),
     new OutputCargo(cargoHandler).withTimeout(4.5).deadlineWith(stopDriving(driveTrain)),
-    new CargoArmToResting(cargoArm).deadlineWith(stopDriving(driveTrain)));
-    
+    new CargoArmToResting(cargoArm).deadlineWith(stopDriving(driveTrain)),
+    new RunCommand(() -> driveTrain.spin(0.5, -0.5)).withTimeout(1),
+    new RunCommand(() -> driveTrain.move(0.5, 0.5)).withTimeout(1));
 
   }
 
