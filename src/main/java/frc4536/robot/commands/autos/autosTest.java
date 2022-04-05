@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
+import frc4536.robot.commands.CargoArmToIntake;
 import frc4536.robot.commands.DriveForward;
 import frc4536.robot.commands.OutputCargo;
 import frc4536.robot.commands.TurnRobot;

@@ -16,9 +16,18 @@ public class TurnRobot extends CommandBase{
     private double m_goalDegree;
 
     public TurnRobot(DriveTrain driveTrain, double goalDegree, Gyroscope gyroscope){
+
         m_driveTrain = driveTrain;
         m_gyroscope = gyroscope;
+
+        m_gyroscope.resetGyroscope();
+
         m_goalDegree = -goalDegree;
+        
+    }
+
+    @Override
+    public void initialize() {
         m_gyroscope.resetGyroscope();
     }
 
