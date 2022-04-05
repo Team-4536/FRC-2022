@@ -33,7 +33,7 @@ public class DriveForward extends CommandBase{
 
         m_goalPosition = (m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
         SmartDashboard.putNumber("distance in feet", m_distanceInFeet);
-        SmartDashboard.putNumber("goal positiion", m_goalPosition);
+        SmartDashboard.putNumber(" our goal positiion", m_goalPosition);
         SmartDashboard.putNumber("left encoder count", m_driveTrain.getLeftDriveEncoderCount());
         SmartDashboard.putNumber("clicks per inch", RobotInfo.CLICKS_PER_INCH);
 
@@ -49,11 +49,11 @@ public class DriveForward extends CommandBase{
 
     @Override
     public void execute(){
-        double turningValue = (m_gyroscope.getAngle() * 0.15);
+        double turningValue = (m_gyroscope.getAngle() * 0.2);
         double speed = Math.abs(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()) * 0.0001;
-        double dspeed = m_pidController.calculate(m_goalPosition = m_driveTrain.getLeftDriveEncoderCount());
+        double dspeed = m_pidController.calculate(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount());
 
-        m_driveTrain.arcadeDriveNoSquaredInptus(0.6, turningValue);
+        m_driveTrain.arcadeDriveNoSquaredInptus(0.5, turningValue);
 
         SmartDashboard.putNumber("encoder value drive", m_driveTrain.getLeftDriveEncoderCount());
         SmartDashboard.putNumber("target position", m_goalPosition);
