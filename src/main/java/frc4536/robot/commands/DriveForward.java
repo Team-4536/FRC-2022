@@ -22,8 +22,8 @@ public class DriveForward extends CommandBase{
 
     public DriveForward(DriveTrain driveTrain, double speed, double distanceInFeet, Gyroscope gyroscope){
         kP = .0001;
-        kI = 0;
-        kD = 0;
+        kI = .000062;
+        kD = .00002;
         m_driveTrain = driveTrain;
         m_gyroscope = gyroscope;
         m_gyroscope.resetGyroscope();
@@ -41,15 +41,16 @@ public class DriveForward extends CommandBase{
     @Override
     public void initialize() {
         SmartDashboard.putString("command","drive forward");
+        m_goalPosition = (m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
     }
 
     @Override
     public void execute(){
         double turningValue = (m_gyroscope.getAngle() * 0.2);
         double speed = Math.abs(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()) * 0.0001;
-        double dspeed = m_pidController.calculate(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount());
+        double dspeed = Math.min(-m_pidController.calculate(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()), .6);
 
-        m_driveTrain.arcadeDriveNoSquaredInputs(0.5, turningValue);
+        m_driveTrain.arcadeDriveNoSquaredInputs(dspeed, turningValue);
 
         SmartDashboard.putNumber("encoder value drive", m_driveTrain.getLeftDriveEncoderCount());
         SmartDashboard.putNumber("target position", m_goalPosition);
@@ -66,7 +67,7 @@ public class DriveForward extends CommandBase{
 
     @Override
     public boolean isFinished() {
-        return (m_driveTrain.getLeftDriveEncoderCount() >= m_goalPosition);
+        return (m_driveTrain.getLeftDriveEncoderCount() >= (m_goalPosition));
     }
 
 
