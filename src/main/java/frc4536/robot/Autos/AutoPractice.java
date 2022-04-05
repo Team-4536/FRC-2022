@@ -7,8 +7,10 @@ package frc4536.robot.Autos;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc4536.robot.commands.CargoArmToIntake;
 import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
+import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.commands.OutputCargo;
 import frc4536.robot.subsystems.CargoArm;
 import frc4536.robot.subsystems.CargoHandler;
@@ -26,8 +28,16 @@ public class AutoPractice extends SequentialCommandGroup {
     addCommands(new CargoArmToUpper(cargoArm).deadlineWith(stopDriving(driveTrain)),
     new OutputCargo(cargoHandler).withTimeout(4.5).deadlineWith(stopDriving(driveTrain)),
     new CargoArmToResting(cargoArm).deadlineWith(stopDriving(driveTrain)),
-    new RunCommand(() -> driveTrain.spin(0.5, -0.5)).withTimeout(1),
-    new RunCommand(() -> driveTrain.move(0.5, 0.5)).withTimeout(1));
+    new RunCommand(() -> driveTrain.spin(0.5, -0.5), driveTrain).withTimeout(1),
+    new RunCommand(() -> driveTrain.move(0.5, 0.5), driveTrain).withTimeout(1),
+    new CargoArmToIntake(cargoArm).deadlineWith(stopDriving(driveTrain)),
+    new RunCommand(() -> driveTrain.move(0.5,0.5), driveTrain).alongWith(new IntakeCargo(cargoHandler).withTimeout(1),
+    new CargoArmToUpper(cargoArm).deadlineWith(stopDriving(driveTrain)),
+    new RunCommand(() -> driveTrain.spin(0.5, -0.5), driveTrain).withTimeout(1),
+    new RunCommand(() -> driveTrain.move(0.5, 0.5), driveTrain).withTimeout(1),
+    new OutputCargo(cargoHandler).withTimeout(1).deadlineWith(stopDriving(driveTrain))));
+
+
 
   }
 
