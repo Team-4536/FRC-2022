@@ -4,8 +4,12 @@
 
 package frc4536.robot.Autos;
 
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
+import frc4536.robot.commands.OutputCargo;
 import frc4536.robot.subsystems.CargoArm;
 import frc4536.robot.subsystems.CargoHandler;
 import frc4536.robot.subsystems.DriveTrain;
@@ -19,8 +23,14 @@ public class AutoPractice extends SequentialCommandGroup {
   public AutoPractice(CargoArm cargoArm, DriveTrain driveTrain, CargoHandler cargoHandler, Gyroscope gyroscope) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new CargoArmToUpper(cargoArm).deadlineWith());
+    addCommands(new CargoArmToUpper(cargoArm).deadlineWith(stopDriving(driveTrain)),
+    new OutputCargo(cargoHandler).withTimeout(4.5).deadlineWith(stopDriving(driveTrain)),
+    new CargoArmToResting(cargoArm).deadlineWith(stopDriving(driveTrain)));
+    
 
   }
 
+private Command stopDriving(DriveTrain driveTrain) {
+    return new RunCommand(()->driveTrain.stopDriving(),driveTrain);
+}
 }
