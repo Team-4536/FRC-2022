@@ -13,9 +13,9 @@ import frc4536.robot.subsystems.CargoHandler;
 import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
 
-public class autostryone extends SequentialCommandGroup {
+public class autosTest extends SequentialCommandGroup {
 
-    public autostryone  (DriveTrain driveTrain, CargoArm cargoArm, CargoHandler cargoHandler, Gyroscope gyroscope) {
+    public autosTest  (DriveTrain driveTrain, CargoArm cargoArm, CargoHandler cargoHandler, Gyroscope gyroscope) {
 
         addCommands(/*new CargoArmToUpper(cargoArm).deadlineWith(getDontMove(driveTrain)),
                     new OutputCargo(cargoHandler).withTimeout(4).deadlineWith(getDontMove(driveTrain)),
