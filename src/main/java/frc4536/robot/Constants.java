@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 
 public final class Constants {
+    
     public final static class CargoArmInfo {
 
         public final static int CARGO_ARM_ELBOW_ID = 1;

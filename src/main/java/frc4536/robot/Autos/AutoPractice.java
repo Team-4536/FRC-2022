@@ -7,6 +7,7 @@ package frc4536.robot.Autos;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc4536.robot.Constants;
 import frc4536.robot.commands.CargoArmToIntake;
 import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
@@ -28,6 +29,7 @@ public class AutoPractice extends SequentialCommandGroup {
     addCommands(new CargoArmToUpper(cargoArm).deadlineWith(stopDriving(driveTrain)),
     new OutputCargo(cargoHandler).withTimeout(4.5).deadlineWith(stopDriving(driveTrain)),
     new CargoArmToResting(cargoArm).deadlineWith(stopDriving(driveTrain)),
+    new RunCommand(() -> driveTrain.move(0.5, 0.5), driveTrain).withTimeout(1),
     new RunCommand(() -> driveTrain.spin(0.5, -0.5), driveTrain).withTimeout(1),
     new RunCommand(() -> driveTrain.move(0.5, 0.5), driveTrain).withTimeout(1),
     new CargoArmToIntake(cargoArm).deadlineWith(stopDriving(driveTrain)),
@@ -36,9 +38,6 @@ public class AutoPractice extends SequentialCommandGroup {
     new RunCommand(() -> driveTrain.spin(0.5, -0.5), driveTrain).withTimeout(1),
     new RunCommand(() -> driveTrain.move(0.5, 0.5), driveTrain).withTimeout(1),
     new OutputCargo(cargoHandler).withTimeout(1).deadlineWith(stopDriving(driveTrain))));
-
-
-
   }
 
 private Command stopDriving(DriveTrain driveTrain) {
