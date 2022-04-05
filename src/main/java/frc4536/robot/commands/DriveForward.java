@@ -32,10 +32,6 @@ public class DriveForward extends CommandBase{
         m_distanceInFeet = distanceInFeet;
 
         m_goalPosition = (m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
-        SmartDashboard.putNumber("distance in feet", m_distanceInFeet);
-        SmartDashboard.putNumber(" our goal positiion", m_goalPosition);
-        SmartDashboard.putNumber("left encoder count", m_driveTrain.getLeftDriveEncoderCount());
-        SmartDashboard.putNumber("clicks per inch", RobotInfo.CLICKS_PER_INCH);
 
         addRequirements(m_driveTrain, m_gyroscope);
 
