@@ -16,7 +16,6 @@ public class DriveForward extends CommandBase{
     private double kP;
     private double kI;
     private double kD;
-    private double m_speed;
     private double m_distanceInFeet;
     private double m_goalPosition;
 
