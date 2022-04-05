@@ -12,6 +12,7 @@ public class CargoArmToResting extends CommandBase {
     private final CargoArm m_cargoArm;
     private boolean m_elbowHasGoneHome;
     private boolean m_shoulderHasGoneHome;
+    public Object deadlineWith;
 
     public CargoArmToResting(CargoArm cargoArm) {
         m_cargoArm = cargoArm;
