@@ -13,27 +13,30 @@ public class DriveForward extends CommandBase{
     private DriveTrain m_driveTrain;
     private Gyroscope m_gyroscope;
     private PIDController m_pidController;
+
     private double kP;
     private double kI;
     private double kD;
+
     private double m_distanceInFeet;
     private double m_goalPosition;
 
     public DriveForward(DriveTrain driveTrain,  double distanceInFeet, Gyroscope gyroscope){
-        kP = .0001;
-        kI = .000062;
-        kD = .00002;
+
+        kP = 0.0001;
+        kI = 0.000062;
+        kD = 0.00002;
+        m_pidController = new PIDController(kP, kI, kD);
+
         m_driveTrain = driveTrain;
         m_gyroscope = gyroscope;
-        m_gyroscope.resetGyroscope();
-        
-        m_pidController = new PIDController(kP, kI, kD);
-        m_distanceInFeet = distanceInFeet;
 
+        m_gyroscope.resetGyroscope();
+
+        m_distanceInFeet = distanceInFeet;
         m_goalPosition = (m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
 
         addRequirements(m_driveTrain, m_gyroscope);
-
 
     }
 
@@ -45,8 +48,8 @@ public class DriveForward extends CommandBase{
 
     @Override
     public void execute(){
+
         double turningValue = (m_gyroscope.getAngle() * 0.2);
-        double speed = Math.abs(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()) * 0.0001;
         double dspeed = Math.min(-m_pidController.calculate(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()), .6);
 
         m_driveTrain.arcadeDriveNoSquaredInputs(dspeed, turningValue);
@@ -54,8 +57,8 @@ public class DriveForward extends CommandBase{
         SmartDashboard.putNumber("encoder value drive", m_driveTrain.getLeftDriveEncoderCount());
         SmartDashboard.putNumber("target position", m_goalPosition);
         SmartDashboard.putNumber("Distance in feet", m_distanceInFeet);
-        SmartDashboard.putNumber("speed test", speed);
         SmartDashboard.putNumber("d speed test", dspeed);
+        
     }
 
     @Override
@@ -66,7 +69,7 @@ public class DriveForward extends CommandBase{
 
     @Override
     public boolean isFinished() {
-        return (m_driveTrain.getLeftDriveEncoderCount() >= (m_goalPosition));
+        return (m_driveTrain.getLeftDriveEncoderCount() >= m_goalPosition);
     }
 
 
