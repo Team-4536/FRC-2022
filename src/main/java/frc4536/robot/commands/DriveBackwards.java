@@ -41,7 +41,7 @@ public class DriveBackwards extends CommandBase{
 
     @Override
     public void initialize() {
-        m_goalPosition = (m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
+        m_goalPosition = -(m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
     }
 
     @Override
