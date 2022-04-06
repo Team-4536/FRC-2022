@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc4536.robot.commands.CargoArmToResting;
 import frc4536.robot.commands.CargoArmToUpper;
+import frc4536.robot.commands.DriveBackwards;
 import frc4536.robot.commands.CargoArmToIntake;
 import frc4536.robot.commands.DriveForward;
 import frc4536.robot.commands.OutputCargo;
@@ -23,7 +24,7 @@ public class autosTest extends SequentialCommandGroup {
                     new CargoArmToResting(cargoArm).deadlineWith(getDontMove(driveTrain)),
                     new TurnRobot(driveTrain, 90, gyroscope));*/
                     new DriveForward(driveTrain, 4, gyroscope),
-                    new DriveForward(driveTrain, 4, gyroscope));
+                    new DriveBackwards(driveTrain, gyroscope, 4));
 
     }
 

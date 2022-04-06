@@ -47,10 +47,10 @@ public class DriveBackwards extends CommandBase{
     @Override
     public void execute() {
 
-        double turningValue = (m_gyroscope.getAngle() * 0.2);
+        double turningValue = (m_gyroscope.getAngle() * 0.1);
         double pidSpeed = -Math.min(-m_pidController.calculate(-m_goalPosition + m_driveTrain.getLeftDriveEncoderCount()), .6);
 
-        m_driveTrain.arcadeDriveNoSquaredInputs(pidSpeed, -turningValue);
+        m_driveTrain.arcadeDriveNoSquaredInputs(pidSpeed, turningValue);
 
         SmartDashboard.putNumber("encoder value drive", m_driveTrain.getLeftDriveEncoderCount());
         SmartDashboard.putNumber("target position", m_goalPosition);
