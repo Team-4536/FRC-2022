@@ -20,7 +20,7 @@ public class DriveBackwards extends CommandBase{
     private double m_distanceInFeet;
     private double m_goalPosition;
 
-    public DriveBackwards(DriveTrain driveTrain, Gyroscope gyroscope, double distanceinFeet){
+    public DriveBackwards(DriveTrain driveTrain, Gyroscope gyroscope, double distanceInFeet){
 
         kP = 0.0001;
         kI = 0.000062;
@@ -32,8 +32,8 @@ public class DriveBackwards extends CommandBase{
         
         m_gyroscope.resetGyroscope();
 
-        m_distanceInFeet = distanceinFeet;
-        m_goalPosition = -(distanceinFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
+        m_distanceInFeet = distanceInFeet;
+        m_goalPosition = -(m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
 
         addRequirements(m_driveTrain, m_gyroscope);
 
