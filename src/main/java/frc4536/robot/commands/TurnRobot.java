@@ -1,6 +1,7 @@
 package frc4536.robot.commands;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc4536.robot.subsystems.DriveTrain;
 import frc4536.robot.subsystems.Gyroscope;
@@ -16,6 +17,11 @@ public class TurnRobot extends CommandBase{
     private double m_goalDegree;
 
     public TurnRobot(DriveTrain driveTrain, double goalDegree, Gyroscope gyroscope){
+
+        kP = .005;
+        kI = 0;
+        kD = 0;
+        m_pidController = new PIDController(kP, kI, kD);
 
         m_driveTrain = driveTrain;
         m_gyroscope = gyroscope;
@@ -33,7 +39,15 @@ public class TurnRobot extends CommandBase{
 
     @Override
     public void execute() {
+        
+        double pidSpeed = Math.min(m_pidController.calculate(-m_goalDegree + m_gyroscope.getAngle()), .6);
+
         m_driveTrain.tankDriveNoSquaredInputs(.5, -.5);
+
+        SmartDashboard.putNumber("pid turn", pidSpeed);
+        SmartDashboard.putNumber("target value angle", m_goalDegree);
+        SmartDashboard.putNumber("current value angle", m_gyroscope.getAngle());
+
     }
 
     @Override
