@@ -22,9 +22,10 @@ public class DriveBackwards extends CommandBase{
 
     public DriveBackwards(DriveTrain driveTrain, Gyroscope gyroscope, double distanceinFeet){
 
-        kP = .0001;
-        kI = .000062;
-        kD = .00002;
+        kP = 0.0001;
+        kI = 0.000062;
+        kD = 0.00002;
+        m_pidController = new PIDController(kP, kI, kD);
 
         m_driveTrain = driveTrain;
         m_gyroscope = gyroscope;
