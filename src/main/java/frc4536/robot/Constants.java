@@ -39,7 +39,7 @@ public final class Constants {
         public final static double CARGOARM_ELBOW_INTERMEDIATE_POSITION = 75000.0;
         public final static double CARGOARM_ELBOW_INTER_RESTING_POSITION = 62000.0;
         public final static double CARGOARM_ELBOW_FINAL_POSITION = 140000.0;
-        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 160000.0;
+        public final static double CARGOARM_ELBOW_INTAKE_ELBOW_POSITION = 193000.0;
 
         public final static boolean CARGO_ARM_IN_DASHBOARD = true;
 
