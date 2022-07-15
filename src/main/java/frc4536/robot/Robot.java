@@ -5,6 +5,9 @@
 package frc4536.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -21,6 +24,10 @@ public class Robot extends TimedRobot {
     private RobotContainer m_robotContainer;
 
     private Command m_autonomousCommand;
+    
+    private SendableChooser<Integer> m_chooser = new SendableChooser<>();
+    
+    private ShuffleboardTab m_compTab = Shuffleboard.getTab("Teleop");
 
     /**
      * This function is run when the robot is first started up and should be used
