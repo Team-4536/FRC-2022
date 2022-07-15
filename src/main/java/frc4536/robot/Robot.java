@@ -5,6 +5,7 @@
 package frc4536.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -35,6 +36,9 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
+
+        Shuffleboard.selectTab("Teleop");
+
         // Instantiate our RobotContainer. This will perform all our button bindings,
         // and put our
         // autonomous chooser on the dashboard.
@@ -59,6 +63,11 @@ public class Robot extends TimedRobot {
                 });
         m_visionThread.setDaemon(true);
         m_visionThread.start();
+
+        m_chooser.setDefaultOption("Forward", 0);
+        m_chooser.addOption("Forward", 0);
+
+        m_compTab.add("Auto Chooser", m_chooser).withWidget(BuiltInWidgets.kComboBoxChooser);
     }
 
     /**
