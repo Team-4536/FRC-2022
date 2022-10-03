@@ -26,6 +26,7 @@ import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.commands.OutputCargo;
 import frc4536.robot.commands.autos.autosTest;
 import frc4536.robot.commands.ClimbForward;
+import frc4536.robot.commands.DriveForward;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -96,6 +97,8 @@ public class RobotContainer {
         m_runToIntakeButton.whenHeld(new CargoArmToIntake(m_cargoArm));
 
         m_climberButton.whenHeld(new ClimbForward(m_climber));
+
+        m_lebronButton.whenPressed(new DriveForward(m_driveTrain, 4, m_gyroscope));
     }
 
     private void setDefaultCommands() {
