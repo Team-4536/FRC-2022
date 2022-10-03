@@ -4,6 +4,8 @@
 
 package frc4536.robot;
 
+import javax.print.attribute.standard.JobPriority;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -52,6 +54,8 @@ public class RobotContainer {
     private final JoystickButton m_runToIntakeButton;
     private final JoystickButton m_restingPosButton;
 
+    private final JoystickButton m_lebronButton;
+
     private final JoystickButton m_climberButton;
 
     public RobotContainer() {
@@ -72,6 +76,8 @@ public class RobotContainer {
         m_runToUpperButton = new JoystickButton(m_mechanismController, XboxController.Button.kY.value);
         m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
         m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
+
+        m_lebronButton = new JoystickButton(m_driveController,XboxController.Button.kA.value);
 
         // drive controller
         m_climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
