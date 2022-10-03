@@ -4,6 +4,8 @@
 
 package frc4536.robot;
 
+import javax.print.attribute.standard.JobPriority;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -24,6 +26,7 @@ import frc4536.robot.commands.IntakeCargo;
 import frc4536.robot.commands.OutputCargo;
 import frc4536.robot.commands.autos.autosTest;
 import frc4536.robot.commands.ClimbForward;
+import frc4536.robot.commands.DriveForward;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -75,6 +78,8 @@ public class RobotContainer {
         m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
         m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
 
+        m_lebronButton = new JoystickButton(m_driveController,XboxController.Button.kA.value);
+
         // drive controller
         m_climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
 
@@ -92,6 +97,8 @@ public class RobotContainer {
         m_runToIntakeButton.whenHeld(new CargoArmToIntake(m_cargoArm));
 
         m_climberButton.whenHeld(new ClimbForward(m_climber));
+
+        m_lebronButton.whenPressed(new DriveForward(m_driveTrain, 4, m_gyroscope));
     }
 
     private void setDefaultCommands() {
