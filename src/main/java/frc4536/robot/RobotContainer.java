@@ -98,7 +98,7 @@ public class RobotContainer {
 
         m_climberButton.whenHeld(new ClimbForward(m_climber));
 
-        m_lebronButton.whenPressed(new DriveForward(m_driveTrain, 4, m_gyroscope));
+        m_lebronButton.whenPressed(new DriveForward(m_driveTrain, 5, m_gyroscope));
     }
 
     private void setDefaultCommands() {

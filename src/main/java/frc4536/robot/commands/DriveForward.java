@@ -44,13 +44,15 @@ public class DriveForward extends CommandBase{
     public void initialize() {
         SmartDashboard.putString("command","drive forward");
         m_goalPosition = (m_distanceInFeet * 12.0) * RobotInfo.CLICKS_PER_INCH + m_driveTrain.getLeftDriveEncoderCount();
+
+        m_gyroscope.resetGyroscope();
     }
 
     @Override
     public void execute(){
 
-        double turningValue = (m_gyroscope.getAngle() * 0.2);
-        double pidSpeed = Math.min(-m_pidController.calculate(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()), .6);
+        double turningValue = (m_gyroscope.getAngle() * 0.1);
+        double pidSpeed = Math.min(-m_pidController.calculate(m_goalPosition - m_driveTrain.getLeftDriveEncoderCount()), .5);
 
         m_driveTrain.arcadeDriveNoSquaredInputs(pidSpeed, turningValue);
 
