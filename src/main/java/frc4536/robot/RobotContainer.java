@@ -55,7 +55,7 @@ public class RobotContainer {
     private final JoystickButton m_runToIntakeButton;
     private final JoystickButton m_restingPosButton;
 
-    private final JoystickButton m_lebronButton; 
+    //private final JoystickButton m_lebronButton; 
 
     private final JoystickButton m_climberButton;
 
@@ -78,7 +78,7 @@ public class RobotContainer {
         m_runToIntakeButton = new JoystickButton(m_mechanismController, XboxController.Button.kB.value);
         m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
 
-        m_lebronButton = new JoystickButton(m_driveController,XboxController.Button.kA.value);
+       // m_lebronButton = new JoystickButton(m_driveController, XboxController.Button.kA.value);
 
         // drive controller
         m_climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
@@ -98,7 +98,7 @@ public class RobotContainer {
 
         m_climberButton.whenHeld(new ClimbForward(m_climber));
 
-        m_lebronButton.whenPressed(new DriveForward(m_driveTrain, 5, m_gyroscope));
+        //m_lebronButton.whenPressed(new DriveForward(m_driveTrain, 5, m_gyroscope));
     }
 
     private void setDefaultCommands() {
@@ -119,5 +119,6 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         // An ExampleCommand will run in autonomous
         return new autosTest(m_driveTrain, m_cargoArm, m_cargoHandler, m_gyroscope);
+
     }
 }
