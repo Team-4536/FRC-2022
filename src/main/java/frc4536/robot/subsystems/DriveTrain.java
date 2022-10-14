@@ -46,6 +46,15 @@ public class DriveTrain extends SubsystemBase{
     } 
 
     public void drive(double driveSpeed, double robotRotation, double spin){
+
+        driveSpeed *= .83;
+        robotRotation *= .83;
+        spin *= .83;
+
+        if (driveSpeed < 0){
+            robotRotation *= -1;
+        }
+
         if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
             m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation));
         }
@@ -60,6 +69,9 @@ public class DriveTrain extends SubsystemBase{
         }
         else if(spin > 0.04){
             m_differentialDrive.tankDrive(spin, -spin);
+        }
+        else {
+            m_differentialDrive.tankDrive(0, 0);
         }
         SmartDashboard.putNumber("rotation", robotRotation);
         SmartDashboard.putNumber("speed", driveSpeed);

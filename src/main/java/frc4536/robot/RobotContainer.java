@@ -82,10 +82,10 @@ public class RobotContainer {
         m_restingPosButton = new JoystickButton(m_mechanismController, XboxController.Button.kA.value);
 
        // m_lebronButton = new JoystickButton(m_driveController, XboxController.Button.kA.value);
-        m_climbDriveButton = new JoystickButton(m_driveController, XboxController.Button.kX.value);
+       //m_climbDriveButton = new JoystickButton(m_driveController, XboxController.Button.kX.value);
 
         // drive controller
-        //m_climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
+        m_climberButton = new JoystickButton(m_mechanismController, XboxController.Button.kX.value);
 
         configureButtonBindings();
         setDefaultCommands();
